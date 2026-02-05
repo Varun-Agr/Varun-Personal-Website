@@ -1,0 +1,46 @@
+{
+  "workData": [
+    {
+      "image": "/images/work/safl1.png",
+      "title": "Secure AI Futures Lab",
+      "slug": "secure-ai-futures-lab",
+      "description": "SAFL is a dedicated node in India for advancing research talent around the safe and beneficial development and deployment of advanced AI systems. SAFL is currently based in New Delhi, India with plans to expand to other hubs in the APAC region."
+    },
+    {
+      "image": "/images/work/tech1.jpg",
+      "title": "Technical Recruitment - A Practitioner's Synthesis",
+      "slug": "technical-recruitment",
+      "description": "Traditional recruiting methods often miss best-fit candidates for senior tech roles. My approach involves building information dense profile for each candidate and applying quantitative ranking techniques like AHP to get a more holistic understanding of the talent landscape."
+    },
+    {
+      "image": "/images/work/techops.png",
+      "title": "Operations Intern Management System",
+      "slug": "ops-intern-management-system",
+      "description": "We developed an intern management system in-house which is tailored made to my needs. This system directly fed into another large-scale project of data integrity validation by human supervision."
+    },
+    {
+      "image": "/images/work/indiaai.png",
+      "title": "India AI Report",
+      "slug": "india-ai-report",
+      "description": "India is on its way to becoming the biggest supplier of AI talent to the world. In this light, it becomes crucial to understand the key governance and tech discussions precipitating in the country. We built a dedicated India AI tracker to track news, stakeholder decisions, investment sentiments, and technological innovations."
+    },
+    {
+      "image": "/images/work/ga1.png",
+      "title": "Global AI Safety Fellowship",
+      "slug": "gaisf-v1",
+      "description": "The Global AI Safety Fellowship (GAISF) was a large-scale, data-driven fellowship to source and identify the best AI engineers and researchers and get them placed at Frontier AI Safety Research Labs like Anthropic, FAR.AI, UK AISI, and others. We screened more than 50,000 candidates."
+    },
+    {
+      "image": "/images/work/dh1.png",
+      "title": "DeepHyre | AI-first sourcing and recruitment platform",
+      "slug": "deephyre",
+      "description": "DeepHyre is our end-to-end talent acquisition platform powered by advanced AI-based matching solutions, extensive sourcing infrastructure, and dedicated AI voice interfaces for next-generation recruiter and candidate experience."
+    },
+    {
+      "image": "/images/work/jd1.png",
+      "title": "Data-driven JD analysis and visualization",
+      "slug": "jd-analysis",
+      "description": "Organisations often struggle to get great hires because their JDs are not properly structured or misunderstood. We undertook this project to cluster leading organisation JDs in order to give us a so-called \"job fingerprint\"."
+    }
+  ]
+}
