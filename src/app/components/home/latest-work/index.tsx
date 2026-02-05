@@ -30,66 +30,40 @@ const LatestWork = () => {
             <div className="flex items-center justify-between gap-2 border-b border-black pb-7 mb-9 md:mb-16">
               <h2>My Projects</h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 xl:gap-y-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-12 xl:gap-y-16">
               {workData?.map((value: any, index: any) => {
                 return (
-                  <div
+                  <Link
                     key={index}
-                    className="group flex flex-col gap-3 xl:gap-6"
+                    href={`${value.slug}`}
+                    className="group block"
                   >
-                    <div className="relative bg-gray-100 rounded-lg h-64 sm:h-72 xl:h-80">
-                      <Image
-                        src={getImgPath(value?.image)}
-                        alt="image"
-                        fill
-                        className="rounded-lg object-contain p-4"
-                      />
-                      <Link
-                        onClick={(e) => e.preventDefault()}
-                        href={"#!"}
-                        className="absolute top-0 left-0 backdrop-blur-xs bg-primary/15 w-full h-full hidden group-hover:flex rounded-lg"
-                      >
-                        <span className="flex justify-center items-center p-5 w-full">
-                          <svg
-                            width="65"
-                            height="64"
-                            viewBox="0 0 65 64"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <rect
-                              x="0.333374"
-                              width="64"
-                              height="64"
-                              rx="32"
-                              fill="#3B82F6"
-                            />
-                            <path
-                              d="M25.6667 25.3333H39M39 25.3333V38.6666M39 25.3333L25.6667 38.6666"
-                              stroke="#FFFF"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </span>
-                      </Link>
-                    </div>
-                    <div className="flex flex-col gap-0 xl:gap-2">
-                      <div className="flex items-center justify-between">
-                        <Link href={`${value.slug}`}>
-                          <h5>{value?.title}</h5>
-                        </Link>
+                    <div className="relative h-80 sm:h-96 rounded-lg overflow-hidden bg-gray-100 transition-transform duration-500 ease-in-out group-hover:scale-110 group-hover:shadow-2xl">
+                      {/* Image */}
+                      <div className="relative w-full h-full">
                         <Image
-                          src={getImgPath("/images/icon/right-arrow-icon.svg")}
-                          alt="right-arrow-icon"
-                          width={30}
-                          height={30}
+                          src={getImgPath(value?.image)}
+                          alt={value?.title}
+                          fill
+                          className="object-contain p-4 grayscale group-hover:grayscale-0 transition-all duration-500"
                         />
                       </div>
-                      <p>{value?.description}</p>
+
+                      {/* Title overlay - always visible */}
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent transition-all duration-500 group-hover:from-black/95 group-hover:via-black/70">
+                        <div className="p-6">
+                          <h5 className="text-white font-bold mb-2">{value?.title}</h5>
+
+                          {/* Description - only visible on hover */}
+                          <div className="max-h-0 overflow-hidden group-hover:max-h-40 transition-all duration-500 ease-in-out">
+                            <p className="text-white text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                              {value?.description}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
             </div>
