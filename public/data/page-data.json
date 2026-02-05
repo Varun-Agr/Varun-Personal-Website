@@ -6,12 +6,6 @@
         "label": "hello@varunagrawal.com",
         "icon": "/images/icon/mail-icon.svg",
         "link": "mailto:hello@varunagrawal.com"
-      },
-      {
-        "type": "phone",
-        "label": "+901 5588 2500",
-        "icon": "/images/icon/call-icon.svg",
-        "link": "tel:+90155882500"
       }
     ],
     "socialItems": [
@@ -100,11 +94,6 @@
         "type": "email",
         "label": "hello@varunagrawal.com",
         "link": "mailto:hello@varunagrawal.com"
-      },
-      {
-        "type": "phone",
-        "label": "+91 9876543210",
-        "link": "tel:+919876543210"
       }
     ]
   }
