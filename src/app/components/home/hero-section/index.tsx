@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const index = () => {
   return (
-    <section className="relative hero-section overflow-hidden pt-35 md:pt-40 pb-12 lg:pb-30 xl:pt-52">
+    <section className="relative hero-section overflow-hidden pt-35 md:pt-40 pb-12 lg:pb-30 xl:pt-52" id="home">
       <div className="container">
         <div className="lg:flex grid grid-cols-1 sm:grid-cols-2 gap-7 md:gap-4 items-center">
           <div className="flex flex-col gap-4 md:gap-7 max-w-2xl">

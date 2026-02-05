@@ -7,9 +7,6 @@ const Footer = () => {
         <div className="flex flex-col gap-1.5 items-center sm:items-start">
           <div className="relative flex items-center w-full">
             <div className="flex-grow h-px bg-black" />
-            <div className="mx-4">
-              <Logo />
-            </div>
             <div className="flex-grow h-px bg-black" />
           </div>
           <p className="text-sm text-gray-500">© 2026 Varun Agrawal. All rights reserved.</p>

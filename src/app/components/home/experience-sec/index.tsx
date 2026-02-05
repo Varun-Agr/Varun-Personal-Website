@@ -7,7 +7,7 @@ const ExperienceSec = () => {
             title: "Co-Chief Executive Officer & Managing Director",
             company: "Mar 2024 - Now",
             type: "Singapore / India",
-            description: "Scaled a from-scratch fellowship funnel to 4,200 warm ML, SWE, Quant candidates across 5 continents, sourcing >98th percentile candidates for 13 partner labs (e.g. Anthropic, the UK AISI, and FAR.AI)."
+            description: "Scaled a from-scratch fellowship funnel to 4,200 warm ML, SWE, Quant candidates across 5 continents, sourcing >98th percentile candidates for 13 partner labs (e.g. Anthropic, the UK AISI, and FAR.AI).\n\nEnabled 45+ hires and 5 funded research PhD offers till now; currently in conversation with 30+ partners spanning leading AI labs, startups, research institutions and academic labs.\n\nDirected a 30-person distributed team with real-time funnel analytics, slashing time-to-offer 65 → 30 days and cost-per-hire 27% for the program, while owning board-level reporting and due diligence."
         },
         {
             year: "Impact Academy",
@@ -71,7 +71,13 @@ const ExperienceSec = () => {
                                 </div>
 
                                 <div className="pl-8 sm:pl-0">
-                                    <p className="leading-relaxed text-base">{exp.description}</p>
+                                    <p className="leading-relaxed text-base">
+                                        <ul>
+                                            {exp.description.split('\n\n').map((item, index) => (
+                                                <li key={index} className="list-disc list-inside">{item}</li>
+                                            ))}
+                                        </ul>
+                                    </p>
                                 </div>
                             </div>
                         ))}

@@ -23,7 +23,7 @@ const LatestWork = () => {
   }, []);
 
   return (
-    <section>
+    <section id="projects">
       <div className="bg-softGray">
         <div className="container">
           <div className="py-16 xl:py-32 ">
