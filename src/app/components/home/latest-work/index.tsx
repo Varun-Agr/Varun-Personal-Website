@@ -33,9 +33,8 @@ const LatestWork = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-12 xl:gap-y-16">
               {workData?.map((value: any, index: any) => {
                 return (
-                  <Link
+                  <div
                     key={index}
-                    href={`${value.slug}`}
                     className="group block"
                   >
                     <div className="relative h-80 sm:h-96 rounded-lg overflow-hidden bg-gray-100 transition-transform duration-500 ease-in-out group-hover:scale-110 group-hover:shadow-2xl">
@@ -63,7 +62,7 @@ const LatestWork = () => {
                         </div>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                 );
               })}
             </div>
