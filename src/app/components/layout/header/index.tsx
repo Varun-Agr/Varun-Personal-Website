@@ -22,6 +22,8 @@ const Header = () => {
                         <div className="flex items-center gap-4">
                             <Link href="#projects">Projects</Link>
                             <Link href="#contact">Contact</Link>
+                            <Link href="https://secureaifutureslab.com">SAFL</Link>
+                            <Link href="https://indiaaitracker.com">India AI Tracker</Link>
                         </div>
                     </div>
                 </nav>
