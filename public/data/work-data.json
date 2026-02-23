@@ -1,12 +1,6 @@
 {
   "workData": [
     {
-      "image": "/images/work/safl1.png",
-      "title": "Secure AI Futures Lab",
-      "slug": "secure-ai-futures-lab",
-      "description": "SAFL is a dedicated node in India for advancing research talent around the safe and beneficial development and deployment of advanced AI systems. SAFL is currently based in New Delhi, India with plans to expand to other hubs in the APAC region."
-    },
-    {
       "image": "/images/work/tech1.jpg",
       "title": "Technical Recruitment - A Practitioner's Synthesis",
       "slug": "technical-recruitment",
