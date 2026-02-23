@@ -42,7 +42,7 @@ const Contact = () => {
     setLoading(true);
     setSubmitted(false);
 
-    const googleSheetUrl = "https://script.google.com/macros/s/AKfycbxKxVHEMOYpmFxRfD5svGRpg7J_Dg-jWUGN_3UnUWC_lQYAHGzoCUhkMCKSi5hcwX-g/exec";
+    const googleSheetUrl = "https://script.google.com/macros/s/AKfycbxtPLoyZk7MNlyoahjnaPLP_4SmpXpVaQin1zgaLm2OSXQqcz-PJLv17Ps9Q8LK18iL/exec";
 
     // Convert form data to URLSearchParams for Google Apps Script
     const params = new URLSearchParams({
@@ -84,7 +84,7 @@ const Contact = () => {
             <h2>Get in touch</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} suppressHydrationWarning>
               <div className="flex flex-col gap-7 sm:gap-12">
                 <div className="grid grid-cols-2 gap-8">
                   <div>
@@ -98,6 +98,7 @@ const Contact = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
+                      suppressHydrationWarning
                     />
                   </div>
                   <div>
@@ -112,6 +113,7 @@ const Contact = () => {
                       name="number"
                       value={formData.number}
                       onChange={handleChange}
+                      suppressHydrationWarning
                     />
                   </div>
                 </div>
@@ -127,6 +129,7 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
+                    suppressHydrationWarning
                   />
                 </div>
                 <div>
@@ -141,6 +144,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={2}
+                    suppressHydrationWarning
                   />
                 </div>
                 {submitted && (
@@ -182,7 +186,7 @@ const Contact = () => {
                       <Link
                         className="text-base sm:text-lg font-normal text-secondary hover:text-primary"
                         onClick={(e) => e.preventDefault()}
-                        href={"#!"}
+                        href={value?.href}
                       >
                         {value?.title}
                       </Link>

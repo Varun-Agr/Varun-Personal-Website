@@ -4,6 +4,7 @@ import EducationSkills from "./components/home/education-skills"
 import ExperienceSec from "./components/home/experience-sec"
 import HeroSection from "./components/home/hero-section"
 import ContactBar from "./components/home/hero-section/contact-bar"
+import HiringForm from "./components/home/hiring-form"
 import LatestWork from "./components/home/latest-work"
 
 const page = () => {
@@ -12,6 +13,7 @@ const page = () => {
       <main>
         <HeroSection />
         <ContactBar />
+        <HiringForm />
         <LatestWork />
         {/* <AboutMe /> */}
         <ExperienceSec />

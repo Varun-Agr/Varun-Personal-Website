@@ -34,7 +34,7 @@ const ContactBar = () => {
                   <Link
                     key={index}
                     onClick={(e) => e.preventDefault()}
-                    href={"#!"}
+                    href={value?.link}
                     className="flex items-center gap-2 lg:gap-4 text-sm md:text-base"
                   >
                     <Image
@@ -58,8 +58,7 @@ const ContactBar = () => {
               {contactBarData?.socialItems?.map((value: any, index: number) => (
                 <Link
                   key={index}
-                  onClick={(e) => e.preventDefault()}
-                  href={"#!"}
+                  href={value.link}
                 >
                   <Image
                     src={getImgPath(value?.icon)}
