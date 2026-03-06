@@ -4,6 +4,14 @@ import Link from "next/link";
 const ExperienceSec = () => {
   const experiences = [
     {
+      year: "Secure AI Futures Lab",
+      title: "Co-founder",
+      company: "Oct 2025 - Now",
+      type: "New Delhi, India",
+      description:
+        "SAFL is a dedicated node in India for advancing research talent around the safe and beneficial development and deployment of advanced AI systems. SAFL is currently based in New Delhi, India with plans to expand to other hubs in the APAC region.",
+    },
+    {
       year: "Impact Academy",
       title: "Head of Talent & Technical Recruiting (Co-CEO since Jun 2025)",
       company: "Mar 2024 - Now",
@@ -18,14 +26,6 @@ const ExperienceSec = () => {
       type: "Singapore / India",
       description:
         'Developed data-driven global talent strategy: ranked 150 countries on custom STEM/AI infrastructure index, pioneered "Talent Identification Advisor" model with 31 experts generating 12% of high-signal applications, and executed geo-targeted campaigns achieving 2.3x increase in qualified leads at 30% lower cost-per-acquisition.',
-    },
-    {
-      year: "Secure AI Futures Lab",
-      title: "Co-founder",
-      company: "",
-      type: "New Delhi, India",
-      description:
-        "SAFL is a dedicated node in India for advancing research talent around the safe and beneficial development and deployment of advanced AI systems. SAFL is currently based in New Delhi, India with plans to expand to other hubs in the APAC region.",
     },
     {
       year: "India AI Safety Initiative",
