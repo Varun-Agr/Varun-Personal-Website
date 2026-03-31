@@ -2,7 +2,14 @@ import React from "react";
 import Link from "next/link";
 
 const ExperienceSec = () => {
-  const experiences = [
+  const experiences: {
+    year: string;
+    title: string;
+    company: string;
+    type: string;
+    description: string;
+    url?: string;
+  }[] = [
     {
       year: "Secure AI Futures Lab (SAFL)",
       title: "Co-Founder",

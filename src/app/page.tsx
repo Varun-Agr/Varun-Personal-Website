@@ -1,27 +1,21 @@
-import AboutMe from "./components/home/about-me"
-import Contact from "./components/home/contact"
-import EducationSkills from "./components/home/education-skills"
-import ExperienceSec from "./components/home/experience-sec"
-import HeroSection from "./components/home/hero-section"
-import ContactBar from "./components/home/hero-section/contact-bar"
-import HiringForm from "./components/home/hiring-form"
-import LatestWork from "./components/home/latest-work"
+import Masthead from "./components/broadsheet/Masthead";
+import Hero from "./components/broadsheet/Hero";
+import Projects from "./components/broadsheet/Projects";
+import ConnectForm from "./components/broadsheet/ConnectForm";
+import BroadsheetFooter from "./components/broadsheet/BroadsheetFooter";
 
 const page = () => {
   return (
-    <>
+    <div className="broadsheet">
       <main>
-        <HeroSection />
-        <ContactBar />
-        <HiringForm />
-        <LatestWork />
-        {/* <AboutMe /> */}
-        <ExperienceSec />
-        {/* <EducationSkills /> */}
-        <Contact />
+        <Masthead />
+        <Hero />
+        <Projects />
+        <ConnectForm />
       </main>
-    </>
-  )
-}
+      <BroadsheetFooter />
+    </div>
+  );
+};
 
-export default page
+export default page;

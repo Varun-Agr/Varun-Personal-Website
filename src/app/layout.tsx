@@ -1,17 +1,33 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque } from "next/font/google";
+import { Playfair_Display, EB_Garamond, Oswald } from "next/font/google";
 import "./globals.css";
-import Header from "./components/layout/header";
-import Footer from "./components/layout/footer";
+import "./broadsheet.css";
 
-const bricolageGrotesque = Bricolage_Grotesque({
-  variable: "--font-geist-sans",
+const playfair = Playfair_Display({
   subsets: ["latin"],
+  variable: "--font-playfair",
+  weight: ["400", "700", "900"],
+  display: "swap",
+});
+
+const garamond = EB_Garamond({
+  subsets: ["latin"],
+  variable: "--font-garamond",
+  weight: ["400", "500", "700"],
+  display: "swap",
+});
+
+const oswald = Oswald({
+  subsets: ["latin"],
+  variable: "--font-oswald",
+  weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Varun Agrawal | Personal Website and Portfolio",
-  description: "Varun Agrawal | Personal Website and Portfolio",
+  title: "The Agrawal Dispatch — Varun Agrawal",
+  description:
+    "Technical Recruiter, Tool Builder, and AI Governance specialist. 7+ years sourcing top 1% STEM talent for frontier AI labs.",
 };
 
 export default function RootLayout({
@@ -21,10 +37,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={bricolageGrotesque.className}>
-        <Header />
+      <body
+        className={`${playfair.variable} ${garamond.variable} ${oswald.variable}`}
+      >
         {children}
-        <Footer/>
       </body>
     </html>
   );
