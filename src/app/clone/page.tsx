@@ -217,11 +217,9 @@ const FONT = "var(--font-google-sans), sans-serif";
 export default function ClonePage() {
   const { time, isOnline } = useIST();
   const [openAccordion, setOpenAccordion] = useState<number | null>(null);
-  const carouselProjects = projects.slice(0, 3);
-  const { wrapperRef: carouselWrapperRef, activeIdx: carouselIdx, setActiveIdx: setCarouselIdx } = useStickyCarousel(carouselProjects.length);
+  const { wrapperRef: carouselWrapperRef, activeIdx: carouselIdx, setActiveIdx: setCarouselIdx } = useStickyCarousel(projects.length);
   const scrolled = useScrolled(80);
   const canvasRef = useTronTrail();
-  const displayText = useScrollReveal();
   const approachLeft = useScrollReveal();
   const approachRight = useScrollReveal();
 
@@ -249,20 +247,20 @@ export default function ClonePage() {
   ];
 
   const logos1 = [
-    { name: "Anthropic", icon: "/images/logos/anthropic.png" },
-    { name: "UK AISI", icon: "/images/logos/aisi.png" },
-    { name: "FAR.AI", icon: "/images/logos/farai.svg" },
-    { name: "Apollo Research", icon: "/images/logos/apollo.png" },
-    { name: "GovAI", icon: "/images/logos/govai.png" },
-    { name: "Goodfire", icon: "/images/logos/goodfire.webp" },
+    { name: "Anthropic", icon: "/images/logos/anthropic.svg" },
+    { name: "UK AISI", icon: "/images/logos/uk-aisi.svg" },
+    { name: "FAR.AI", icon: "/images/logos/far-ai.svg" },
+    { name: "Apollo Research", icon: "/images/logos/apollo-research.svg" },
+    { name: "GovAI", icon: "/images/logos/govai.svg" },
+    { name: "Goodfire", icon: "/images/logos/goodfire.svg" },
   ];
   const logos2 = [
-    { name: "Schmidt Sciences", icon: "/images/logos/ss.png" },
-    { name: "80,000 Hours", icon: "/images/logos/80k.png" },
-    { name: "J-PAL", icon: "/images/logos/jpal.png" },
-    { name: "IIT Madras", icon: "/images/logos/iitm.png" },
-    { name: "NUS", icon: "/images/logos/nus.png" },
-    { name: "UC Berkeley", icon: "/images/logos/ucb.png" },
+    { name: "Schmidt Sciences", icon: "/images/logos/schmidt-sciences.svg" },
+    { name: "80,000 Hours", icon: "/images/logos/80000-hours.svg" },
+    { name: "J-PAL", icon: "/images/logos/jpal.svg" },
+    { name: "IIT Madras", icon: "/images/logos/iit-madras.svg" },
+    { name: "NUS", icon: "/images/logos/nus.svg" },
+    { name: "UC Berkeley", icon: "/images/logos/uc-berkeley.svg" },
   ];
 
   const [logoSet, setLogoSet] = useState(0);
@@ -346,7 +344,7 @@ export default function ClonePage() {
               </a>
               <span style={{ color: scrolled ? "#ccc" : "#444" }}>|</span>
               <a
-                href="/contact"
+                href="#contact"
                 className="px-3 py-1 transition-colors duration-300"
                 style={{ color: scrolled ? "#666" : "#999" }}
                 onMouseEnter={(e) =>
@@ -362,7 +360,7 @@ export default function ClonePage() {
           </div>
           <div className="flex items-center gap-3">
             <a
-              href="/contact"
+              href="#contact"
               className="hidden sm:flex items-center gap-2 px-5 py-2.5 border text-sm transition-all duration-500"
               style={{
                 borderColor: scrolled ? "#ccc" : "#444",
@@ -403,7 +401,7 @@ export default function ClonePage() {
       {/* Tall wrapper creates scroll runway; inner content is sticky */}
       <div
         ref={carouselWrapperRef}
-        style={{ height: `${(carouselProjects.length - 1) * 60 + 100}vh` }}
+        style={{ height: `${(projects.length - 1) * 60 + 100}vh` }}
       >
         <div className="sticky top-[72px] px-6 py-12 lg:py-16" style={{ backgroundColor: "#141414" }}>
           <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-12 lg:gap-20 items-end">
@@ -429,21 +427,21 @@ export default function ClonePage() {
 
               <div className="flex flex-wrap gap-3 mt-2">
                 <a
-                  href="/contact"
+                  href="#contact"
                   className="flex items-center gap-2 px-5 py-2.5 border text-sm text-white hover:bg-white hover:text-[#141414] transition-all duration-300"
                   style={{ borderColor: "#444", borderRadius: "2px" }}
                 >
                   <span className="text-xs">&#x21a6;</span>
                   Let&apos;s Work Together
                 </a>
-                <Link
-                  href="/works"
+                <a
+                  href="#work"
                   className="flex items-center gap-2 px-5 py-2.5 border text-sm text-white hover:bg-white hover:text-[#141414] transition-all duration-300"
                   style={{ borderColor: "#444", borderRadius: "2px" }}
                 >
                   <span className="text-xs">&#x21a6;</span>
                   View All Work
-                </Link>
+                </a>
               </div>
             </div>
 
@@ -455,7 +453,7 @@ export default function ClonePage() {
                   className="flex transition-transform duration-500 ease-out"
                   style={{ transform: `translateX(-${carouselIdx * 50}%)` }}
                 >
-                  {carouselProjects.map((p) => (
+                  {projects.map((p) => (
                     <div
                       key={p.slug}
                       className="w-1/2 flex-shrink-0 px-2.5"
@@ -469,38 +467,30 @@ export default function ClonePage() {
                           className="w-full aspect-[4/3] relative overflow-hidden"
                           style={{ background: p.cardGradient }}
                         >
-                          {p.cardImage ? (
-                            <img
-                              src={p.cardImage}
-                              alt={p.name}
-                              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            />
-                          ) : (
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <div className="text-center space-y-3">
-                                <div className="text-4xl font-bold text-white/20">
-                                  {p.cardStat}
-                                </div>
-                                <div className="text-xs text-white/30 tracking-widest uppercase">
-                                  {p.cardStatLabel}
-                                </div>
-                                <div className="flex gap-2 justify-center mt-2">
-                                  <div
-                                    className="w-2 h-2 rounded-full"
-                                    style={{ backgroundColor: `${p.cardAccent}66` }}
-                                  />
-                                  <div
-                                    className="w-2 h-2 rounded-full"
-                                    style={{ backgroundColor: `${p.cardAccent}40` }}
-                                  />
-                                  <div
-                                    className="w-2 h-2 rounded-full"
-                                    style={{ backgroundColor: `${p.cardAccent}26` }}
-                                  />
-                                </div>
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="text-center space-y-3">
+                              <div className="text-4xl font-bold text-white/20">
+                                {p.cardStat}
+                              </div>
+                              <div className="text-xs text-white/30 tracking-widest uppercase">
+                                {p.cardStatLabel}
+                              </div>
+                              <div className="flex gap-2 justify-center mt-2">
+                                <div
+                                  className="w-2 h-2 rounded-full"
+                                  style={{ backgroundColor: `${p.cardAccent}66` }}
+                                />
+                                <div
+                                  className="w-2 h-2 rounded-full"
+                                  style={{ backgroundColor: `${p.cardAccent}40` }}
+                                />
+                                <div
+                                  className="w-2 h-2 rounded-full"
+                                  style={{ backgroundColor: `${p.cardAccent}26` }}
+                                />
                               </div>
                             </div>
-                          )}
+                          </div>
                         </div>
                         <div className="p-5 space-y-3">
                           <h3
@@ -526,7 +516,7 @@ export default function ClonePage() {
               {/* Carousel controls */}
               <div className="flex items-center justify-between mt-5">
                 <div className="flex gap-1.5">
-                  {Array.from({ length: carouselProjects.length - 1 }).map((_, i) => (
+                  {Array.from({ length: projects.length - 1 }).map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setCarouselIdx(i)}
@@ -560,12 +550,12 @@ export default function ClonePage() {
                   <button
                     onClick={() =>
                       setCarouselIdx(
-                        Math.min(carouselProjects.length - 2, carouselIdx + 1)
+                        Math.min(projects.length - 2, carouselIdx + 1)
                       )
                     }
                     className="w-9 h-9 flex items-center justify-center border text-[#999] hover:text-white hover:border-[#666] transition-colors duration-300 relative overflow-hidden [&::before]:!hidden"
                     style={{ borderColor: "#333", borderRadius: "2px" }}
-                    disabled={carouselIdx >= carouselProjects.length - 2}
+                    disabled={carouselIdx >= projects.length - 2}
                     aria-label="Next"
                   >
                     <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -584,14 +574,7 @@ export default function ClonePage() {
 
       {/* ──────────── DISPLAY TEXT ──────────── */}
       <section className="px-6 py-20 lg:py-32">
-        <div
-          ref={displayText.ref}
-          className="max-w-[1400px] mx-auto transition-all duration-700"
-          style={{
-            opacity: displayText.visible ? 1 : 0,
-            transform: displayText.visible ? "translateY(0)" : "translateY(40px)",
-          }}
-        >
+        <div className="max-w-[1400px] mx-auto">
           <p
             className="text-[clamp(1.8rem,4vw,3.2rem)] leading-[1.2] tracking-[-0.015em] text-[#ccc]"
             style={{ fontFamily: FONT }}
@@ -724,12 +707,12 @@ export default function ClonePage() {
             {currentLogos.map((logo) => (
               <div
                 key={logo.name}
-                className="flex items-center justify-center h-20 transition-opacity duration-700"
+                className="flex items-center justify-center h-16 transition-opacity duration-700"
               >
                 <img
                   src={logo.icon}
                   alt={logo.name}
-                  className="max-h-14 md:max-h-16 max-w-[140px] md:max-w-[160px] w-auto h-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+                  className="h-8 md:h-10 w-auto opacity-60 hover:opacity-100 transition-opacity duration-300"
                   style={{ filter: "brightness(0) invert(0.55)" }}
                 />
               </div>
