@@ -180,7 +180,19 @@ function useScrollReveal() {
 function useStickyCarousel(totalCards: number) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
-  const maxIdx = totalCards - 2; // show 2 cards at a time, last position
+  const [visibleCount, setVisibleCount] = useState(2);
+
+  // Track viewport width to determine visible card count
+  useEffect(() => {
+    const updateVisible = () => {
+      setVisibleCount(window.innerWidth < 768 ? 1 : 2);
+    };
+    updateVisible();
+    window.addEventListener("resize", updateVisible);
+    return () => window.removeEventListener("resize", updateVisible);
+  }, []);
+
+  const maxIdx = totalCards - visibleCount;
 
   useEffect(() => {
     const wrapper = wrapperRef.current;
@@ -190,11 +202,9 @@ function useStickyCarousel(totalCards: number) {
       const rect = wrapper.getBoundingClientRect();
       const wrapperHeight = wrapper.offsetHeight;
       const viewportH = window.innerHeight;
-      // scrollable runway = wrapperHeight - viewportH
       const runway = wrapperHeight - viewportH;
       if (runway <= 0) return;
 
-      // How far we've scrolled into the wrapper (0 = top just hit viewport top, 1 = bottom just left)
       const scrolled = -rect.top;
       const progress = Math.max(0, Math.min(1, scrolled / runway));
 
@@ -207,7 +217,12 @@ function useStickyCarousel(totalCards: number) {
     return () => window.removeEventListener("scroll", onScroll);
   }, [maxIdx]);
 
-  return { wrapperRef, activeIdx, setActiveIdx };
+  // Clamp activeIdx when visibleCount changes
+  useEffect(() => {
+    setActiveIdx((prev) => Math.min(prev, maxIdx));
+  }, [maxIdx]);
+
+  return { wrapperRef, activeIdx, setActiveIdx, visibleCount };
 }
 
 /* ─────────────────────────── page ─────────────────────────────── */
@@ -218,8 +233,9 @@ export default function ClonePage() {
   const { time, isOnline } = useIST();
   const [openAccordion, setOpenAccordion] = useState<number | null>(null);
   const carouselProjects = projects.slice(0, 3);
-  const { wrapperRef: carouselWrapperRef, activeIdx: carouselIdx, setActiveIdx: setCarouselIdx } = useStickyCarousel(carouselProjects.length);
+  const { wrapperRef: carouselWrapperRef, activeIdx: carouselIdx, setActiveIdx: setCarouselIdx, visibleCount } = useStickyCarousel(carouselProjects.length);
   const scrolled = useScrolled(80);
+  const [menuOpen, setMenuOpen] = useState(false);
   const canvasRef = useTronTrail();
   const displayText = useScrollReveal();
   const approachLeft = useScrollReveal();
@@ -318,7 +334,7 @@ export default function ClonePage() {
             </span>
             <div className="hidden md:flex items-center gap-1 text-sm">
               <a
-                href="#work"
+                href="/works"
                 className="px-3 py-1 transition-colors duration-300"
                 style={{ color: scrolled ? "#666" : "#999" }}
                 onMouseEnter={(e) =>
@@ -363,7 +379,7 @@ export default function ClonePage() {
           <div className="flex items-center gap-3">
             <a
               href="/contact"
-              className="hidden sm:flex items-center gap-2 px-5 py-2.5 border text-sm transition-all duration-500"
+              className="hidden md:flex items-center gap-2 px-5 py-2.5 border text-sm transition-all duration-500"
               style={{
                 borderColor: scrolled ? "#ccc" : "#444",
                 borderRadius: scrolled ? "8px" : "2px",
@@ -383,8 +399,87 @@ export default function ClonePage() {
               <span className="text-xs">&#x21a6;</span>
               Let&apos;s Work Together
             </a>
+            {/* Hamburger button — mobile only */}
+            <button
+              className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px]"
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-label="Toggle menu"
+            >
+              <span
+                className="block w-5 h-[2px] transition-all duration-300 origin-center"
+                style={{
+                  backgroundColor: scrolled ? "#141414" : "#fff",
+                  transform: menuOpen ? "rotate(45deg) translate(2.5px, 2.5px)" : "none",
+                }}
+              />
+              <span
+                className="block w-5 h-[2px] transition-all duration-300"
+                style={{
+                  backgroundColor: scrolled ? "#141414" : "#fff",
+                  opacity: menuOpen ? 0 : 1,
+                }}
+              />
+              <span
+                className="block w-5 h-[2px] transition-all duration-300 origin-center"
+                style={{
+                  backgroundColor: scrolled ? "#141414" : "#fff",
+                  transform: menuOpen ? "rotate(-45deg) translate(2.5px, -2.5px)" : "none",
+                }}
+              />
+            </button>
           </div>
         </nav>
+        {/* Mobile menu dropdown */}
+        <div
+          className="md:hidden overflow-hidden transition-all duration-300 max-w-[1400px] mx-auto"
+          style={{
+            maxHeight: menuOpen ? "300px" : "0px",
+            backgroundColor: scrolled
+              ? "rgba(255, 255, 255, 0.97)"
+              : "rgba(20, 20, 20, 0.97)",
+            borderBottom: menuOpen ? `1px solid ${scrolled ? "#e5e5e5" : "#2a2a2a"}` : "none",
+          }}
+        >
+          <div className="flex flex-col px-6 py-4 gap-3">
+            <a
+              href="/works"
+              className="text-sm py-2 transition-colors duration-300"
+              style={{ color: scrolled ? "#333" : "#ccc" }}
+              onClick={() => setMenuOpen(false)}
+            >
+              Work
+            </a>
+            <a
+              href="#approach"
+              className="text-sm py-2 transition-colors duration-300"
+              style={{ color: scrolled ? "#333" : "#ccc" }}
+              onClick={() => setMenuOpen(false)}
+            >
+              Approach
+            </a>
+            <a
+              href="/contact"
+              className="text-sm py-2 transition-colors duration-300"
+              style={{ color: scrolled ? "#333" : "#ccc" }}
+              onClick={() => setMenuOpen(false)}
+            >
+              Contact
+            </a>
+            <a
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 border text-sm mt-1 transition-all duration-300"
+              style={{
+                borderColor: scrolled ? "#ccc" : "#444",
+                borderRadius: "2px",
+                color: scrolled ? "#141414" : "#fff",
+              }}
+              onClick={() => setMenuOpen(false)}
+            >
+              <span className="text-xs">&#x21a6;</span>
+              Let&apos;s Work Together
+            </a>
+          </div>
+        </div>
       </div>
 
       {/* ──────────── HERO (headline) ──────────── */}
@@ -394,7 +489,8 @@ export default function ClonePage() {
             className="text-[clamp(1.8rem,4.5vw,3.2rem)] leading-[1.15] tracking-[-0.02em] text-white max-w-[720px] mb-0 font-medium"
             style={{ fontFamily: FONT }}
           >
-            Technical Recruiter <span className="text-[#555]">&</span> AI Governance Builder sourcing top 1% STEM talent for frontier AI labs
+            {/*Technical Recruiter <span className="text-[#555]">&</span> AI Governance Builder sourcing top 1% STEM talent for frontier AI labs*/}
+            I place ML and engineering talent at the frontier labs working on the hardest problems.
           </h1>
         </div>
       </section>
@@ -421,10 +517,10 @@ export default function ClonePage() {
               </div>
 
               <p className="text-[#aaa] text-base leading-relaxed">
-                Co-CEO at SteadRise. Co-Founder of Secure AI Futures Lab. Building
+                Co-CEO at <a href="https://steadrise.org" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">SteadRise</a>. Co-Founder of <a href="https://secureaifutureslab.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">Secure AI Futures Lab</a>. Building
                 Measuremint. 7+ years identifying and placing exceptional researchers
                 and engineers at organizations working on the world&apos;s hardest
-                problems — from Anthropic and UK AISI to FAR.AI and Apollo Research.
+                problems - from Anthropic and UK AISI to FAR.AI and Apollo Research.
               </p>
 
               <div className="flex flex-wrap gap-3 mt-2">
@@ -453,12 +549,13 @@ export default function ClonePage() {
               <div className="overflow-hidden">
                 <div
                   className="flex transition-transform duration-500 ease-out"
-                  style={{ transform: `translateX(-${carouselIdx * 50}%)` }}
+                  style={{ transform: `translateX(-${carouselIdx * (100 / visibleCount)}%)` }}
                 >
                   {carouselProjects.map((p) => (
                     <div
                       key={p.slug}
-                      className="w-1/2 flex-shrink-0 px-2.5"
+                      className="flex-shrink-0 px-2.5"
+                      style={{ width: `${100 / visibleCount}%` }}
                     >
                       <Link
                         href={`/work/${p.slug}`}
@@ -473,7 +570,7 @@ export default function ClonePage() {
                             <img
                               src={p.cardImage}
                               alt={p.name}
-                              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                              className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                             />
                           ) : (
                             <div className="absolute inset-0 flex items-center justify-center">
@@ -526,7 +623,7 @@ export default function ClonePage() {
               {/* Carousel controls */}
               <div className="flex items-center justify-between mt-5">
                 <div className="flex gap-1.5">
-                  {Array.from({ length: carouselProjects.length - 1 }).map((_, i) => (
+                  {Array.from({ length: carouselProjects.length - visibleCount + 1 }).map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setCarouselIdx(i)}
@@ -560,12 +657,12 @@ export default function ClonePage() {
                   <button
                     onClick={() =>
                       setCarouselIdx(
-                        Math.min(carouselProjects.length - 2, carouselIdx + 1)
+                        Math.min(carouselProjects.length - visibleCount, carouselIdx + 1)
                       )
                     }
                     className="w-9 h-9 flex items-center justify-center border text-[#999] hover:text-white hover:border-[#666] transition-colors duration-300 relative overflow-hidden [&::before]:!hidden"
                     style={{ borderColor: "#333", borderRadius: "2px" }}
-                    disabled={carouselIdx >= carouselProjects.length - 2}
+                    disabled={carouselIdx >= carouselProjects.length - visibleCount}
                     aria-label="Next"
                   >
                     <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -704,6 +801,95 @@ export default function ClonePage() {
       {/* ──────────── SEPARATOR ──────────── */}
       <div className="w-full border-t" style={{ borderColor: "#222" }} />
 
+      {/* ──────────── UPCOMING TIMELINE ──────────── */}
+      <section className="px-6 py-20 lg:py-28">
+        <div className="max-w-[1400px] mx-auto">
+          <p className="text-sm text-[#666] uppercase tracking-widest mb-2">
+            Upcoming
+          </p>
+          <h2
+            className="text-[clamp(1.4rem,2.5vw,2rem)] leading-[1.2] text-white font-medium mb-12"
+            style={{ fontFamily: FONT }}
+          >
+            Want to chat? Find me at these places
+          </h2>
+
+          <div className="relative">
+            {/* Vertical line */}
+            <div
+              className="absolute left-[7px] top-2 bottom-2 w-px hidden sm:block"
+              style={{ backgroundColor: "#333" }}
+            />
+
+            <div className="space-y-10">
+              {[
+                {
+                  date: "Apr 23 – 27, 2026",
+                  name: "ICLR 2026",
+                  location: "Rio de Janeiro, Brazil",
+                  description:
+                    "International Conference on Learning Representations",
+                },
+                {
+                  date: "Jul 6th – 11th, 2026",
+                  name: "ICML 2026",
+                  location: "Seoul, South Korea",
+                  description:
+                    "International Conference on Machine Learning",
+                },
+                {
+                  date: "Dec 6th - 12th 2026",
+                  name: "NeurIPS 2026",
+                  location: "Syndney, Australia",
+                  description:
+                    "Conference on Neural Information Processing Systems",
+                },
+              ].map((event, i) => (
+                <div key={i} className="flex gap-6 items-start">
+                  {/* Dot */}
+                  <div className="relative flex-shrink-0 mt-1.5 hidden sm:block">
+                    <div
+                      className="w-[15px] h-[15px] rounded-full border-2"
+                      style={{
+                        borderColor: i === 0 ? "#4ade80" : "#444",
+                        backgroundColor: i === 0 ? "#4ade8033" : "transparent",
+                      }}
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-2 sm:gap-8">
+                    <p
+                      className="text-sm text-[#888] pt-0.5"
+                      style={{ fontVariantNumeric: "tabular-nums" }}
+                    >
+                      {event.date}
+                    </p>
+                    <div>
+                      <h3
+                        className="text-white text-lg font-medium"
+                        style={{ fontFamily: FONT }}
+                      >
+                        {event.name}
+                      </h3>
+                      <p className="text-[#888] text-sm mt-1">
+                        {event.description}
+                      </p>
+                      <p className="text-[#666] text-sm mt-1">
+                        {event.location}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ──────────── SEPARATOR ──────────── */}
+      <div className="w-full border-t" style={{ borderColor: "#222" }} />
+
       {/* ──────────── CANDID PHOTO ──────────── */}
       <div className="w-full">
         <img
@@ -787,9 +973,9 @@ export default function ClonePage() {
 
           {/* Right: location */}
           <div className="text-sm text-[#888] lg:text-right space-y-1">
-            <p>Based in New Delhi,</p>
+            <p>Based in Bengaluru,</p>
             <p>India</p>
-            <p className="text-[#666] mt-2">28.61&deg; N, 77.21&deg; E</p>
+            <p className="text-[#666] mt-2">12.96&deg; N, 77.57&deg; E</p>
           </div>
         </div>
 

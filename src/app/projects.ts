@@ -138,6 +138,7 @@ export const projects: Project[] = [
   {
     slug: "ai-candidate-screening-pipeline",
     name: "AI Candidate Screening Pipeline",
+    cardImage: "/images/work/pipeline.png",
     techStack: "Python, Claude API, Airtable, Anthropic Batches API",
     cardTitle: "AI Candidate Screening — Signal-Based Evaluation at Scale",
     cardDescription:

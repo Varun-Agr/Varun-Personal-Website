@@ -157,7 +157,7 @@ export default function WorksPage() {
             className="text-[clamp(1.8rem,4vw,3rem)] leading-[1.15] tracking-[-0.02em] text-white font-medium mb-3"
             style={{ fontFamily: FONT }}
           >
-            All Work
+            All Projects
           </h1>
           <p className="text-[#888] text-base max-w-[600px]">
             A collection of projects spanning AI talent infrastructure,
