@@ -3,8 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { projects } from "../projects";
-
-const FONT = "var(--font-google-sans), sans-serif";
+import { FONT_SANS, FONT_SERIF, C } from "../theme";
 
 function useIST() {
   const [time, setTime] = useState("");
@@ -60,10 +59,10 @@ export default function WorksPage() {
 
   return (
     <div
-      className="min-h-screen text-[#e5e5e5] relative"
-      style={{ backgroundColor: "#141414", fontFamily: FONT }}
+      className="min-h-screen relative"
+      style={{ backgroundColor: C.bg, color: C.text, fontFamily: FONT_SANS }}
     >
-      {/* ──────────── NAV ──────────── */}
+      {/* ──────────── NAV ───────��──── */}
       <div
         className="sticky top-0 z-50 w-full px-6 transition-all duration-500"
         style={{ paddingTop: scrolled ? "10px" : "0px" }}
@@ -72,74 +71,75 @@ export default function WorksPage() {
           className="flex items-center justify-between px-6 py-4 max-w-[1400px] mx-auto transition-all duration-500"
           style={{
             backgroundColor: scrolled
-              ? "rgba(255, 255, 255, 0.97)"
-              : "rgba(20, 20, 20, 0.92)",
+              ? "rgba(240, 235, 229, 0.97)"
+              : `${C.bg}ee`,
             backdropFilter: "blur(12px)",
             borderRadius: scrolled ? "12px" : "0px",
             boxShadow: scrolled
               ? "0 4px 30px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)"
               : "none",
-            borderBottom: scrolled ? "none" : "1px solid #2a2a2a",
+            borderBottom: scrolled ? "none" : `1px solid ${C.border}`,
           }}
         >
           <div className="flex items-center gap-6">
             <Link
               href="/"
-              className="text-sm font-semibold tracking-[0.2em] transition-colors duration-500"
+              className="text-sm tracking-[0.2em] transition-colors duration-500"
               style={{
-                fontFamily: FONT,
-                color: scrolled ? "#141414" : "#ffffff",
+                fontFamily: FONT_SERIF,
+                fontStyle: "italic",
+                color: scrolled ? C.bg : C.text,
               }}
             >
               Varun Agrawal
             </Link>
             <div className="hidden md:flex items-center gap-1 text-sm">
               <Link
-                href="/#work"
+                href="/works"
                 className="px-3 py-1 transition-colors duration-300"
-                style={{ color: scrolled ? "#666" : "#999" }}
+                style={{ color: scrolled ? C.bg : C.accent }}
               >
                 Work
               </Link>
-              <span style={{ color: scrolled ? "#ccc" : "#444" }}>|</span>
+              <span style={{ color: scrolled ? "#ccc" : C.textDim }}>|</span>
               <Link
                 href="/#approach"
                 className="px-3 py-1 transition-colors duration-300"
-                style={{ color: scrolled ? "#666" : "#999" }}
+                style={{ color: scrolled ? C.textDim : C.textMuted }}
               >
                 Approach
               </Link>
-              <span style={{ color: scrolled ? "#ccc" : "#444" }}>|</span>
+              <span style={{ color: scrolled ? "#ccc" : C.textDim }}>|</span>
               <Link
-                href="/#contact"
+                href="/contact"
                 className="px-3 py-1 transition-colors duration-300"
-                style={{ color: scrolled ? "#666" : "#999" }}
+                style={{ color: scrolled ? C.textDim : C.textMuted }}
               >
                 Contact
               </Link>
             </div>
           </div>
           <Link
-            href="/#contact"
+            href="/contact"
             className="hidden sm:flex items-center gap-2 px-5 py-2.5 border text-sm transition-all duration-500"
             style={{
-              borderColor: scrolled ? "#ccc" : "#444",
+              borderColor: scrolled ? C.accentMuted : C.borderLight,
               borderRadius: scrolled ? "8px" : "2px",
-              color: scrolled ? "#141414" : "#ffffff",
+              color: scrolled ? C.bg : C.accent,
             }}
           >
-            <span className="text-xs">&#x21a6;</span>
             Let&apos;s Work Together
           </Link>
         </nav>
       </div>
 
-      {/* ──────────── HEADER ──────────── */}
+      {/* ──────────── HEADER ───────────�� */}
       <section className="px-6 pt-12 lg:pt-20 pb-8">
         <div className="max-w-[1400px] mx-auto">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-[#888] hover:text-white transition-colors duration-300 mb-10"
+            className="inline-flex items-center gap-2 text-sm transition-colors duration-300 mb-10"
+            style={{ color: C.textMuted }}
           >
             <svg
               width="16"
@@ -154,28 +154,28 @@ export default function WorksPage() {
             Back to Home
           </Link>
           <h1
-            className="text-[clamp(1.8rem,4vw,3rem)] leading-[1.15] tracking-[-0.02em] text-white font-medium mb-3"
-            style={{ fontFamily: FONT }}
+            className="text-[clamp(1.8rem,4vw,3rem)] leading-[1.15] tracking-[-0.02em] mb-3"
+            style={{ fontFamily: FONT_SERIF, color: C.text }}
           >
             All Projects
           </h1>
-          <p className="text-[#888] text-base max-w-[600px]">
+          <p className="text-base max-w-[600px]" style={{ color: C.textMuted }}>
             A collection of projects spanning AI talent infrastructure,
             governance research, and technical recruiting systems.
           </p>
         </div>
       </section>
 
-      {/* ──────────── SEPARATOR ──────────── */}
-      <div className="w-full border-t" style={{ borderColor: "#222" }} />
+      {/* ────��─────── SEPARATOR ───���──────── */}
+      <div className="w-full border-t" style={{ borderColor: C.border }} />
 
       {/* ──────────── PROJECT TABLE ──────────── */}
       <section className="px-6 py-8">
         <div className="max-w-[1400px] mx-auto">
           {/* Table header */}
           <div
-            className="hidden md:grid grid-cols-[1fr_1fr_120px_100px] gap-6 px-4 py-3 text-xs text-[#555] uppercase tracking-[0.15em] border-b"
-            style={{ borderColor: "#2a2a2a" }}
+            className="hidden md:grid grid-cols-[1fr_1fr_120px_100px] gap-6 px-4 py-3 text-xs uppercase tracking-[0.15em] border-b"
+            style={{ borderColor: C.border, color: C.textDim }}
           >
             <span>Project</span>
             <span>Stack</span>
@@ -195,23 +195,29 @@ export default function WorksPage() {
               <div
                 className="grid grid-cols-1 md:grid-cols-[1fr_1fr_120px_100px] gap-3 md:gap-6 px-4 py-6 border-b transition-all duration-300"
                 style={{
-                  borderColor: "#2a2a2a",
+                  borderColor: C.border,
                   backgroundColor:
-                    hoveredIdx === i ? "rgba(255,255,255,0.03)" : "transparent",
+                    hoveredIdx === i ? `${C.accent}08` : "transparent",
                 }}
               >
                 {/* Project name + description */}
                 <div>
                   <h3
-                    className="text-white text-base font-medium mb-1 group-hover:text-[#4ade80] transition-colors duration-300"
-                    style={{ fontFamily: FONT }}
+                    className="text-base mb-1 transition-colors duration-300"
+                    style={{ fontFamily: FONT_SERIF, color: hoveredIdx === i ? C.accent : C.text }}
                   >
                     {project.name}
-                    <span className="inline-block ml-2 text-[#444] group-hover:text-[#4ade80] group-hover:translate-x-1 transition-all duration-300">
+                    <span
+                      className="inline-block ml-2 transition-all duration-300"
+                      style={{
+                        color: hoveredIdx === i ? C.accent : C.textDim,
+                        transform: hoveredIdx === i ? "translateX(4px)" : "none",
+                      }}
+                    >
                       &rarr;
                     </span>
                   </h3>
-                  <p className="text-[#666] text-sm leading-relaxed line-clamp-1">
+                  <p className="text-sm leading-relaxed line-clamp-1" style={{ color: C.textDim }}>
                     {project.cardDescription}
                   </p>
                 </div>
@@ -221,17 +227,18 @@ export default function WorksPage() {
                   {project.tags.slice(0, 3).map((tag) => (
                     <span
                       key={tag}
-                      className="px-2.5 py-1 text-xs text-[#888] border rounded transition-colors duration-300"
+                      className="px-2.5 py-1 text-xs border rounded transition-colors duration-300"
                       style={{
                         borderColor:
-                          hoveredIdx === i ? "#444" : "#2a2a2a",
+                          hoveredIdx === i ? C.borderLight : C.border,
+                        color: C.textMuted,
                       }}
                     >
                       {tag}
                     </span>
                   ))}
                   {project.tags.length > 3 && (
-                    <span className="px-2.5 py-1 text-xs text-[#555]">
+                    <span className="px-2.5 py-1 text-xs" style={{ color: C.textDim }}>
                       +{project.tags.length - 3}
                     </span>
                   )}
@@ -241,7 +248,7 @@ export default function WorksPage() {
                 <div className="flex items-center">
                   <span
                     className="text-lg font-semibold"
-                    style={{ color: project.cardAccent }}
+                    style={{ color: C.accent }}
                   >
                     {project.cardStat}
                   </span>
@@ -249,7 +256,7 @@ export default function WorksPage() {
 
                 {/* Year placeholder */}
                 <div className="flex items-center md:justify-end">
-                  <span className="text-[#555] text-sm">2024</span>
+                  <span className="text-sm" style={{ color: C.textDim }}>2024</span>
                 </div>
               </div>
             </Link>
@@ -257,35 +264,26 @@ export default function WorksPage() {
         </div>
       </section>
 
-      {/* ──────────── SEPARATOR ──────────── */}
-      <div className="w-full border-t" style={{ borderColor: "#222" }} />
+      {/* ──────────── SEPARATOR ��─────────── */}
+      <div className="w-full border-t" style={{ borderColor: C.border }} />
 
-      {/* ──────────── FOOTER ──────────── */}
+      {/* ──────────── FOOTER ──────────��─ */}
       <footer className="px-6" id="contact">
         <div
           className="py-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b"
-          style={{ borderColor: "#2a2a2a" }}
+          style={{ borderColor: C.border }}
         >
-          <p className="text-[#666] text-sm">
+          <p className="text-sm" style={{ color: C.textDim }}>
             &copy; 2026&ensp;Varun Agrawal. All Rights Reserved.
           </p>
-          <div className="flex gap-6 text-sm text-[#888]">
-            <a
-              href="mailto:hello@varunagrawal.com"
-              className="hover:text-white transition-colors duration-300"
-            >
+          <div className="flex gap-6 text-sm" style={{ color: C.textMuted }}>
+            <a href="mailto:hello@varunagrawal.com" className="transition-colors duration-300 hover:opacity-80">
               Email
             </a>
-            <a
-              href="https://www.linkedin.com/in/varun-agrawal-b3367a31/"
-              className="hover:text-white transition-colors duration-300"
-            >
+            <a href="https://www.linkedin.com/in/varun-agrawal-b3367a31/" className="transition-colors duration-300 hover:opacity-80">
               LinkedIn
             </a>
-            <a
-              href="https://varunagrawal.com"
-              className="hover:text-white transition-colors duration-300"
-            >
+            <a href="https://varunagrawal.com" className="transition-colors duration-300 hover:opacity-80">
               varunagrawal.com
             </a>
           </div>
@@ -297,30 +295,31 @@ export default function WorksPage() {
               <span className="flex items-center gap-1.5">
                 <span
                   className="inline-block w-2 h-2 rounded-full"
-                  style={{ backgroundColor: isOnline ? "#4ade80" : "#666" }}
+                  style={{ backgroundColor: isOnline ? C.accent : C.textDim }}
                 />
-                <span className="text-white">
+                <span style={{ color: C.text }}>
                   ({isOnline ? "Online" : "Offline"})
                 </span>
               </span>
-              <span className="text-[#999]">Now, {time}</span>
+              <span style={{ color: C.textMuted }}>Now, {time}</span>
             </div>
           </div>
-          <div className="text-sm text-[#888] lg:text-right space-y-1">
-            <p>Based in New Delhi,</p>
+          <div className="text-sm lg:text-right space-y-1" style={{ color: C.textMuted }}>
+            <p>Based in Bengaluru,</p>
             <p>India</p>
-            <p className="text-[#666] mt-2">28.61&deg; N, 77.21&deg; E</p>
+            <p className="mt-2" style={{ color: C.textDim }}>12.96&deg; N, 77.57&deg; E</p>
           </div>
         </div>
 
         <div className="py-4 text-center">
-          <p className="text-[#444] text-xs tracking-[0.1em]">
+          <p className="text-xs tracking-[0.1em]" style={{ color: C.borderLight }}>
             Design courtesy{" "}
             <a
               href="https://www.harrygeorge.design/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#666] hover:text-white transition-colors duration-300 underline underline-offset-2"
+              className="underline underline-offset-2 transition-colors duration-300 hover:opacity-80"
+              style={{ color: C.textDim }}
             >
               Harry George
             </a>
@@ -329,8 +328,8 @@ export default function WorksPage() {
 
         <div className="py-8 overflow-hidden">
           <p
-            className="text-[clamp(5rem,18vw,16rem)] leading-none font-bold tracking-[-0.02em] text-[#2a2a2a] whitespace-nowrap select-none"
-            style={{ fontFamily: FONT }}
+            className="text-[clamp(5rem,18vw,16rem)] leading-none tracking-[-0.02em] whitespace-nowrap select-none"
+            style={{ fontFamily: FONT_SERIF, fontStyle: "italic", color: C.border }}
           >
             Varun Agrawal
           </p>

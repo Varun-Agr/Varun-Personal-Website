@@ -1,8 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { projects } from "../../projects";
-
-const FONT = "var(--font-google-sans), sans-serif";
+import { FONT_SANS, FONT_SERIF, C } from "../../theme";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -19,27 +18,26 @@ export default async function WorkPage({
 
   return (
     <div
-      className="min-h-screen text-[#e5e5e5]"
-      style={{ backgroundColor: "#141414", fontFamily: FONT }}
+      className="min-h-screen"
+      style={{ backgroundColor: C.bg, color: C.text, fontFamily: FONT_SANS }}
     >
       {/* ──────── NAV ──────── */}
       <nav
         className="flex items-center justify-between px-6 py-4 border-b max-w-[1400px] mx-auto"
-        style={{ borderColor: "#2a2a2a" }}
+        style={{ borderColor: C.border }}
       >
         <Link
           href="/"
-          className="text-sm font-semibold tracking-[0.2em] text-white hover:opacity-70 transition-opacity"
-          style={{ fontFamily: FONT }}
+          className="text-sm tracking-[0.2em] hover:opacity-70 transition-opacity"
+          style={{ fontFamily: FONT_SERIF, fontStyle: "italic", color: C.text }}
         >
           Varun Agrawal
         </Link>
         <Link
-          href="/#contact"
-          className="hidden sm:flex items-center gap-2 px-5 py-2.5 border text-sm text-white hover:bg-white hover:text-[#141414] transition-all duration-300"
-          style={{ borderColor: "#444", borderRadius: "2px" }}
+          href="/contact"
+          className="hidden sm:flex items-center gap-2 px-5 py-2.5 border text-sm transition-all duration-300"
+          style={{ borderColor: C.borderLight, borderRadius: "2px", color: C.accent }}
         >
-          <span className="text-xs">&#x21a6;</span>
           Let&apos;s Work Together
         </Link>
       </nav>
@@ -49,8 +47,9 @@ export default async function WorkPage({
         <div className="max-w-[1400px] mx-auto">
           {/* Back link */}
           <Link
-            href="/#work"
-            className="inline-flex items-center gap-2 text-sm text-[#888] hover:text-white transition-colors duration-300 mb-12"
+            href="/works"
+            className="inline-flex items-center gap-2 text-sm transition-colors duration-300 mb-12"
+            style={{ color: C.textMuted }}
           >
             <svg
               width="16"
@@ -65,7 +64,7 @@ export default async function WorkPage({
             Back to Index
           </Link>
 
-          {/* Two-column hero: right-aligned content */}
+          {/* Two-column hero */}
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-16">
             {/* Left: visual */}
             <div
@@ -101,42 +100,42 @@ export default async function WorkPage({
             {/* Right: info */}
             <div className="flex flex-col justify-center">
               {/* Breadcrumb */}
-              <div className="flex items-center gap-2 text-sm text-[#888] mb-4">
+              <div className="flex items-center gap-2 text-sm mb-4" style={{ color: C.textMuted }}>
                 <span>Projects</span>
-                <span className="text-[#555]">/</span>
-                <span className="text-[#ccc]">{project.name}</span>
+                <span style={{ color: C.textDim }}>/</span>
+                <span style={{ color: C.text }}>{project.name}</span>
               </div>
 
               {/* Title */}
               <h1
-                className="text-[clamp(1.8rem,3.5vw,2.8rem)] leading-[1.15] tracking-[-0.02em] text-white font-medium mb-6"
-                style={{ fontFamily: FONT }}
+                className="text-[clamp(1.8rem,3.5vw,2.8rem)] leading-[1.15] tracking-[-0.02em] mb-6"
+                style={{ fontFamily: FONT_SERIF, color: C.text }}
               >
                 {project.cardTitle}
               </h1>
 
               {/* Description */}
-              <p className="text-[#aaa] text-base leading-relaxed mb-8">
+              <p className="text-base leading-relaxed mb-8" style={{ color: C.textMuted }}>
                 {project.cardDescription}
               </p>
 
               {/* Tech stack */}
-              <div className="text-sm text-[#666] mb-6">
-                <span className="text-[#888]">Technologies:</span>{" "}
+              <div className="text-sm mb-6" style={{ color: C.textDim }}>
+                <span style={{ color: C.textMuted }}>Technologies:</span>{" "}
                 {project.techStack}
               </div>
 
               {/* Tags */}
               <div className="mb-6">
-                <p className="text-sm text-[#888] font-medium mb-3">
+                <p className="text-sm mb-3" style={{ color: C.textMuted }}>
                   Project Tags
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1.5 text-xs text-[#ccc] border rounded"
-                      style={{ borderColor: "#333" }}
+                      className="px-3 py-1.5 text-xs border rounded"
+                      style={{ borderColor: C.borderLight, color: C.textMuted }}
                     >
                       {tag}
                     </span>
@@ -150,11 +149,10 @@ export default async function WorkPage({
                   href={project.demoLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 border text-sm text-white hover:bg-white hover:text-[#141414] transition-all duration-300 self-start"
-                  style={{ borderColor: "#444", borderRadius: "2px" }}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 border text-sm transition-all duration-300 self-start"
+                  style={{ borderColor: C.accent, borderRadius: "2px", color: C.accent }}
                 >
-                  <span className="text-xs">&#x21a6;</span>
-                  {project.demoLabel || "View Live"}
+                  {project.demoLabel || "View Live"} &rarr;
                 </a>
               )}
             </div>
@@ -163,10 +161,7 @@ export default async function WorkPage({
       </section>
 
       {/* ──────── SEPARATOR ──────── */}
-      <div
-        className="w-full border-t"
-        style={{ borderColor: "#222" }}
-      />
+      <div className="w-full border-t" style={{ borderColor: C.border }} />
 
       {/* ──────── BEFORE / AFTER ──────── */}
       <section className="px-6 py-20 lg:py-28">
@@ -183,17 +178,14 @@ export default async function WorkPage({
               Before
             </div>
             <h2
-              className="text-[clamp(1.4rem,2.5vw,2rem)] leading-[1.2] text-white font-medium mb-6"
-              style={{ fontFamily: FONT }}
+              className="text-[clamp(1.4rem,2.5vw,2rem)] leading-[1.2] mb-6"
+              style={{ fontFamily: FONT_SERIF, color: C.text }}
             >
               {project.before.headline}
             </h2>
             <div className="space-y-4">
               {project.before.body.map((para, i) => (
-                <p
-                  key={i}
-                  className="text-[#aaa] text-base leading-relaxed"
-                >
+                <p key={i} className="text-base leading-relaxed" style={{ color: C.textMuted }}>
                   {para}
                 </p>
               ))}
@@ -205,24 +197,21 @@ export default async function WorkPage({
             <div
               className="inline-block px-3 py-1 text-xs font-medium tracking-widest uppercase mb-6 rounded"
               style={{
-                backgroundColor: "rgba(74, 222, 128, 0.12)",
-                color: "#4ade80",
+                backgroundColor: `${C.accent}1a`,
+                color: C.accent,
               }}
             >
               After
             </div>
             <h2
-              className="text-[clamp(1.4rem,2.5vw,2rem)] leading-[1.2] text-white font-medium mb-6"
-              style={{ fontFamily: FONT }}
+              className="text-[clamp(1.4rem,2.5vw,2rem)] leading-[1.2] mb-6"
+              style={{ fontFamily: FONT_SERIF, color: C.text }}
             >
               {project.after.headline}
             </h2>
             <div className="space-y-4">
               {project.after.body.map((para, i) => (
-                <p
-                  key={i}
-                  className="text-[#aaa] text-base leading-relaxed"
-                >
+                <p key={i} className="text-base leading-relaxed" style={{ color: C.textMuted }}>
                   {para}
                 </p>
               ))}
@@ -232,10 +221,7 @@ export default async function WorkPage({
       </section>
 
       {/* ──────── SEPARATOR ──────── */}
-      <div
-        className="w-full border-t"
-        style={{ borderColor: "#222" }}
-      />
+      <div className="w-full border-t" style={{ borderColor: C.border }} />
 
       {/* ──────── NEXT PROJECT ──────── */}
       {(() => {
@@ -244,7 +230,7 @@ export default async function WorkPage({
         return (
           <section className="px-6 py-16 lg:py-24">
             <div className="max-w-[1400px] mx-auto">
-              <p className="text-sm text-[#666] uppercase tracking-widest mb-6">
+              <p className="text-sm uppercase tracking-widest mb-6" style={{ color: C.textDim }}>
                 Next Project
               </p>
               <Link
@@ -252,15 +238,18 @@ export default async function WorkPage({
                 className="group block"
               >
                 <h3
-                  className="text-[clamp(1.4rem,3vw,2.4rem)] text-white font-medium group-hover:text-[#4ade80] transition-colors duration-300"
-                  style={{ fontFamily: FONT }}
+                  className="text-[clamp(1.4rem,3vw,2.4rem)] transition-colors duration-300"
+                  style={{ fontFamily: FONT_SERIF, color: C.text }}
                 >
                   {next.name}
-                  <span className="inline-block ml-3 text-[#666] group-hover:translate-x-2 transition-transform duration-300">
+                  <span
+                    className="inline-block ml-3 group-hover:translate-x-2 transition-transform duration-300"
+                    style={{ color: C.textDim }}
+                  >
                     &rarr;
                   </span>
                 </h3>
-                <p className="text-[#888] text-base mt-2 max-w-[600px]">
+                <p className="text-base mt-2 max-w-[600px]" style={{ color: C.textMuted }}>
                   {next.cardDescription}
                 </p>
               </Link>
@@ -270,28 +259,19 @@ export default async function WorkPage({
       })()}
 
       {/* ──────── FOOTER ──────── */}
-      <footer className="px-6 border-t" style={{ borderColor: "#222" }}>
+      <footer className="px-6 border-t" style={{ borderColor: C.border }}>
         <div className="max-w-[1400px] mx-auto py-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-          <p className="text-[#666] text-sm">
+          <p className="text-sm" style={{ color: C.textDim }}>
             &copy; 2026&ensp;Varun Agrawal. All Rights Reserved.
           </p>
-          <div className="flex gap-6 text-sm text-[#888]">
-            <a
-              href="mailto:hello@varunagrawal.com"
-              className="hover:text-white transition-colors duration-300"
-            >
+          <div className="flex gap-6 text-sm" style={{ color: C.textMuted }}>
+            <a href="mailto:hello@varunagrawal.com" className="transition-colors duration-300 hover:opacity-80">
               Email
             </a>
-            <a
-              href="https://www.linkedin.com/in/varun-agrawal-b3367a31/"
-              className="hover:text-white transition-colors duration-300"
-            >
+            <a href="https://www.linkedin.com/in/varun-agrawal-b3367a31/" className="transition-colors duration-300 hover:opacity-80">
               LinkedIn
             </a>
-            <a
-              href="https://varunagrawal.com"
-              className="hover:text-white transition-colors duration-300"
-            >
+            <a href="https://varunagrawal.com" className="transition-colors duration-300 hover:opacity-80">
               varunagrawal.com
             </a>
           </div>

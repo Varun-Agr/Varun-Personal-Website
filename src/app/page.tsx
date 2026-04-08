@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { projects } from "./projects";
+import { FONT_SANS, FONT_SERIF, C } from "./theme";
 
 /* ─────────────────────────── helpers ─────────────────────────── */
 
@@ -227,7 +228,7 @@ function useStickyCarousel(totalCards: number) {
 
 /* ─────────────────────────── page ─────────────────────────────── */
 
-const FONT = "var(--font-google-sans), sans-serif";
+const FONT = FONT_SANS;
 
 export default function ClonePage() {
   const { time, isOnline } = useIST();
@@ -292,8 +293,8 @@ export default function ClonePage() {
 
   return (
     <div
-      className="min-h-screen text-[#e5e5e5] relative"
-      style={{ backgroundColor: "#141414", fontFamily: FONT }}
+      className="min-h-screen relative"
+      style={{ backgroundColor: C.bg, color: C.text, fontFamily: FONT_SANS }}
     >
       {/* Shooting star trail canvas */}
       <canvas
@@ -312,22 +313,23 @@ export default function ClonePage() {
           className="flex items-center justify-between px-6 py-4 max-w-[1400px] mx-auto transition-all duration-500"
           style={{
             backgroundColor: scrolled
-              ? "rgba(255, 255, 255, 0.97)"
-              : "rgba(20, 20, 20, 0.92)",
+              ? "rgba(240, 235, 229, 0.97)"
+              : `${C.bg}ee`,
             backdropFilter: "blur(12px)",
             borderRadius: scrolled ? "12px" : "0px",
             boxShadow: scrolled
               ? "0 4px 30px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)"
               : "none",
-            borderBottom: scrolled ? "none" : "1px solid #2a2a2a",
+            borderBottom: scrolled ? "none" : `1px solid ${C.border}`,
           }}
         >
           <div className="flex items-center gap-6">
             <span
-              className="text-sm font-semibold tracking-[0.2em] transition-colors duration-500"
+              className="text-sm tracking-[0.2em] transition-colors duration-500"
               style={{
-                fontFamily: FONT,
-                color: scrolled ? "#141414" : "#ffffff",
+                fontFamily: FONT_SERIF,
+                fontStyle: "italic",
+                color: scrolled ? C.bg : C.text,
               }}
             >
               Varun Agrawal
@@ -336,40 +338,40 @@ export default function ClonePage() {
               <a
                 href="/works"
                 className="px-3 py-1 transition-colors duration-300"
-                style={{ color: scrolled ? "#666" : "#999" }}
+                style={{ color: scrolled ? C.textDim : C.textMuted }}
                 onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = scrolled ? "#141414" : "#fff")
+                  (e.currentTarget.style.color = scrolled ? C.bg : C.accent)
                 }
                 onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = scrolled ? "#666" : "#999")
+                  (e.currentTarget.style.color = scrolled ? C.textDim : C.textMuted)
                 }
               >
                 Work
               </a>
-              <span style={{ color: scrolled ? "#ccc" : "#444" }}>|</span>
+              <span style={{ color: scrolled ? "#ccc" : C.textDim }}>|</span>
               <a
                 href="#approach"
                 className="px-3 py-1 transition-colors duration-300"
-                style={{ color: scrolled ? "#666" : "#999" }}
+                style={{ color: scrolled ? C.textDim : C.textMuted }}
                 onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = scrolled ? "#141414" : "#fff")
+                  (e.currentTarget.style.color = scrolled ? C.bg : C.accent)
                 }
                 onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = scrolled ? "#666" : "#999")
+                  (e.currentTarget.style.color = scrolled ? C.textDim : C.textMuted)
                 }
               >
                 Approach
               </a>
-              <span style={{ color: scrolled ? "#ccc" : "#444" }}>|</span>
+              <span style={{ color: scrolled ? "#ccc" : C.textDim }}>|</span>
               <a
                 href="/contact"
                 className="px-3 py-1 transition-colors duration-300"
-                style={{ color: scrolled ? "#666" : "#999" }}
+                style={{ color: scrolled ? C.textDim : C.textMuted }}
                 onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = scrolled ? "#141414" : "#fff")
+                  (e.currentTarget.style.color = scrolled ? C.bg : C.accent)
                 }
                 onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = scrolled ? "#666" : "#999")
+                  (e.currentTarget.style.color = scrolled ? C.textDim : C.textMuted)
                 }
               >
                 Contact
@@ -381,22 +383,21 @@ export default function ClonePage() {
               href="/contact"
               className="hidden md:flex items-center gap-2 px-5 py-2.5 border text-sm transition-all duration-500"
               style={{
-                borderColor: scrolled ? "#ccc" : "#444",
+                borderColor: scrolled ? C.accentMuted : C.borderLight,
                 borderRadius: scrolled ? "8px" : "2px",
-                color: scrolled ? "#141414" : "#ffffff",
+                color: scrolled ? C.bg : C.accent,
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = scrolled
-                  ? "#141414"
-                  : "#ffffff";
-                e.currentTarget.style.color = scrolled ? "#fff" : "#141414";
+                e.currentTarget.style.backgroundColor = C.accent;
+                e.currentTarget.style.color = C.bg;
+                e.currentTarget.style.borderColor = C.accent;
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = "transparent";
-                e.currentTarget.style.color = scrolled ? "#141414" : "#ffffff";
+                e.currentTarget.style.color = scrolled ? C.bg : C.accent;
+                e.currentTarget.style.borderColor = scrolled ? C.accentMuted : C.borderLight;
               }}
             >
-              <span className="text-xs">&#x21a6;</span>
               Let&apos;s Work Together
             </a>
             {/* Hamburger button — mobile only */}
@@ -408,21 +409,21 @@ export default function ClonePage() {
               <span
                 className="block w-5 h-[2px] transition-all duration-300 origin-center"
                 style={{
-                  backgroundColor: scrolled ? "#141414" : "#fff",
+                  backgroundColor: scrolled ? C.bg : C.text,
                   transform: menuOpen ? "rotate(45deg) translate(2.5px, 2.5px)" : "none",
                 }}
               />
               <span
                 className="block w-5 h-[2px] transition-all duration-300"
                 style={{
-                  backgroundColor: scrolled ? "#141414" : "#fff",
+                  backgroundColor: scrolled ? C.bg : C.text,
                   opacity: menuOpen ? 0 : 1,
                 }}
               />
               <span
                 className="block w-5 h-[2px] transition-all duration-300 origin-center"
                 style={{
-                  backgroundColor: scrolled ? "#141414" : "#fff",
+                  backgroundColor: scrolled ? C.bg : C.text,
                   transform: menuOpen ? "rotate(-45deg) translate(2.5px, -2.5px)" : "none",
                 }}
               />
@@ -435,16 +436,16 @@ export default function ClonePage() {
           style={{
             maxHeight: menuOpen ? "300px" : "0px",
             backgroundColor: scrolled
-              ? "rgba(255, 255, 255, 0.97)"
-              : "rgba(20, 20, 20, 0.97)",
-            borderBottom: menuOpen ? `1px solid ${scrolled ? "#e5e5e5" : "#2a2a2a"}` : "none",
+              ? "rgba(240, 235, 229, 0.97)"
+              : `${C.bg}f7`,
+            borderBottom: menuOpen ? `1px solid ${scrolled ? "#ddd" : C.border}` : "none",
           }}
         >
           <div className="flex flex-col px-6 py-4 gap-3">
             <a
               href="/works"
               className="text-sm py-2 transition-colors duration-300"
-              style={{ color: scrolled ? "#333" : "#ccc" }}
+              style={{ color: scrolled ? C.textDim : C.textMuted }}
               onClick={() => setMenuOpen(false)}
             >
               Work
@@ -452,7 +453,7 @@ export default function ClonePage() {
             <a
               href="#approach"
               className="text-sm py-2 transition-colors duration-300"
-              style={{ color: scrolled ? "#333" : "#ccc" }}
+              style={{ color: scrolled ? C.textDim : C.textMuted }}
               onClick={() => setMenuOpen(false)}
             >
               Approach
@@ -460,7 +461,7 @@ export default function ClonePage() {
             <a
               href="/contact"
               className="text-sm py-2 transition-colors duration-300"
-              style={{ color: scrolled ? "#333" : "#ccc" }}
+              style={{ color: scrolled ? C.textDim : C.textMuted }}
               onClick={() => setMenuOpen(false)}
             >
               Contact
@@ -469,13 +470,12 @@ export default function ClonePage() {
               href="/contact"
               className="inline-flex items-center justify-center gap-2 px-5 py-2.5 border text-sm mt-1 transition-all duration-300"
               style={{
-                borderColor: scrolled ? "#ccc" : "#444",
+                borderColor: scrolled ? C.accentMuted : C.borderLight,
                 borderRadius: "2px",
-                color: scrolled ? "#141414" : "#fff",
+                color: scrolled ? C.bg : C.accent,
               }}
               onClick={() => setMenuOpen(false)}
             >
-              <span className="text-xs">&#x21a6;</span>
               Let&apos;s Work Together
             </a>
           </div>
@@ -486,11 +486,11 @@ export default function ClonePage() {
       <section className="px-6 pt-12 lg:pt-16" id="work">
         <div className="max-w-[1400px] mx-auto">
           <h1
-            className="text-[clamp(1.8rem,4.5vw,3.2rem)] leading-[1.15] tracking-[-0.02em] text-white max-w-[720px] mb-0 font-medium"
-            style={{ fontFamily: FONT }}
+            className="text-[clamp(2rem,5vw,3.8rem)] leading-[1.1] tracking-[-0.01em] max-w-[780px] mb-0"
+            style={{ fontFamily: FONT_SERIF, color: C.text }}
           >
-            {/*Technical Recruiter <span className="text-[#555]">&</span> AI Governance Builder sourcing top 1% STEM talent for frontier AI labs*/}
-            I place ML and engineering talent at the frontier labs working on the hardest problems.
+            I place ML and engineering talent at the frontier labs working on the{" "}
+            <em style={{ color: C.accent }}>hardest problems.</em>
           </h1>
         </div>
       </section>
@@ -501,43 +501,45 @@ export default function ClonePage() {
         ref={carouselWrapperRef}
         style={{ height: `${(carouselProjects.length - 1) * 60 + 100}vh` }}
       >
-        <div className="sticky top-[72px] px-6 py-12 lg:py-16" style={{ backgroundColor: "#141414" }}>
+        <div className="sticky top-[72px] px-6 py-12 lg:py-16" style={{ backgroundColor: C.bg }}>
           <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-12 lg:gap-20 items-end">
             {/* Left: status + text + CTAs */}
             <div className="flex flex-col gap-6">
-              <div className="flex items-center gap-3 text-sm text-[#999]">
+              <div className="flex items-center gap-3 text-sm" style={{ color: C.textMuted }}>
                 <span className="flex items-center gap-1.5">
                   <span
                     className="inline-block w-2 h-2 rounded-full"
-                    style={{ backgroundColor: isOnline ? "#4ade80" : "#666" }}
+                    style={{ backgroundColor: isOnline ? C.accent : C.textDim }}
                   />
-                  <span className="text-white">({isOnline ? "Online" : "Offline"})</span>
+                  <span style={{ color: C.text }}>({isOnline ? "Online" : "Offline"})</span>
                 </span>
                 <span>Now, {time}</span>
               </div>
 
-              <p className="text-[#aaa] text-base leading-relaxed">
-                Co-CEO at <a href="https://steadrise.org" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">SteadRise</a>. Co-Founder of <a href="https://secureaifutureslab.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">Secure AI Futures Lab</a>. Building
+              <p className="text-base leading-relaxed" style={{ color: C.textMuted }}>
+                Co-CEO at <a href="https://steadrise.org" target="_blank" rel="noopener noreferrer" className="transition-colors duration-300" style={{ color: C.text }} onMouseEnter={e => e.currentTarget.style.color = C.accent} onMouseLeave={e => e.currentTarget.style.color = C.text}>SteadRise</a>. Co-Founder of <a href="https://secureaifutureslab.com/" target="_blank" rel="noopener noreferrer" className="transition-colors duration-300" style={{ color: C.text }} onMouseEnter={e => e.currentTarget.style.color = C.accent} onMouseLeave={e => e.currentTarget.style.color = C.text}>Secure AI Futures Lab</a>. Building
                 Measuremint. 7+ years identifying and placing exceptional researchers
                 and engineers at organizations working on the world&apos;s hardest
-                problems - from Anthropic and UK AISI to FAR.AI and Apollo Research.
+                problems.
               </p>
 
               <div className="flex flex-wrap gap-3 mt-2">
                 <a
                   href="/contact"
-                  className="flex items-center gap-2 px-5 py-2.5 border text-sm text-white hover:bg-white hover:text-[#141414] transition-all duration-300"
-                  style={{ borderColor: "#444", borderRadius: "2px" }}
+                  className="flex items-center gap-2 px-5 py-2.5 border text-sm transition-all duration-300"
+                  style={{ borderColor: C.accent, borderRadius: "2px", color: C.accent }}
+                  onMouseEnter={e => { e.currentTarget.style.backgroundColor = C.accent; e.currentTarget.style.color = C.bg; }}
+                  onMouseLeave={e => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = C.accent; }}
                 >
-                  <span className="text-xs">&#x21a6;</span>
                   Let&apos;s Work Together
                 </a>
                 <Link
                   href="/works"
-                  className="flex items-center gap-2 px-5 py-2.5 border text-sm text-white hover:bg-white hover:text-[#141414] transition-all duration-300"
-                  style={{ borderColor: "#444", borderRadius: "2px" }}
+                  className="flex items-center gap-2 px-5 py-2.5 border text-sm transition-all duration-300"
+                  style={{ borderColor: C.borderLight, borderRadius: "2px", color: C.text }}
+                  onMouseEnter={e => { e.currentTarget.style.backgroundColor = C.text; e.currentTarget.style.color = C.bg; }}
+                  onMouseLeave={e => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = C.text; }}
                 >
-                  <span className="text-xs">&#x21a6;</span>
                   View All Work
                 </Link>
               </div>
@@ -560,7 +562,7 @@ export default function ClonePage() {
                       <Link
                         href={`/work/${p.slug}`}
                         className="group block rounded-md overflow-hidden"
-                        style={{ backgroundColor: "#1e1e1e" }}
+                        style={{ backgroundColor: C.bgCard }}
                       >
                         <div
                           className="w-full aspect-[4/3] relative overflow-hidden"
@@ -601,17 +603,16 @@ export default function ClonePage() {
                         </div>
                         <div className="p-5 space-y-3">
                           <h3
-                            className="text-white text-lg leading-snug font-medium"
-                            style={{ fontFamily: FONT }}
+                            className="text-lg leading-snug"
+                            style={{ fontFamily: FONT_SERIF, color: C.text }}
                           >
                             {p.cardTitle}
                           </h3>
-                          <p className="text-[#888] text-sm leading-relaxed">
+                          <p className="text-sm leading-relaxed" style={{ color: C.textMuted }}>
                             {p.cardDescription}
                           </p>
-                          <span className="inline-flex items-center gap-2 text-sm text-white mt-2 group-hover:gap-3 transition-all duration-300">
-                            <span className="text-xs">&#x21a6;</span>
-                            View Project
+                          <span className="inline-flex items-center gap-2 text-sm mt-2 group-hover:gap-3 transition-all duration-300" style={{ color: C.accent }}>
+                            View Project &rarr;
                           </span>
                         </div>
                       </Link>
@@ -633,7 +634,7 @@ export default function ClonePage() {
                         height: 8,
                         borderRadius: 4,
                         backgroundColor:
-                          carouselIdx === i ? "#fff" : "#444",
+                          carouselIdx === i ? C.accent : C.borderLight,
                         transition: "all 0.3s",
                       }}
                       aria-label={`Go to slide ${i + 1}`}
@@ -645,8 +646,8 @@ export default function ClonePage() {
                     onClick={() =>
                       setCarouselIdx(Math.max(0, carouselIdx - 1))
                     }
-                    className="w-9 h-9 flex items-center justify-center border text-[#999] hover:text-white hover:border-[#666] transition-colors duration-300 relative overflow-hidden [&::before]:!hidden"
-                    style={{ borderColor: "#333", borderRadius: "2px" }}
+                    className="w-9 h-9 flex items-center justify-center border transition-colors duration-300 relative overflow-hidden [&::before]:!hidden"
+                    style={{ borderColor: C.borderLight, borderRadius: "2px", color: C.textMuted }}
                     disabled={carouselIdx === 0}
                     aria-label="Previous"
                   >
@@ -660,8 +661,8 @@ export default function ClonePage() {
                         Math.min(carouselProjects.length - visibleCount, carouselIdx + 1)
                       )
                     }
-                    className="w-9 h-9 flex items-center justify-center border text-[#999] hover:text-white hover:border-[#666] transition-colors duration-300 relative overflow-hidden [&::before]:!hidden"
-                    style={{ borderColor: "#333", borderRadius: "2px" }}
+                    className="w-9 h-9 flex items-center justify-center border transition-colors duration-300 relative overflow-hidden [&::before]:!hidden"
+                    style={{ borderColor: C.borderLight, borderRadius: "2px", color: C.textMuted }}
                     disabled={carouselIdx >= carouselProjects.length - visibleCount}
                     aria-label="Next"
                   >
@@ -677,7 +678,7 @@ export default function ClonePage() {
       </div>
 
       {/* ──────────── SEPARATOR ──────────── */}
-      <div className="w-full border-t" style={{ borderColor: "#222" }} />
+      <div className="w-full border-t" style={{ borderColor: C.border }} />
 
       {/* ──────────── DISPLAY TEXT ──────────── */}
       <section className="px-6 py-20 lg:py-32">
@@ -690,22 +691,22 @@ export default function ClonePage() {
           }}
         >
           <p
-            className="text-[clamp(1.8rem,4vw,3.2rem)] leading-[1.2] tracking-[-0.015em] text-[#ccc]"
-            style={{ fontFamily: FONT }}
+            className="text-[clamp(1.8rem,4vw,3.2rem)] leading-[1.2] tracking-[-0.015em]"
+            style={{ fontFamily: FONT_SERIF, color: C.textMuted }}
           >
             I&apos;ve built recruiting infrastructure for frontier AI labs,
             research fellowships, and governance initiatives across three continents.
             The focus stays the same:{" "}
-            <span className="text-[#4ade80]">finding exceptional people</span>,
+            <em style={{ color: C.accent, fontStyle: "italic" }}>finding exceptional people</em>,
             building the systems that surface them at scale, and making sure{" "}
-            <span className="text-[#4ade80]">the right talent reaches the right problems</span>{" "}
+            <em style={{ color: C.accent, fontStyle: "italic" }}>the right talent reaches the right problems</em>{" "}
             before anyone else finds them.
           </p>
         </div>
       </section>
 
       {/* ──────────── SEPARATOR ──────────── */}
-      <div className="w-full border-t" style={{ borderColor: "#222" }} />
+      <div className="w-full border-t" style={{ borderColor: C.border }} />
 
       {/* ──────────── APPROACH ──────────── */}
       <section className="px-6 py-20 lg:py-28" id="approach">
@@ -719,13 +720,13 @@ export default function ClonePage() {
               transform: approachLeft.visible ? "translateY(0)" : "translateY(40px)",
             }}
           >
-            <p className="text-[#aaa] text-base leading-relaxed">
+            <p className="text-base leading-relaxed" style={{ color: C.textMuted }}>
               I find researchers and engineers for organizations working on
               problems that matter — frontier AI safety, governance, and
               alignment. Start with the talent map, build the pipeline,
               calibrate the bar, close the offer.
             </p>
-            <p className="text-[#aaa] text-base leading-relaxed">
+            <p className="text-base leading-relaxed" style={{ color: C.textMuted }}>
               The work spans technical recruiting, data-driven sourcing,
               AI governance research, and building the tools that make all
               of it scale. From founding India&apos;s first Alignment Research
@@ -735,10 +736,11 @@ export default function ClonePage() {
             </p>
             <a
               href="#"
-              className="inline-flex items-center gap-2 px-5 py-2.5 border text-sm text-white hover:bg-white hover:text-[#141414] transition-all duration-300 mt-2"
-              style={{ borderColor: "#444", borderRadius: "2px" }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 border text-sm transition-all duration-300 mt-2"
+              style={{ borderColor: C.borderLight, borderRadius: "2px", color: C.text }}
+              onMouseEnter={e => { e.currentTarget.style.backgroundColor = C.text; e.currentTarget.style.color = C.bg; }}
+              onMouseLeave={e => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = C.text; }}
             >
-              <span className="text-xs">&#x21a6;</span>
               View Approach
             </a>
           </div>
@@ -748,7 +750,7 @@ export default function ClonePage() {
             ref={approachRight.ref}
             className="divide-y transition-all duration-700 delay-200"
             style={{
-              borderColor: "#2a2a2a",
+              borderColor: C.border,
               opacity: approachRight.visible ? 1 : 0,
               transform: approachRight.visible ? "translateY(0)" : "translateY(40px)",
             }}
@@ -757,7 +759,7 @@ export default function ClonePage() {
               <div
                 key={item.title}
                 className="border-b"
-                style={{ borderColor: "#2a2a2a" }}
+                style={{ borderColor: C.border }}
               >
                 {i === 0 && (
                   <div className="border-t" style={{ borderColor: "#2a2a2a" }} />
@@ -767,14 +769,15 @@ export default function ClonePage() {
                   className="w-full flex items-center justify-between py-5 text-left group relative overflow-hidden [&::before]:!hidden"
                 >
                   <span
-                    className="text-white text-base"
-                    style={{ fontFamily: FONT, letterSpacing: "0.02em" }}
+                    className="text-base"
+                    style={{ fontFamily: FONT_SERIF, letterSpacing: "0.02em", color: C.text }}
                   >
                     {item.title}
                   </span>
                   <span
-                    className="text-[#666] text-xl transition-transform duration-300"
+                    className="text-xl transition-transform duration-300"
                     style={{
+                      color: C.accent,
                       transform: openAccordion === i ? "rotate(45deg)" : "rotate(0deg)",
                     }}
                   >
@@ -788,7 +791,7 @@ export default function ClonePage() {
                     opacity: openAccordion === i ? 1 : 0,
                   }}
                 >
-                  <p className="text-[#888] text-sm leading-relaxed pb-5">
+                  <p className="text-sm leading-relaxed pb-5" style={{ color: C.textMuted }}>
                     {item.content}
                   </p>
                 </div>
@@ -799,17 +802,17 @@ export default function ClonePage() {
       </section>
 
       {/* ──────────── SEPARATOR ──────────── */}
-      <div className="w-full border-t" style={{ borderColor: "#222" }} />
+      <div className="w-full border-t" style={{ borderColor: C.border }} />
 
       {/* ──────────── UPCOMING TIMELINE ──────────── */}
       <section className="px-6 py-20 lg:py-28">
         <div className="max-w-[1400px] mx-auto">
-          <p className="text-sm text-[#666] uppercase tracking-widest mb-2">
+          <p className="text-sm uppercase tracking-widest mb-2" style={{ color: C.textDim }}>
             Upcoming
           </p>
           <h2
-            className="text-[clamp(1.4rem,2.5vw,2rem)] leading-[1.2] text-white font-medium mb-12"
-            style={{ fontFamily: FONT }}
+            className="text-[clamp(1.4rem,2.5vw,2rem)] leading-[1.2] mb-12"
+            style={{ fontFamily: FONT_SERIF, color: C.text }}
           >
             Want to chat? Find me at these places
           </h2>
@@ -818,7 +821,7 @@ export default function ClonePage() {
             {/* Vertical line */}
             <div
               className="absolute left-[7px] top-2 bottom-2 w-px hidden sm:block"
-              style={{ backgroundColor: "#333" }}
+              style={{ backgroundColor: C.borderLight }}
             />
 
             <div className="space-y-10">
@@ -851,8 +854,8 @@ export default function ClonePage() {
                     <div
                       className="w-[15px] h-[15px] rounded-full border-2"
                       style={{
-                        borderColor: i === 0 ? "#4ade80" : "#444",
-                        backgroundColor: i === 0 ? "#4ade8033" : "transparent",
+                        borderColor: i === 0 ? C.accent : C.borderLight,
+                        backgroundColor: i === 0 ? C.accentSoft : "transparent",
                       }}
                     />
                   </div>
@@ -860,22 +863,22 @@ export default function ClonePage() {
                   {/* Content */}
                   <div className="flex-1 grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-2 sm:gap-8">
                     <p
-                      className="text-sm text-[#888] pt-0.5"
-                      style={{ fontVariantNumeric: "tabular-nums" }}
+                      className="text-sm pt-0.5"
+                      style={{ color: C.textMuted, fontVariantNumeric: "tabular-nums" }}
                     >
                       {event.date}
                     </p>
                     <div>
                       <h3
-                        className="text-white text-lg font-medium"
-                        style={{ fontFamily: FONT }}
+                        className="text-lg"
+                        style={{ fontFamily: FONT_SERIF, color: C.text }}
                       >
                         {event.name}
                       </h3>
-                      <p className="text-[#888] text-sm mt-1">
+                      <p className="text-sm mt-1" style={{ color: C.textMuted }}>
                         {event.description}
                       </p>
-                      <p className="text-[#666] text-sm mt-1">
+                      <p className="text-sm mt-1" style={{ color: C.textDim }}>
                         {event.location}
                       </p>
                     </div>
@@ -888,7 +891,7 @@ export default function ClonePage() {
       </section>
 
       {/* ──────────── SEPARATOR ──────────── */}
-      <div className="w-full border-t" style={{ borderColor: "#222" }} />
+      <div className="w-full border-t" style={{ borderColor: C.border }} />
 
       {/* ──────────── CANDID PHOTO ──────────── */}
       <div className="w-full">
@@ -901,7 +904,7 @@ export default function ClonePage() {
       </div>
 
       {/* ──────────── SEPARATOR ──────────── */}
-      <div className="w-full border-t" style={{ borderColor: "#222" }} />
+      <div className="w-full border-t" style={{ borderColor: C.border }} />
 
       {/* ──────────── LOGO WALL ──────────── */}
       <section className="px-6 py-16 lg:py-24">
@@ -925,26 +928,26 @@ export default function ClonePage() {
       </section>
 
       {/* ──────────── SEPARATOR ──────────── */}
-      <div className="w-full border-t" style={{ borderColor: "#222" }} />
+      <div className="w-full border-t" style={{ borderColor: C.border }} />
 
       {/* ──────────── FOOTER ──────────── */}
       <footer className="px-6" id="contact">
         {/* Top bar */}
         <div
           className="py-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b"
-          style={{ borderColor: "#2a2a2a" }}
+          style={{ borderColor: C.border }}
         >
-          <p className="text-[#666] text-sm">
+          <p className="text-sm" style={{ color: C.textDim }}>
             &copy; 2026&ensp;Varun Agrawal. All Rights Reserved.
           </p>
-          <div className="flex gap-6 text-sm text-[#888]">
-            <a href="mailto:hello@varunagrawal.com" className="hover:text-white transition-colors duration-300">
+          <div className="flex gap-6 text-sm" style={{ color: C.textMuted }}>
+            <a href="mailto:hello@varunagrawal.com" className="transition-colors duration-300" onMouseEnter={e => e.currentTarget.style.color = C.accent} onMouseLeave={e => e.currentTarget.style.color = C.textMuted}>
               Email
             </a>
-            <a href="https://www.linkedin.com/in/varun-agrawal-b3367a31/" className="hover:text-white transition-colors duration-300">
+            <a href="https://www.linkedin.com/in/varun-agrawal-b3367a31/" className="transition-colors duration-300" onMouseEnter={e => e.currentTarget.style.color = C.accent} onMouseLeave={e => e.currentTarget.style.color = C.textMuted}>
               LinkedIn
             </a>
-            <a href="https://varunagrawal.com" className="hover:text-white transition-colors duration-300">
+            <a href="https://varunagrawal.com" className="transition-colors duration-300" onMouseEnter={e => e.currentTarget.style.color = C.accent} onMouseLeave={e => e.currentTarget.style.color = C.textMuted}>
               varunagrawal.com
             </a>
           </div>
@@ -958,36 +961,34 @@ export default function ClonePage() {
               <span className="flex items-center gap-1.5">
                 <span
                   className="inline-block w-2 h-2 rounded-full"
-                  style={{ backgroundColor: isOnline ? "#4ade80" : "#666" }}
+                  style={{ backgroundColor: isOnline ? C.accent : C.textDim }}
                 />
-                <span className="text-white">({isOnline ? "Online" : "Offline"})</span>
+                <span style={{ color: C.text }}>({isOnline ? "Online" : "Offline"})</span>
               </span>
-              <span className="text-[#999]">Now, {time}</span>
+              <span style={{ color: C.textMuted }}>Now, {time}</span>
             </div>
-            {/*<div className="text-[#666] text-sm space-y-0.5">
-              <p>Mon to Fri, 9AM - 5:30PM</p>
-              <p>Sat, 10AM - 2PM</p>
-              <p>Sundays &amp; Bank Holidays, Closed</p>
-            </div>*/}
           </div>
 
           {/* Right: location */}
-          <div className="text-sm text-[#888] lg:text-right space-y-1">
+          <div className="text-sm lg:text-right space-y-1" style={{ color: C.textMuted }}>
             <p>Based in Bengaluru,</p>
             <p>India</p>
-            <p className="text-[#666] mt-2">12.96&deg; N, 77.57&deg; E</p>
+            <p className="mt-2" style={{ color: C.textDim }}>12.96&deg; N, 77.57&deg; E</p>
           </div>
         </div>
 
         {/* Design credit */}
         <div className="py-4 text-center">
-          <p className="text-[#444] text-xs tracking-[0.1em]">
+          <p className="text-xs tracking-[0.1em]" style={{ color: C.borderLight }}>
             Design courtesy{" "}
             <a
               href="https://www.harrygeorge.design/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#666] hover:text-white transition-colors duration-300 underline underline-offset-2"
+              className="underline underline-offset-2 transition-colors duration-300"
+              style={{ color: C.textDim }}
+              onMouseEnter={e => e.currentTarget.style.color = C.accent}
+              onMouseLeave={e => e.currentTarget.style.color = C.textDim}
             >
               Harry George
             </a>
@@ -997,8 +998,8 @@ export default function ClonePage() {
         {/* Giant logo */}
         <div className="py-8 overflow-hidden">
           <p
-            className="text-[clamp(5rem,18vw,16rem)] leading-none font-bold tracking-[-0.02em] text-[#2a2a2a] whitespace-nowrap select-none"
-            style={{ fontFamily: FONT }}
+            className="text-[clamp(5rem,18vw,16rem)] leading-none tracking-[-0.02em] whitespace-nowrap select-none"
+            style={{ fontFamily: FONT_SERIF, fontStyle: "italic", color: C.border }}
           >
             Varun Agrawal
           </p>

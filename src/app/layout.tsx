@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, EB_Garamond, Oswald, Plus_Jakarta_Sans } from "next/font/google";
+import { Playfair_Display, EB_Garamond, Oswald, Plus_Jakarta_Sans, Instrument_Serif, Inter } from "next/font/google";
 import "./globals.css";
 import "./broadsheet.css";
 
@@ -31,6 +31,21 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  variable: "--font-serif-display",
+  weight: ["400"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Varun Agrawal - Technical Recruiter",
   description:
@@ -54,7 +69,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${playfair.variable} ${garamond.variable} ${oswald.variable} ${jakarta.variable}`}
+        className={`${playfair.variable} ${garamond.variable} ${oswald.variable} ${jakarta.variable} ${instrumentSerif.variable} ${inter.variable}`}
       >
         {children}
       </body>

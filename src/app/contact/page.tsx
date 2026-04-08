@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { FONT_SANS, FONT_SERIF, C } from "../theme";
 
-const FONT = "var(--font-google-sans), sans-serif";
 const GOOGLE_SHEET_URL =
   "https://script.google.com/macros/s/AKfycbxtPLoyZk7MNlyoahjnaPLP_4SmpXpVaQin1zgaLm2OSXQqcz-PJLv17Ps9Q8LK18iL/exec";
 
@@ -108,12 +108,12 @@ export default function ContactPage() {
   };
 
   const inputClasses =
-    "w-full bg-transparent border-b text-white text-base py-3 outline-none transition-colors duration-300 placeholder:text-[#555] focus:border-white";
+    `w-full bg-transparent border-b text-base py-3 outline-none transition-colors duration-300 placeholder:opacity-40 focus:border-[${C.accent}]`;
 
   return (
     <div
-      className="min-h-screen text-[#e5e5e5] relative flex flex-col"
-      style={{ backgroundColor: "#141414", fontFamily: FONT }}
+      className="min-h-screen relative flex flex-col"
+      style={{ backgroundColor: C.bg, color: C.text, fontFamily: FONT_SANS }}
     >
       {/* ──────────── NAV ──────────── */}
       <div
@@ -124,48 +124,49 @@ export default function ContactPage() {
           className="flex items-center justify-between px-6 py-4 max-w-[1400px] mx-auto transition-all duration-500"
           style={{
             backgroundColor: scrolled
-              ? "rgba(255, 255, 255, 0.97)"
-              : "rgba(20, 20, 20, 0.92)",
+              ? "rgba(240, 235, 229, 0.97)"
+              : `${C.bg}ee`,
             backdropFilter: "blur(12px)",
             borderRadius: scrolled ? "12px" : "0px",
             boxShadow: scrolled
               ? "0 4px 30px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)"
               : "none",
-            borderBottom: scrolled ? "none" : "1px solid #2a2a2a",
+            borderBottom: scrolled ? "none" : `1px solid ${C.border}`,
           }}
         >
           <div className="flex items-center gap-6">
             <Link
               href="/"
-              className="text-sm font-semibold tracking-[0.2em] transition-colors duration-500"
+              className="text-sm tracking-[0.2em] transition-colors duration-500"
               style={{
-                fontFamily: FONT,
-                color: scrolled ? "#141414" : "#ffffff",
+                fontFamily: FONT_SERIF,
+                fontStyle: "italic",
+                color: scrolled ? C.bg : C.text,
               }}
             >
               Varun Agrawal
             </Link>
             <div className="hidden md:flex items-center gap-1 text-sm">
               <Link
-                href="/#work"
+                href="/works"
                 className="px-3 py-1 transition-colors duration-300"
-                style={{ color: scrolled ? "#666" : "#999" }}
+                style={{ color: scrolled ? C.textDim : C.textMuted }}
               >
                 Work
               </Link>
-              <span style={{ color: scrolled ? "#ccc" : "#444" }}>|</span>
+              <span style={{ color: scrolled ? "#ccc" : C.textDim }}>|</span>
               <Link
                 href="/#approach"
                 className="px-3 py-1 transition-colors duration-300"
-                style={{ color: scrolled ? "#666" : "#999" }}
+                style={{ color: scrolled ? C.textDim : C.textMuted }}
               >
                 Approach
               </Link>
-              <span style={{ color: scrolled ? "#ccc" : "#444" }}>|</span>
+              <span style={{ color: scrolled ? "#ccc" : C.textDim }}>|</span>
               <Link
                 href="/contact"
                 className="px-3 py-1 transition-colors duration-300"
-                style={{ color: scrolled ? "#141414" : "#fff" }}
+                style={{ color: scrolled ? C.bg : C.accent }}
               >
                 Contact
               </Link>
@@ -175,12 +176,11 @@ export default function ContactPage() {
             href="/works"
             className="hidden sm:flex items-center gap-2 px-5 py-2.5 border text-sm transition-all duration-500"
             style={{
-              borderColor: scrolled ? "#ccc" : "#444",
+              borderColor: scrolled ? C.accentMuted : C.borderLight,
               borderRadius: scrolled ? "8px" : "2px",
-              color: scrolled ? "#141414" : "#ffffff",
+              color: scrolled ? C.bg : C.accent,
             }}
           >
-            <span className="text-xs">&#x21a6;</span>
             View All Work
           </Link>
         </nav>
@@ -191,7 +191,8 @@ export default function ContactPage() {
         <div className="max-w-[1400px] mx-auto">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-[#888] hover:text-white transition-colors duration-300 mb-10"
+            className="inline-flex items-center gap-2 text-sm transition-colors duration-300 mb-10"
+            style={{ color: C.textMuted }}
           >
             <svg
               width="16"
@@ -210,54 +211,56 @@ export default function ContactPage() {
             {/* Left: heading + info */}
             <div>
               <h1
-                className="text-[clamp(1.8rem,4vw,3rem)] leading-[1.15] tracking-[-0.02em] text-white font-medium mb-6"
-                style={{ fontFamily: FONT }}
+                className="text-[clamp(1.8rem,4vw,3rem)] leading-[1.15] tracking-[-0.02em] mb-6"
+                style={{ fontFamily: FONT_SERIF, color: C.text }}
               >
                 Get in touch
               </h1>
-              <p className="text-[#aaa] text-base leading-relaxed mb-10 max-w-[480px]">
+              <p className="text-base leading-relaxed mb-10 max-w-[480px]" style={{ color: C.textMuted }}>
                 Have a role to fill, a research collaboration in mind, or just
                 want to connect? Drop me a message and I&apos;ll get back to you.
               </p>
 
               <div className="space-y-6 text-sm">
                 <div>
-                  <p className="text-[#555] uppercase tracking-[0.15em] text-xs mb-2">Email</p>
+                  <p className="uppercase tracking-[0.15em] text-xs mb-2" style={{ color: C.textDim }}>Email</p>
                   <a
                     href="mailto:hello@varunagrawal.com"
-                    className="text-white hover:text-[#4ade80] transition-colors duration-300"
+                    className="transition-colors duration-300"
+                    style={{ color: C.text }}
                   >
                     hello@varunagrawal.com
                   </a>
                 </div>
                 <div>
-                  <p className="text-[#555] uppercase tracking-[0.15em] text-xs mb-2">LinkedIn</p>
+                  <p className="uppercase tracking-[0.15em] text-xs mb-2" style={{ color: C.textDim }}>LinkedIn</p>
                   <a
                     href="https://www.linkedin.com/in/varun-agrawal-b3367a31/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white hover:text-[#4ade80] transition-colors duration-300"
+                    className="transition-colors duration-300"
+                    style={{ color: C.text }}
                   >
                     linkedin.com/in/varun-agrawal
                   </a>
                 </div>
                 <div>
-                  <p className="text-[#555] uppercase tracking-[0.15em] text-xs mb-2">Location</p>
-                  <p className="text-[#aaa]">New Delhi, India</p>
-                  <p className="text-[#555] mt-1">28.61&deg; N, 77.21&deg; E</p>
+                  <p className="uppercase tracking-[0.15em] text-xs mb-2" style={{ color: C.textDim }}>Location</p>
+                  <p style={{ color: C.textMuted }}>Bengaluru, India</p>
+                  <p className="mt-1" style={{ color: C.textDim }}>12.96&deg; N, 77.57&deg; E</p>
                 </div>
                 <div>
-                  <p className="text-[#555] uppercase tracking-[0.15em] text-xs mb-2">Status</p>
+                  <p className="uppercase tracking-[0.15em] text-xs mb-2" style={{ color: C.textDim }}>Status</p>
                   <div className="flex items-center gap-2">
                     <span
                       className="inline-block w-2 h-2 rounded-full"
-                      style={{ backgroundColor: isOnline ? "#4ade80" : "#666" }}
+                      style={{ backgroundColor: isOnline ? C.accent : C.textDim }}
                     />
-                    <span className="text-white">
+                    <span style={{ color: C.text }}>
                       {isOnline ? "Online" : "Offline"}
                     </span>
-                    <span className="text-[#666]">&middot;</span>
-                    <span className="text-[#999]">{time}</span>
+                    <span style={{ color: C.textDim }}>&middot;</span>
+                    <span style={{ color: C.textMuted }}>{time}</span>
                   </div>
                 </div>
               </div>
@@ -270,7 +273,8 @@ export default function ContactPage() {
                   <div>
                     <label
                       htmlFor="full_name"
-                      className="block text-xs text-[#555] uppercase tracking-[0.15em] mb-2"
+                      className="block text-xs uppercase tracking-[0.15em] mb-2"
+                      style={{ color: C.textDim }}
                     >
                       Name *
                     </label>
@@ -282,14 +286,15 @@ export default function ContactPage() {
                       value={formData.full_name}
                       onChange={handleChange}
                       className={inputClasses}
-                      style={{ borderColor: "#333" }}
+                      style={{ borderColor: C.borderLight, color: C.text }}
                       placeholder="Your name"
                     />
                   </div>
                   <div>
                     <label
                       htmlFor="phone"
-                      className="block text-xs text-[#555] uppercase tracking-[0.15em] mb-2"
+                      className="block text-xs uppercase tracking-[0.15em] mb-2"
+                      style={{ color: C.textDim }}
                     >
                       Phone *
                     </label>
@@ -301,7 +306,7 @@ export default function ContactPage() {
                       value={formData.phone}
                       onChange={handleChange}
                       className={inputClasses}
-                      style={{ borderColor: "#333" }}
+                      style={{ borderColor: C.borderLight, color: C.text }}
                       placeholder="+91 ..."
                     />
                   </div>
@@ -310,7 +315,8 @@ export default function ContactPage() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-xs text-[#555] uppercase tracking-[0.15em] mb-2"
+                    className="block text-xs uppercase tracking-[0.15em] mb-2"
+                    style={{ color: C.textDim }}
                   >
                     Email *
                   </label>
@@ -322,7 +328,7 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={handleChange}
                     className={inputClasses}
-                    style={{ borderColor: "#333" }}
+                    style={{ borderColor: C.borderLight, color: C.text }}
                     placeholder="you@example.com"
                   />
                 </div>
@@ -330,7 +336,8 @@ export default function ContactPage() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-xs text-[#555] uppercase tracking-[0.15em] mb-2"
+                    className="block text-xs uppercase tracking-[0.15em] mb-2"
+                    style={{ color: C.textDim }}
                   >
                     Message *
                   </label>
@@ -342,7 +349,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     rows={5}
                     className={`${inputClasses} resize-none`}
-                    style={{ borderColor: "#333" }}
+                    style={{ borderColor: C.borderLight, color: C.text }}
                     placeholder="Tell me about your project, role, or idea..."
                   />
                 </div>
@@ -351,13 +358,13 @@ export default function ContactPage() {
                 {status === "success" && (
                   <div
                     className="flex items-center gap-3 px-4 py-3 rounded text-sm"
-                    style={{ backgroundColor: "rgba(74, 222, 128, 0.1)", border: "1px solid rgba(74, 222, 128, 0.2)" }}
+                    style={{ backgroundColor: `${C.accent}1a`, border: `1px solid ${C.accent}33` }}
                   >
                     <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
-                      <circle cx="12" cy="12" r="10" stroke="#4ade80" strokeWidth="2" />
-                      <path d="M8 12l2.5 2.5L16 9" stroke="#4ade80" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <circle cx="12" cy="12" r="10" stroke={C.accent} strokeWidth="2" />
+                      <path d="M8 12l2.5 2.5L16 9" stroke={C.accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                    <span className="text-[#4ade80]">
+                    <span style={{ color: C.accent }}>
                       Message sent successfully. I&apos;ll get back to you soon.
                     </span>
                   </div>
@@ -380,17 +387,17 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="flex items-center gap-2 px-8 py-3 border text-sm text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                  style={{ borderColor: "#444", borderRadius: "2px" }}
+                  className="flex items-center gap-2 px-8 py-3 border text-sm transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  style={{ borderColor: C.accent, borderRadius: "2px", color: C.accent }}
                   onMouseEnter={(e) => {
                     if (status !== "sending") {
-                      e.currentTarget.style.backgroundColor = "#fff";
-                      e.currentTarget.style.color = "#141414";
+                      e.currentTarget.style.backgroundColor = C.accent;
+                      e.currentTarget.style.color = C.bg;
                     }
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.backgroundColor = "transparent";
-                    e.currentTarget.style.color = "#fff";
+                    e.currentTarget.style.color = C.accent;
                   }}
                 >
                   {status === "sending" && (
@@ -415,7 +422,6 @@ export default function ContactPage() {
                       />
                     </svg>
                   )}
-                  <span className="text-xs">&#x21a6;</span>
                   {status === "sending" ? "Sending..." : "Send Message"}
                 </button>
               </form>
@@ -425,34 +431,25 @@ export default function ContactPage() {
       </div>
 
       {/* ──────────── SEPARATOR ──────────── */}
-      <div className="w-full border-t" style={{ borderColor: "#222" }} />
+      <div className="w-full border-t" style={{ borderColor: C.border }} />
 
       {/* ──────────── FOOTER ──────────── */}
       <footer className="px-6">
         <div
           className="py-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b"
-          style={{ borderColor: "#2a2a2a" }}
+          style={{ borderColor: C.border }}
         >
-          <p className="text-[#666] text-sm">
+          <p className="text-sm" style={{ color: C.textDim }}>
             &copy; 2026&ensp;Varun Agrawal. All Rights Reserved.
           </p>
-          <div className="flex gap-6 text-sm text-[#888]">
-            <a
-              href="mailto:hello@varunagrawal.com"
-              className="hover:text-white transition-colors duration-300"
-            >
+          <div className="flex gap-6 text-sm" style={{ color: C.textMuted }}>
+            <a href="mailto:hello@varunagrawal.com" className="transition-colors duration-300 hover:opacity-80">
               Email
             </a>
-            <a
-              href="https://www.linkedin.com/in/varun-agrawal-b3367a31/"
-              className="hover:text-white transition-colors duration-300"
-            >
+            <a href="https://www.linkedin.com/in/varun-agrawal-b3367a31/" className="transition-colors duration-300 hover:opacity-80">
               LinkedIn
             </a>
-            <a
-              href="https://varunagrawal.com"
-              className="hover:text-white transition-colors duration-300"
-            >
+            <a href="https://varunagrawal.com" className="transition-colors duration-300 hover:opacity-80">
               varunagrawal.com
             </a>
           </div>
@@ -464,30 +461,31 @@ export default function ContactPage() {
               <span className="flex items-center gap-1.5">
                 <span
                   className="inline-block w-2 h-2 rounded-full"
-                  style={{ backgroundColor: isOnline ? "#4ade80" : "#666" }}
+                  style={{ backgroundColor: isOnline ? C.accent : C.textDim }}
                 />
-                <span className="text-white">
+                <span style={{ color: C.text }}>
                   ({isOnline ? "Online" : "Offline"})
                 </span>
               </span>
-              <span className="text-[#999]">Now, {time}</span>
+              <span style={{ color: C.textMuted }}>Now, {time}</span>
             </div>
           </div>
-          <div className="text-sm text-[#888] lg:text-right space-y-1">
-            <p>Based in New Delhi,</p>
+          <div className="text-sm lg:text-right space-y-1" style={{ color: C.textMuted }}>
+            <p>Based in Bengaluru,</p>
             <p>India</p>
-            <p className="text-[#666] mt-2">28.61&deg; N, 77.21&deg; E</p>
+            <p className="mt-2" style={{ color: C.textDim }}>12.96&deg; N, 77.57&deg; E</p>
           </div>
         </div>
 
         <div className="py-4 text-center">
-          <p className="text-[#444] text-xs tracking-[0.1em]">
+          <p className="text-xs tracking-[0.1em]" style={{ color: C.borderLight }}>
             Design courtesy{" "}
             <a
               href="https://www.harrygeorge.design/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#666] hover:text-white transition-colors duration-300 underline underline-offset-2"
+              className="underline underline-offset-2 transition-colors duration-300 hover:opacity-80"
+              style={{ color: C.textDim }}
             >
               Harry George
             </a>
@@ -496,8 +494,8 @@ export default function ContactPage() {
 
         <div className="py-8 overflow-hidden">
           <p
-            className="text-[clamp(5rem,18vw,16rem)] leading-none font-bold tracking-[-0.02em] text-[#2a2a2a] whitespace-nowrap select-none"
-            style={{ fontFamily: FONT }}
+            className="text-[clamp(5rem,18vw,16rem)] leading-none tracking-[-0.02em] whitespace-nowrap select-none"
+            style={{ fontFamily: FONT_SERIF, fontStyle: "italic", color: C.border }}
           >
             Varun Agrawal
           </p>
