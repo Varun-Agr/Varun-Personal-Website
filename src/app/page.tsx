@@ -3,6 +3,18 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { projects } from "./projects";
+import Navbar from "./components/Navbar";
+
+const CAROUSEL_SLUGS = [
+  "ml-research-talent-map",
+  "ai-candidate-screening-pipeline",
+  "big-tech-layoff-monitor",
+  "alignment-research-fellowship",
+  "measuremint",
+  "talent-index-jd-fingerprinting",
+  "recruiting-data-infrastructure",
+  "india-ai-report",
+];
 
 /* ─────────────────────────── helpers ─────────────────────────── */
 
@@ -38,19 +50,6 @@ function useIST() {
   }, []);
 
   return { time, isOnline };
-}
-
-function useScrolled(threshold = 80) {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > threshold);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [threshold]);
-
-  return scrolled;
 }
 
 /* ─── shooting star trail ─── */
@@ -232,10 +231,9 @@ const FONT = "var(--font-google-sans), sans-serif";
 export default function ClonePage() {
   const { time, isOnline } = useIST();
   const [openAccordion, setOpenAccordion] = useState<number | null>(null);
-  const carouselProjects = projects.slice(0, 3);
-  const { wrapperRef: carouselWrapperRef, activeIdx: carouselIdx, setActiveIdx: setCarouselIdx, visibleCount } = useStickyCarousel(carouselProjects.length);
-  const scrolled = useScrolled(80);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const carouselProjects = CAROUSEL_SLUGS.map((s) => projects.find((p) => p.slug === s)!);
+  const totalSlides = carouselProjects.length + 1; // +1 for "View more"
+  const { wrapperRef: carouselWrapperRef, activeIdx: carouselIdx, setActiveIdx: setCarouselIdx, visibleCount } = useStickyCarousel(totalSlides);
   const canvasRef = useTronTrail();
   const displayText = useScrollReveal();
   const approachLeft = useScrollReveal();
@@ -253,14 +251,14 @@ export default function ClonePage() {
         "Scaled a recruiting funnel from scratch to 4,200 warm ML, SWE, and Quant candidates across 5 continents. Partnered with hiring managers at 13+ organizations to scope roles, calibrate bars, and close 26 offers across FAR.AI, UK AISI, Anthropic, and GovAI — securing 12 accepted placements.",
     },
     {
-      title: "AI Governance & Research",
+      title: "Trustworthy AI Science",
       content:
         "Co-founded Secure AI Futures Lab with $250K+ via Schmidt Sciences. Convening government, academia, and industry across India and APAC. Partnering with top IITs and IISc on AI for Science, Social Good, and Trustworthy AI. Hosted workshops featuring Prof. Stuart Russell.",
     },
     {
       title: "Building Tools",
       content:
-        "Developed an AI evaluation pipeline (Claude API + Airtable) scoring candidates across 20+ binary signals with tri-verdict logic. Building Measuremint — a voice-first career agent using ElevenLabs + Claude for AI interviews, cutting per-candidate cost from $5 to $0.15 at scale.",
+        "Managed the development of an AI evaluation pipeline (Claude API + Airtable) scoring candidates across 20+ binary signals with tri-verdict logic. Leading product for Measuremint — a voice-first career agent using ElevenLabs + Claude for AI interviews, cutting per-candidate cost from $5 to $0.15 at scale.",
     },
   ];
 
@@ -269,12 +267,12 @@ export default function ClonePage() {
     { name: "UK AISI", icon: "/images/logos/aisi.png" },
     { name: "FAR.AI", icon: "/images/logos/farai.svg" },
     { name: "Apollo Research", icon: "/images/logos/apollo.png" },
-    { name: "GovAI", icon: "/images/logos/govai.png" },
+    // { name: "GovAI", icon: "/images/logos/govai.png" },
     // { name: "Goodfire", icon: "/images/logos/goodfire.webp" },
     { name: "80,000 Hours", icon: "/images/logos/80k.png" },
     { name: "J-PAL", icon: "/images/logos/jpal.png" },
     { name: "Schmidt Sciences", icon: "/images/logos/ss.png" },
-    { name: "NUS", icon: "/images/logos/nus.png" },
+    // { name: "NUS", icon: "/images/logos/nus.png" },
   ];
 
   const [logoSet, setLogoSet] = useState(0);
@@ -297,186 +295,7 @@ export default function ClonePage() {
         className="fixed inset-0 z-[9999] pointer-events-none"
       />
 
-      {/* ──────────── NAV WRAPPER ──────────── */}
-      <div
-        className="sticky top-0 z-50 w-full px-6 transition-all duration-500"
-        style={{
-          paddingTop: scrolled ? "10px" : "0px",
-        }}
-      >
-        <nav
-          className="flex items-center justify-between px-6 py-4 max-w-[1400px] mx-auto transition-all duration-500"
-          style={{
-            backgroundColor: scrolled
-              ? "rgba(255, 255, 255, 0.97)"
-              : "rgba(20, 20, 20, 0.92)",
-            backdropFilter: "blur(12px)",
-            borderRadius: scrolled ? "12px" : "0px",
-            boxShadow: scrolled
-              ? "0 4px 30px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)"
-              : "none",
-            borderBottom: scrolled ? "none" : "1px solid #2a2a2a",
-          }}
-        >
-          <div className="flex items-center gap-6">
-            <span
-              className="text-sm font-semibold tracking-[0.2em] transition-colors duration-500"
-              style={{
-                fontFamily: FONT,
-                color: scrolled ? "#141414" : "#ffffff",
-              }}
-            >
-              Varun Agrawal
-            </span>
-            <div className="hidden md:flex items-center gap-1 text-sm">
-              <a
-                href="/works"
-                className="px-3 py-1 transition-colors duration-300"
-                style={{ color: scrolled ? "#666" : "#999" }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = scrolled ? "#141414" : "#fff")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = scrolled ? "#666" : "#999")
-                }
-              >
-                Work
-              </a>
-              <span style={{ color: scrolled ? "#ccc" : "#444" }}>|</span>
-              <a
-                href="#approach"
-                className="px-3 py-1 transition-colors duration-300"
-                style={{ color: scrolled ? "#666" : "#999" }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = scrolled ? "#141414" : "#fff")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = scrolled ? "#666" : "#999")
-                }
-              >
-                Approach
-              </a>
-              <span style={{ color: scrolled ? "#ccc" : "#444" }}>|</span>
-              <a
-                href="/contact"
-                className="px-3 py-1 transition-colors duration-300"
-                style={{ color: scrolled ? "#666" : "#999" }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = scrolled ? "#141414" : "#fff")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = scrolled ? "#666" : "#999")
-                }
-              >
-                Contact
-              </a>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <a
-              href="/contact"
-              className="hidden md:flex items-center gap-2 px-5 py-2.5 border text-sm transition-all duration-500"
-              style={{
-                borderColor: scrolled ? "#ccc" : "#444",
-                borderRadius: scrolled ? "8px" : "2px",
-                color: scrolled ? "#141414" : "#ffffff",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = scrolled
-                  ? "#141414"
-                  : "#ffffff";
-                e.currentTarget.style.color = scrolled ? "#fff" : "#141414";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "transparent";
-                e.currentTarget.style.color = scrolled ? "#141414" : "#ffffff";
-              }}
-            >
-              <span className="text-xs">&#x21a6;</span>
-              Let&apos;s Work Together
-            </a>
-            {/* Hamburger button — mobile only */}
-            <button
-              className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px]"
-              onClick={() => setMenuOpen((v) => !v)}
-              aria-label="Toggle menu"
-            >
-              <span
-                className="block w-5 h-[2px] transition-all duration-300 origin-center"
-                style={{
-                  backgroundColor: scrolled ? "#141414" : "#fff",
-                  transform: menuOpen ? "rotate(45deg) translate(2.5px, 2.5px)" : "none",
-                }}
-              />
-              <span
-                className="block w-5 h-[2px] transition-all duration-300"
-                style={{
-                  backgroundColor: scrolled ? "#141414" : "#fff",
-                  opacity: menuOpen ? 0 : 1,
-                }}
-              />
-              <span
-                className="block w-5 h-[2px] transition-all duration-300 origin-center"
-                style={{
-                  backgroundColor: scrolled ? "#141414" : "#fff",
-                  transform: menuOpen ? "rotate(-45deg) translate(2.5px, -2.5px)" : "none",
-                }}
-              />
-            </button>
-          </div>
-        </nav>
-        {/* Mobile menu dropdown */}
-        <div
-          className="md:hidden overflow-hidden transition-all duration-300 max-w-[1400px] mx-auto"
-          style={{
-            maxHeight: menuOpen ? "300px" : "0px",
-            backgroundColor: scrolled
-              ? "rgba(255, 255, 255, 0.97)"
-              : "rgba(20, 20, 20, 0.97)",
-            borderBottom: menuOpen ? `1px solid ${scrolled ? "#e5e5e5" : "#2a2a2a"}` : "none",
-          }}
-        >
-          <div className="flex flex-col px-6 py-4 gap-3">
-            <a
-              href="/works"
-              className="text-sm py-2 transition-colors duration-300"
-              style={{ color: scrolled ? "#333" : "#ccc" }}
-              onClick={() => setMenuOpen(false)}
-            >
-              Work
-            </a>
-            <a
-              href="#approach"
-              className="text-sm py-2 transition-colors duration-300"
-              style={{ color: scrolled ? "#333" : "#ccc" }}
-              onClick={() => setMenuOpen(false)}
-            >
-              Approach
-            </a>
-            <a
-              href="/contact"
-              className="text-sm py-2 transition-colors duration-300"
-              style={{ color: scrolled ? "#333" : "#ccc" }}
-              onClick={() => setMenuOpen(false)}
-            >
-              Contact
-            </a>
-            <a
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 border text-sm mt-1 transition-all duration-300"
-              style={{
-                borderColor: scrolled ? "#ccc" : "#444",
-                borderRadius: "2px",
-                color: scrolled ? "#141414" : "#fff",
-              }}
-              onClick={() => setMenuOpen(false)}
-            >
-              <span className="text-xs">&#x21a6;</span>
-              Let&apos;s Work Together
-            </a>
-          </div>
-        </div>
-      </div>
+      <Navbar />
 
       {/* ──────────── HERO (headline) ──────────── */}
       <section className="px-6 pt-12 lg:pt-16" id="work">
@@ -495,7 +314,7 @@ export default function ClonePage() {
       {/* Tall wrapper creates scroll runway; inner content is sticky */}
       <div
         ref={carouselWrapperRef}
-        style={{ height: `${(carouselProjects.length - 1) * 60 + 100}vh` }}
+        style={{ height: `${(totalSlides - 1) * 60 + 100}vh` }}
       >
         <div className="sticky top-[72px] px-6 py-12 lg:py-16" style={{ backgroundColor: "#141414" }}>
           <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-12 lg:gap-20 items-end">
@@ -513,7 +332,7 @@ export default function ClonePage() {
               </div>
 
               <p className="text-[#aaa] text-base leading-relaxed">
-                Co-CEO at <a href="https://steadrise.org" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">SteadRise</a>. Co-Founder of <a href="https://secureaifutureslab.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">Secure AI Futures Lab</a>. Building
+                Technical VP of Talent with 7+ yrs of experience. Currently, Co-CEO at <a href="https://steadrise.org" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">SteadRise</a>. Co-Founder of <a href="https://secureaifutureslab.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">Secure AI Futures Lab</a>. Building
                 Measuremint. 7+ years identifying and placing exceptional researchers
                 and engineers at organizations working on the world&apos;s hardest
                 problems - from Anthropic and UK AISI to FAR.AI and Apollo Research.
@@ -526,7 +345,7 @@ export default function ClonePage() {
                   style={{ borderColor: "#444", borderRadius: "2px" }}
                 >
                   <span className="text-xs">&#x21a6;</span>
-                  Let&apos;s Work Together
+                  I am looking to hire!
                 </a>
                 <Link
                   href="/works"
@@ -534,7 +353,7 @@ export default function ClonePage() {
                   style={{ borderColor: "#444", borderRadius: "2px" }}
                 >
                   <span className="text-xs">&#x21a6;</span>
-                  View All Work
+                  View All Projects
                 </Link>
               </div>
             </div>
@@ -613,13 +432,49 @@ export default function ClonePage() {
                       </Link>
                     </div>
                   ))}
+                  {/* "View more" meta slide */}
+                  <div
+                    className="flex-shrink-0 px-2.5"
+                    style={{ width: `${100 / visibleCount}%` }}
+                  >
+                    <Link
+                      href="/works"
+                      className="group block rounded-md overflow-hidden h-full"
+                      style={{ backgroundColor: "#1e1e1e" }}
+                    >
+                      <div
+                        className="w-full aspect-[4/3] relative overflow-hidden flex items-center justify-center"
+                        style={{ background: "linear-gradient(135deg, #1a1a1a 0%, #222 50%, #1a1a1a 100%)" }}
+                      >
+                        <div className="text-center space-y-4">
+                          <div className="text-xs text-white/30 tracking-widest uppercase">
+                            Many More projects
+                          </div>
+                        </div>
+                      </div>
+                      <div className="p-5 space-y-3">
+                        <h3
+                          className="text-white text-lg leading-snug font-medium"
+                          style={{ fontFamily: FONT }}
+                        >
+                          View All Work
+                        </h3>
+                        <p className="text-[#888] text-sm leading-relaxed">
+                          Browse the full portfolio of projects, tools, and initiatives.
+                        </p>
+                        <span className="inline-flex items-center gap-2 text-sm text-[#4ade80] mt-2 group-hover:gap-3 transition-all duration-300">
+                          View All Projects &rarr;
+                        </span>
+                      </div>
+                    </Link>
+                  </div>
                 </div>
               </div>
 
               {/* Carousel controls */}
               <div className="flex items-center justify-between mt-5">
                 <div className="flex gap-1.5">
-                  {Array.from({ length: carouselProjects.length - visibleCount + 1 }).map((_, i) => (
+                  {Array.from({ length: totalSlides - visibleCount + 1 }).map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setCarouselIdx(i)}
@@ -653,12 +508,12 @@ export default function ClonePage() {
                   <button
                     onClick={() =>
                       setCarouselIdx(
-                        Math.min(carouselProjects.length - visibleCount, carouselIdx + 1)
+                        Math.min(totalSlides - visibleCount, carouselIdx + 1)
                       )
                     }
                     className="w-9 h-9 flex items-center justify-center border text-[#999] hover:text-white hover:border-[#666] transition-colors duration-300 relative overflow-hidden [&::before]:!hidden"
                     style={{ borderColor: "#333", borderRadius: "2px" }}
-                    disabled={carouselIdx >= carouselProjects.length - visibleCount}
+                    disabled={carouselIdx >= totalSlides - visibleCount}
                     aria-label="Next"
                   >
                     <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -902,6 +757,7 @@ export default function ClonePage() {
       {/* ──────────── LOGO WALL ──────────── */}
       <section className="px-6 py-16 lg:py-24">
         <div className="max-w-[1400px] mx-auto">
+          <p className="text-sm text-[#666] tracking-[0.15em] uppercase text-center mb-10">Trusted by people at</p>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center">
             {currentLogos.map((logo) => (
               <div

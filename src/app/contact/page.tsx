@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { FONT_SANS, FONT_SERIF, C } from "../theme";
+import { FONT_SANS, C } from "../theme";
+import Navbar from "../components/Navbar";
 
 const GOOGLE_SHEET_URL =
   "https://script.google.com/macros/s/AKfycbxtPLoyZk7MNlyoahjnaPLP_4SmpXpVaQin1zgaLm2OSXQqcz-PJLv17Ps9Q8LK18iL/exec";
@@ -41,22 +42,8 @@ function useIST() {
   return { time, isOnline };
 }
 
-function useScrolled(threshold = 80) {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > threshold);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [threshold]);
-
-  return scrolled;
-}
-
 export default function ContactPage() {
   const { time, isOnline } = useIST();
-  const scrolled = useScrolled(80);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [formData, setFormData] = useState({
     full_name: "",
@@ -108,83 +95,14 @@ export default function ContactPage() {
   };
 
   const inputClasses =
-    "w-full bg-transparent border-b text-base py-3 outline-none transition-colors duration-300 placeholder:opacity-40 focus:border-[#c9a87c]";
+    "w-full bg-transparent border-b text-base py-3 outline-none transition-colors duration-300 placeholder:opacity-40 focus:border-[#4ade80]";
 
   return (
     <div
       className="min-h-screen relative flex flex-col"
       style={{ backgroundColor: C.bg, color: C.text, fontFamily: FONT_SANS }}
     >
-      {/* ──────────── NAV ──────────── */}
-      <div
-        className="sticky top-0 z-50 w-full px-6 transition-all duration-500"
-        style={{ paddingTop: scrolled ? "10px" : "0px" }}
-      >
-        <nav
-          className="flex items-center justify-between px-6 py-4 max-w-[1400px] mx-auto transition-all duration-500"
-          style={{
-            backgroundColor: scrolled
-              ? "rgba(240, 235, 229, 0.97)"
-              : `${C.bg}ee`,
-            backdropFilter: "blur(12px)",
-            borderRadius: scrolled ? "12px" : "0px",
-            boxShadow: scrolled
-              ? "0 4px 30px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)"
-              : "none",
-            borderBottom: scrolled ? "none" : `1px solid ${C.border}`,
-          }}
-        >
-          <div className="flex items-center gap-6">
-            <Link
-              href="/"
-              className="text-sm tracking-[0.2em] transition-colors duration-500"
-              style={{
-                fontFamily: FONT_SERIF,
-                fontStyle: "italic",
-                color: scrolled ? C.bg : C.text,
-              }}
-            >
-              Varun Agrawal
-            </Link>
-            <div className="hidden md:flex items-center gap-1 text-sm">
-              <Link
-                href="/works"
-                className="px-3 py-1 transition-colors duration-300"
-                style={{ color: scrolled ? C.textDim : C.textMuted }}
-              >
-                Work
-              </Link>
-              <span aria-hidden="true" style={{ color: scrolled ? "#ccc" : C.textDim }}>|</span>
-              <Link
-                href="/#approach"
-                className="px-3 py-1 transition-colors duration-300"
-                style={{ color: scrolled ? C.textDim : C.textMuted }}
-              >
-                Approach
-              </Link>
-              <span aria-hidden="true" style={{ color: scrolled ? "#ccc" : C.textDim }}>|</span>
-              <Link
-                href="/contact"
-                className="px-3 py-1 transition-colors duration-300"
-                style={{ color: scrolled ? C.bg : C.accent }}
-              >
-                Contact
-              </Link>
-            </div>
-          </div>
-          <Link
-            href="/works"
-            className="hidden sm:flex items-center gap-2 px-5 py-2.5 border text-sm transition-all duration-500"
-            style={{
-              borderColor: scrolled ? C.accentMuted : C.borderLight,
-              borderRadius: scrolled ? "8px" : "2px",
-              color: scrolled ? C.bg : C.accent,
-            }}
-          >
-            View All Work
-          </Link>
-        </nav>
-      </div>
+      <Navbar activePage="contact" />
 
       {/* ──────────── CONTENT ──────────── */}
       <main id="main-content" className="flex-1 px-6 pt-12 lg:pt-20 pb-20 lg:pb-32">
@@ -212,7 +130,7 @@ export default function ContactPage() {
             <div>
               <h1
                 className="text-[clamp(1.8rem,4vw,3rem)] leading-[1.15] tracking-[-0.02em] mb-6"
-                style={{ fontFamily: FONT_SERIF, color: C.text }}
+                style={{ fontFamily: FONT_SANS, color: C.text }}
               >
                 Get in touch
               </h1>
@@ -389,7 +307,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="flex items-center gap-2 px-8 py-3 border text-sm transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c9a87c] hover:text-[#0c0c0c] focus:bg-[#c9a87c] focus:text-[#0c0c0c]"
+                  className="flex items-center gap-2 px-8 py-3 border text-sm transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#4ade80] hover:text-[#141414] focus:bg-[#4ade80] focus:text-[#141414]"
                   style={{ borderColor: C.accent, borderRadius: "2px", color: C.accent }}
                 >
                   {status === "sending" && (
@@ -482,7 +400,7 @@ export default function ContactPage() {
         <div className="py-8 overflow-hidden" aria-hidden="true">
           <p
             className="text-[clamp(5rem,18vw,16rem)] leading-none tracking-[-0.02em] whitespace-nowrap select-none"
-            style={{ fontFamily: FONT_SERIF, fontStyle: "italic", color: C.border }}
+            style={{ fontFamily: FONT_SANS, color: C.border }}
           >
             Varun Agrawal
           </p>

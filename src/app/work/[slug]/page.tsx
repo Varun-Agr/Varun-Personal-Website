@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { projects } from "../../projects";
+import Navbar from "../../components/Navbar";
 
 const FONT = "var(--font-google-sans), sans-serif";
 
@@ -22,27 +23,7 @@ export default async function WorkPage({
       className="min-h-screen text-[#e5e5e5]"
       style={{ backgroundColor: "#141414", fontFamily: FONT }}
     >
-      {/* ──────── NAV ──────── */}
-      <nav
-        className="flex items-center justify-between px-6 py-4 border-b max-w-[1400px] mx-auto"
-        style={{ borderColor: "#2a2a2a" }}
-      >
-        <Link
-          href="/"
-          className="text-sm font-semibold tracking-[0.2em] text-white hover:opacity-70 transition-opacity"
-          style={{ fontFamily: FONT }}
-        >
-          Varun Agrawal
-        </Link>
-        <Link
-          href="/#contact"
-          className="hidden sm:flex items-center gap-2 px-5 py-2.5 border text-sm text-white hover:bg-white hover:text-[#141414] transition-all duration-300"
-          style={{ borderColor: "#444", borderRadius: "2px" }}
-        >
-          <span className="text-xs">&#x21a6;</span>
-          Let&apos;s Work Together
-        </Link>
-      </nav>
+      <Navbar activePage="work" />
 
       {/* ──────── HERO ──────── */}
       <section className="px-6 pt-12 pb-16 lg:pt-20 lg:pb-24">

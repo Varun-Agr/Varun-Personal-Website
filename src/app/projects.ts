@@ -194,4 +194,62 @@ export const projects: Project[] = [
       ],
     },
   },
+  {
+    slug: "india-ai-report",
+    name: "India AI Report",
+    techStack: "Research, Data Analysis, Policy Tracking, Stakeholder Mapping",
+    cardImage: "/images/work/indiaai.png",
+    cardTitle: "India AI Report — Tracking a Rising AI Superpower",
+    cardDescription:
+      "Dedicated tracker covering governance discussions, stakeholder decisions, investment trends, and technological developments across the Indian AI ecosystem.",
+    cardStat: "50+",
+    cardStatLabel: "Stakeholders tracked",
+    cardGradient:
+      "linear-gradient(135deg, #1a1520 0%, #1a1025 40%, #201530 70%, #151025 100%)",
+    cardAccent: "#f472b6",
+    tags: ["AI Governance", "Policy", "India", "Research", "Ecosystem"],
+    before: {
+      headline: "India's AI Landscape: Fragmented Signals, No Single View",
+      body: [
+        "India is emerging as a major supplier of AI talent globally, but tracking its AI ecosystem was nearly impossible. Government policy discussions, university research output, startup funding rounds, and regulatory moves were scattered across dozens of sources in different formats and languages.",
+        "International labs and investors had no coherent picture of India's AI trajectory. Decisions about where to hire, invest, or partner were based on anecdotes and outdated reports rather than real-time intelligence.",
+      ],
+    },
+    after: {
+      headline: "A Living Intelligence Layer for India's AI Ecosystem",
+      body: [
+        "Built a dedicated India AI tracker that aggregates governance discussions, stakeholder decisions, investment trends, and technological developments into a single, continuously updated view. Covers 50+ stakeholders across government, academia, and industry.",
+        "The report has become a reference for international organizations evaluating India as a talent source and research partner. It surfaces patterns — like which IITs are producing alignment-adjacent research, or which state governments are investing in AI infrastructure — that would otherwise take months of manual research to uncover.",
+      ],
+    },
+  },
+  {
+    slug: "big-tech-layoff-monitor",
+    name: "Big Tech Laid Off Employee Monitor",
+    techStack: "Next.js, GraphQL, Reddit API, GitHub API, HackerNews API, Google CSE",
+    cardImage: "/images/work/layoff.png",
+    cardTitle: "Layoff Monitor — Surfacing Hidden Talent from Big Tech Cuts",
+    cardDescription:
+      "Aggregates indirect signals from Reddit, GitHub, HackerNews, and Google CSE to identify individual engineers affected by Big Tech layoffs — turning statistical headlines into actionable sourcing leads.",
+    cardStat: "100",
+    cardStatLabel: "Signal sources",
+    cardGradient:
+      "linear-gradient(135deg, #1a1a1a 0%, #1f1a15 40%, #1a1510 70%, #201a10 100%)",
+    cardAccent: "#fbbf24",
+    tags: ["Next.js", "GraphQL", "APIs", "Sourcing", "Data Aggregation"],
+    before: {
+      headline: "Big Tech Layoffs: Thousands of Names, Zero Visibility",
+      body: [
+        "When a major tech company lays off 10,000 employees, the world sees a headline and a number. What it doesn't see is who those people are. Companies never publish individual names. The talent — often deeply experienced engineers, ML researchers, and infrastructure specialists — scatters across LinkedIn updates, Reddit threads, and personal blogs.",
+        "Recruiters hunting for this talent had no systematic way to find them. The signal was there, buried in public forums and social posts, but no one was aggregating it. The richest talent pool in any given quarter was effectively invisible.",
+      ],
+    },
+    after: {
+      headline: "Indirect Signals Turned into a Sourcing Pipeline",
+      body: [
+        "Built a monitoring system that aggregates indirect layoff signals from seven public sources: Reddit threads, GitHub activity changes, HackerNews posts, Google Custom Search results, LinkedIn public updates, company blog announcements, and news APIs. Each signal is cross-referenced to build candidate-level profiles from what would otherwise be statistical noise.",
+        "Recruiters can now filter by company, role type, seniority, and recency — turning a mass layoff event into a structured, searchable pipeline of proven engineers within days of an announcement, not weeks.",
+      ],
+    },
+  },
 ];

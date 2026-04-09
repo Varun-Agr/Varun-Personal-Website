@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { projects } from "../projects";
+import Navbar from "../components/Navbar";
 
 const FONT = "var(--font-google-sans), sans-serif";
 
@@ -40,22 +41,8 @@ function useIST() {
   return { time, isOnline };
 }
 
-function useScrolled(threshold = 80) {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > threshold);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [threshold]);
-
-  return scrolled;
-}
-
 export default function WorksPage() {
   const { time, isOnline } = useIST();
-  const scrolled = useScrolled(80);
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   return (
@@ -63,76 +50,7 @@ export default function WorksPage() {
       className="min-h-screen text-[#e5e5e5] relative"
       style={{ backgroundColor: "#141414", fontFamily: FONT }}
     >
-      {/* ──────────── NAV ──────────── */}
-      <div
-        className="sticky top-0 z-50 w-full px-6 transition-all duration-500"
-        style={{ paddingTop: scrolled ? "10px" : "0px" }}
-      >
-        <nav
-          className="flex items-center justify-between px-6 py-4 max-w-[1400px] mx-auto transition-all duration-500"
-          style={{
-            backgroundColor: scrolled
-              ? "rgba(255, 255, 255, 0.97)"
-              : "rgba(20, 20, 20, 0.92)",
-            backdropFilter: "blur(12px)",
-            borderRadius: scrolled ? "12px" : "0px",
-            boxShadow: scrolled
-              ? "0 4px 30px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)"
-              : "none",
-            borderBottom: scrolled ? "none" : "1px solid #2a2a2a",
-          }}
-        >
-          <div className="flex items-center gap-6">
-            <Link
-              href="/"
-              className="text-sm font-semibold tracking-[0.2em] transition-colors duration-500"
-              style={{
-                fontFamily: FONT,
-                color: scrolled ? "#141414" : "#ffffff",
-              }}
-            >
-              Varun Agrawal
-            </Link>
-            <div className="hidden md:flex items-center gap-1 text-sm">
-              <Link
-                href="/#work"
-                className="px-3 py-1 transition-colors duration-300"
-                style={{ color: scrolled ? "#666" : "#999" }}
-              >
-                Work
-              </Link>
-              <span style={{ color: scrolled ? "#ccc" : "#444" }}>|</span>
-              <Link
-                href="/#approach"
-                className="px-3 py-1 transition-colors duration-300"
-                style={{ color: scrolled ? "#666" : "#999" }}
-              >
-                Approach
-              </Link>
-              <span style={{ color: scrolled ? "#ccc" : "#444" }}>|</span>
-              <Link
-                href="/#contact"
-                className="px-3 py-1 transition-colors duration-300"
-                style={{ color: scrolled ? "#666" : "#999" }}
-              >
-                Contact
-              </Link>
-            </div>
-          </div>
-          <Link
-            href="/#contact"
-            className="hidden sm:flex items-center gap-2 px-5 py-2.5 border text-sm transition-all duration-500"
-            style={{
-              borderColor: scrolled ? "#ccc" : "#444",
-              borderRadius: scrolled ? "8px" : "2px",
-              color: scrolled ? "#141414" : "#ffffff",
-            }}
-          >
-            <span className="text-xs">&#x21a6;</span>
-            Let&apos;s Work Together
-          </Link>
-        </nav>
-      </div>
+      <Navbar activePage="work" />
 
       {/* ──────────── HEADER ──────────── */}
       <section className="px-6 pt-12 lg:pt-20 pb-8">
