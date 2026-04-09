@@ -243,22 +243,22 @@ export default function ClonePage() {
     {
       title: "Talent Sourcing & Intelligence",
       content:
-        "Built a 50,000-profile ML research talent map from 5 years of ICLR/ICML/CVPR proceedings. Harvested 100+ data sources — conferences, Olympiads, GitHub, Codeforces — into an 80K-record dataset at >90% accuracy. Vector embeddings for candidate matching, AHP-weighted scoring across 10 skill dimensions.",
+        "Built a 50,000-profile ML research talent map from 5 years of ICLR/ICML/CVPR proceedings. Harvested 100+ data sources — conferences, Olympiads, GitHub, Codeforces — into an 80K-record dataset at >90% accuracy. Vector embeddings for candidate matching, weighted scoring across 10 skill dimensions.",
     },
     {
       title: "Technical Recruiting",
       content:
-        "Scaled a recruiting funnel from scratch to 4,200 warm ML, SWE, and Quant candidates across 5 continents. Partnered with hiring managers at 13+ organizations to scope roles, calibrate bars, and close 26 offers across FAR.AI, UK AISI, Anthropic, and GovAI — securing 12 accepted placements.",
+        "Scaled a recruiting funnel from scratch to 4,200 warm ML, SWE, and Quant candidates across 5 continents. Partnered with hiring managers at 13+ organizations to scope roles, calibrate bars, and close 26 offers across FAR.AI, UK AISI, and Apollo — securing 12 accepted placements.",
     },
     {
       title: "Trustworthy AI Science",
       content:
-        "Co-founded Secure AI Futures Lab with $250K+ via Schmidt Sciences. Convening government, academia, and industry across India and APAC. Partnering with top IITs and IISc on AI for Science, Social Good, and Trustworthy AI. Hosted workshops featuring Prof. Stuart Russell.",
+        "Co-founded Secure AI Futures Lab with $250K+ via Schmidt Sciences and AI Safety Tactical Opportunites Fund. Convening government, academia, and industry across India and APAC. Partnering with top IITs and IISc on AI for Science, Social Good, and Trustworthy AI. Hosted workshops featuring Prof. Stuart Russell.",
     },
     {
       title: "Building Tools",
       content:
-        "Managed the development of an AI evaluation pipeline (Claude API + Airtable) scoring candidates across 20+ binary signals with tri-verdict logic. Leading product for Measuremint — a voice-first career agent using ElevenLabs + Claude for AI interviews, cutting per-candidate cost from $5 to $0.15 at scale.",
+        "Managed the development of an AI evaluation pipeline (Claude API + Airtable) scoring candidates across 20+ binary signals with tri-verdict logic. Leading product for Measuremint — a voice-first career agent using ElevenLabs + Claude for AI interviews.",
     },
   ];
 
@@ -550,7 +550,7 @@ export default function ClonePage() {
             style={{ fontFamily: FONT }}
           >
             I&apos;ve built recruiting infrastructure for frontier AI labs,
-            research fellowships, and governance initiatives across three continents.
+            research fellowships, and governance initiatives.
             The focus stays the same:{" "}
             <span className="text-[#4ade80]">finding exceptional people</span>,
             building the systems that surface them at scale, and making sure{" "}

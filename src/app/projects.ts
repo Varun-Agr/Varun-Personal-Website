@@ -52,7 +52,7 @@ export const projects: Project[] = [
     slug: "ml-research-talent-map",
     name: "ML Research Talent Map",
     techStack: "Python, Vector Embeddings, ICLR/ICML/CVPR Data, Apify",
-    cardImage: ["/images/work/tech1.jpg", "/images/work/techops.png"],
+    cardImage: ["/images/work/tech1.jpg"],
     cardTitle: "ML Research Talent Map \u2014 50K Researcher Profiles",
     cardDescription:
       "Scraped and structured 50,000 ML researcher profiles from 5 years of ICLR, ICML, and CVPR proceedings. Searchable by research area via vector embeddings.",
@@ -80,9 +80,9 @@ export const projects: Project[] = [
   {
     slug: "talent-index-jd-fingerprinting",
     name: "Talent Index & JD Fingerprinting",
-    techStack: "Python, AHP Framework, NLP, Data Visualisation",
+    techStack: "Python, NLP, Data Visualisation",
     cardImage: ["/images/work/jd1.png"],
-    cardTitle: "Talent Index \u2014 AHP-Weighted Scoring for AI Roles",
+    cardTitle: "Weighted Talent Index & JD Fingerprinting",
     cardDescription:
       "JD fingerprinting tool that analyses job descriptions across 10 skill dimensions, creating a shared quantitative language for AI talent evaluation across 13 labs.",
     cardStat: "106",
@@ -90,7 +90,7 @@ export const projects: Project[] = [
     cardGradient:
       "linear-gradient(135deg, #1a2520 0%, #0d201a 40%, #152520 70%, #1a201a 100%)",
     cardAccent: "#34d399",
-    tags: ["Analytics", "NLP", "AHP", "Python", "Data Viz"],
+    tags: ["Analytics", "NLP", "Python", "Data Viz"],
     before: {
       headline: "106 Job Descriptions, No Common Language",
       body: [
@@ -99,9 +99,9 @@ export const projects: Project[] = [
       ],
     },
     after: {
-      headline: "AHP-Weighted Scoring Brings Order to a Fragmented Landscape",
+      headline: "Weighted Scoring Brings Order to a Fragmented Landscape",
       body: [
-        "Engineered a Talent Index scoring framework using Analytic Hierarchy Process (AHP) weighting. Built a JD fingerprinting tool that analyses job descriptions across 10 skill dimensions\u2014creating a shared, quantitative language for AI talent evaluation.",
+        "Engineered a weighted Talent Index scoring framework. Built a JD fingerprinting tool that analyses job descriptions across 10 skill dimensions\u2014creating a shared, quantitative language for AI talent evaluation.",
         "106 job descriptions from leading labs were processed, fingerprinted, and clustered. Hiring managers can now see exactly how their role compares to the market. Candidates can map their skills against real demand. And recruiters finally have a compass instead of a guess.",
       ],
     },
@@ -119,7 +119,7 @@ export const projects: Project[] = [
     cardGradient:
       "linear-gradient(135deg, #201a1a 0%, #2a1a1a 40%, #251515 70%, #1a1015 100%)",
     cardAccent: "#f87171",
-    tags: ["AI Safety", "Research", "Fellowship", "India", "Pipeline"],
+    tags: ["AI Safety", "Research", "Fellowship"],
     before: {
       headline: "India\u2019s Missing Pipeline: Top Talent, No Pathway to Safety Research",
       body: [
