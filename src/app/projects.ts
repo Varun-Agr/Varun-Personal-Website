@@ -8,7 +8,7 @@ export interface Project {
   cardStatLabel: string;
   cardGradient: string;
   cardAccent: string;
-  cardImage?: string;
+  cardImage?: string[];
   tags: string[];
   demoLink?: string;
   demoLabel?: string;
@@ -21,12 +21,12 @@ export const projects: Project[] = [
     slug: "measuremint",
     name: "Measuremint",
     techStack: "ElevenLabs, Claude, PostgreSQL, pgvector, Python",
-    cardImage: "/images/work/dh1.png",
-    cardTitle: "Measuremint — AI-Powered Talent Intelligence Platform",
+    cardImage: ["/images/work/dh1.png"],
+    cardTitle: "Measuremint - AI-Powered Talent Intelligence Platform",
     cardDescription:
-      "Voice-first career agent for high-volume markets. ElevenLabs + Claude for AI interviews, semantic matching via pgvector. Per-candidate cost from $5 to $0.15.",
-    cardStat: "95%",
-    cardStatLabel: "Cost reduction",
+      "Voice-first career agent for high-volume markets. ElevenLabs + Claude for AI interviews, semantic matching via pgvector. Solves sourcing and AI-driven talent identification at scale.",
+    cardStat: "10K+",
+    cardStatLabel: "Candidates processed",
     cardGradient:
       "linear-gradient(135deg, #1a1a2a 0%, #1a1530 40%, #15102a 70%, #201a35 100%)",
     cardAccent: "#a78bfa",
@@ -34,46 +34,46 @@ export const projects: Project[] = [
     demoLink: "https://bit.ly/measuremint-early-demo",
     demoLabel: "View Early Demo",
     before: {
-      headline: "The $5 Problem: When Every Candidate Costs a Fortune",
+      headline: "High-Volume Hiring: Too Many Applicants, No Way to Find Signal",
       body: [
-        "It was 2024, and high-volume hiring markets in India were drowning. A single job posting could attract 2,000 to 20,000 applicants. At $5 per candidate for basic screening, evaluating 10,000 applicants cost $50,000 before a single hire was made.",
-        "Recruiters were reading CVs by the thousand. Phone screens consumed weeks. The best candidates\u2014the ones who could articulate their thinking, not just list their credentials\u2014were buried under an avalanche of paper. The entire pipeline was optimised for volume, not signal.",
+        "A single job posting in India's tech market can attract 2,000 to 20,000 applicants. Recruiters were reading CVs by the thousand and running phone screens for weeks. The best candidates\u2014the ones who could articulate their thinking, not just list credentials\u2014were buried under volume.",
+        "The entire pipeline was optimised for throughput, not signal. There was no scalable way to identify who was genuinely strong versus who simply had the right keywords on their resume.",
       ],
     },
     after: {
-      headline: "Voice-First AI Interviews Cut Screening Costs by 95%",
+      headline: "AI-Driven Sourcing and Identification at Scale",
       body: [
         "Measuremint replaced the manual grind with a three-tier evaluation funnel: automated CV parsing, an asynchronous voice challenge, and a full 10-minute AI interview powered by ElevenLabs and Claude. PostgreSQL with pgvector handles semantic matching across the entire candidate pool.",
-        "Per-candidate cost dropped from $5 to $0.15\u2014a 95% reduction at scale. Candidates get a richer, more human experience. Recruiters get signal, not noise.",
+        "The system surfaces genuine signal from thousands of applicants\u2014identifying candidates who can think and communicate, not just those with the right keywords. Recruiters spend time on the strongest candidates instead of triaging the full volume.",
       ],
     },
   },
   {
     slug: "ml-research-talent-map",
     name: "ML Research Talent Map",
-    techStack: "Python, Vector Embeddings, Elasticsearch, ICLR/ICML/CVPR Data",
-    cardImage: "/images/work/tech1.jpg",
-    cardTitle: "ML Research Talent Map \u2014 50K Profiles, Sub-100ms Search",
+    techStack: "Python, Vector Embeddings, ICLR/ICML/CVPR Data, Apify",
+    cardImage: ["/images/work/tech1.jpg", "/images/work/techops.png"],
+    cardTitle: "ML Research Talent Map \u2014 50K Researcher Profiles",
     cardDescription:
-      "Built a 50,000-profile ML research talent map from 5 years of top-tier conference proceedings with semantic search via vector embeddings.",
+      "Scraped and structured 50,000 ML researcher profiles from 5 years of ICLR, ICML, and CVPR proceedings. Searchable by research area via vector embeddings.",
     cardStat: "50K",
     cardStatLabel: "Researcher profiles",
     cardGradient:
       "linear-gradient(135deg, #0d1a2a 0%, #0a1525 40%, #121f30 70%, #0d1520 100%)",
     cardAccent: "#4ade80",
-    tags: ["Data Engineering", "NLP", "Vector Search", "Python", "Elasticsearch"],
+    tags: ["Data Engineering", "NLP", "Vector Search", "Python", "Apify"],
     before: {
-      headline: "50,000 Researchers, Zero Map: The Invisible Talent Pool",
+      headline: "No Structured Way to Search ML Research Talent",
       body: [
-        "Five years of ICLR, ICML, and CVPR proceedings. Tens of thousands of researchers publishing cutting-edge work in machine learning. And yet no systematic way to find who among them was interested in AI safety, available for new roles, or a match for a specific lab\u2019s needs.",
-        "Sourcing meant manual keyword searches, trawling Google Scholar pages, and maintaining sprawling spreadsheets that went stale within weeks. Labs were hiring from networks, not from the full landscape of available talent.",
+        "Five years of ICLR, ICML, and CVPR proceedings contained tens of thousands of researchers, but there was no structured dataset linking them to their research areas, affiliations, or co-author networks.",
+        "Sourcing relied on manual keyword searches across Google Scholar and spreadsheets that went stale quickly. Labs were hiring from personal networks rather than the full landscape of available researchers.",
       ],
     },
     after: {
-      headline: "Semantic Search Across 50K Profiles in Under 100 Milliseconds",
+      headline: "50K Profiles Scraped, Structured, and Searchable",
       body: [
-        "Built a 50,000-profile ML research talent map from five years of top-tier conference proceedings. Each profile is enriched with publication history, co-author networks, and research vectors.",
-        "A two-stage candidate matching system using vector embeddings delivers sub-100ms semantic search. Recruiters can now query by research area, methodology, or even the conceptual neighbourhood of a specific paper\u2014and get ranked results in the time it takes to blink.",
+        "Scraped and structured 50,000 ML researcher profiles from five years of top-tier conference proceedings. Each profile includes publication history, co-author networks, and research area tags.",
+        "Added a search layer using vector embeddings so recruiters can query by research area or methodology and get ranked results. The dataset is kept up to date as new proceedings are published.",
       ],
     },
   },
@@ -81,7 +81,7 @@ export const projects: Project[] = [
     slug: "talent-index-jd-fingerprinting",
     name: "Talent Index & JD Fingerprinting",
     techStack: "Python, AHP Framework, NLP, Data Visualisation",
-    cardImage: "/images/work/jd1.png",
+    cardImage: ["/images/work/jd1.png"],
     cardTitle: "Talent Index \u2014 AHP-Weighted Scoring for AI Roles",
     cardDescription:
       "JD fingerprinting tool that analyses job descriptions across 10 skill dimensions, creating a shared quantitative language for AI talent evaluation across 13 labs.",
@@ -108,7 +108,7 @@ export const projects: Project[] = [
   },
   {
     slug: "alignment-research-fellowship",
-    cardImage: "/images/work/ga1.png",
+    cardImage: ["/images/work/ga1.png"],
     name: "India\u2019s First Alignment Research Fellowship",
     techStack: "Python, Data Pipelines, Survey Infrastructure",
     cardTitle: "Alignment Research Fellowship \u2014 India\u2019s First",
@@ -138,8 +138,8 @@ export const projects: Project[] = [
   {
     slug: "ai-candidate-screening-pipeline",
     name: "AI Candidate Screening Pipeline",
-    cardImage: "/images/work/pipeline.png",
-    techStack: "Python, Claude API, Airtable, Anthropic Batches API",
+    cardImage: ["/images/work/pipeline.png"],
+    techStack: "Python, Claude API, Metaview, Juicebox",
     cardTitle: "AI Candidate Screening — Signal-Based Evaluation at Scale",
     cardDescription:
       "Automated two-stage screening pipeline: Claude evaluates candidates against configurable binary signals, then deterministic tier logic shortlists the top performers.",
@@ -148,37 +148,37 @@ export const projects: Project[] = [
     cardGradient:
       "linear-gradient(135deg, #1a1520 0%, #201525 40%, #1a1028 70%, #251a30 100%)",
     cardAccent: "#c084fc",
-    tags: ["AI/ML", "Claude API", "Airtable", "Python", "Recruitment"],
+    tags: ["Claude API", "Metaview", "Juicebox", "Python", "LLM Evaluation"],
     before: {
-      headline: "Manual Screening Doesn\u2019t Scale When Every Signal Matters",
+      headline: "Likert Scales Don\u2019t Force Real Decisions",
       body: [
-        "Hiring for AI safety roles requires evaluating candidates across dozens of nuanced dimensions\u2014alignment research intuition, policy fluency, technical depth, publication quality. Each signal demands careful reading of CVs, LinkedIn profiles, GitHub repos, and personal websites. A single recruiter screening 200 candidates against 15 signals is looking at 3,000 individual judgement calls.",
-        "The process was slow, inconsistent, and expensive. Different reviewers weighted the same evidence differently. Re-screening when role requirements shifted meant starting from scratch. And the best candidates\u2014the ones who clear every bar\u2014were buried in the same queue as everyone else.",
+        "We historically evaluated candidates using 1\u20135 Likert ratings on Airtable. The problem: reviewers gravitated toward average scores to avoid making difficult calls, or because the evidence wasn\u2019t clear-cut. A candidate rated 3/5 on \u201ctechnical depth\u201d tells you almost nothing\u2014it\u2019s a hedge, not a signal.",
+        "The scores were also hard to compare across roles and organizations. What counts as a 4 for one reviewer is a 3 for another. Re-screening when requirements changed meant re-reading every profile and re-calibrating the same ambiguous scale.",
       ],
     },
     after: {
-      headline: "Two-Stage Pipeline: LLM Signals, Then Deterministic Shortlisting",
+      headline: "Binary Signals: Pass, Fail, or Unknown\u2014No Middle Ground",
       body: [
-        "Stage one uses Claude to evaluate each candidate against configurable binary signals\u2014pass, fail, or unknown\u2014with evidence citations drawn from assembled context: Airtable profiles, CV PDFs, LinkedIn data, GitHub, and personal websites. Signal definitions live in Airtable as the source of truth. Evaluations can be scoped by role, run in batch mode via Anthropic\u2019s Batches API for 50% cost savings, or executed synchronously for quick iterations.",
-        "Stage two is pure threshold math. Role configs define three tiers\u2014hard requirements (all must pass), core competencies (configurable threshold), and differentiators (configurable threshold)\u2014and the shortlister applies them deterministically against existing verdicts. No API calls, fully auditable, free to re-run whenever requirements change. The two stages are decoupled: evaluate incrementally, shortlist on demand.",
+        "Replaced Likert scales with binary signal evaluation. Each candidate is scored against specific, testable variables\u2014has_shipped_python_in_production, has_published_at_top_20_conference, has_completed_cs_phd\u2014with three possible verdicts: pass, fail, or unknown. Claude evaluates each signal with evidence citations drawn from CVs, LinkedIn, GitHub, and personal websites.",
+        "Binary signals are definitive and actionable\u2014no room for fence-sitting. General variables like has_completed_cs_phd work across roles and orgs, while role-specific ones can be added as needed. The result: a recruiter can scan a candidate\u2019s signal profile and immediately see who to shortlist, without re-reading source material or second-guessing ambiguous ratings.",
       ],
     },
   },
   {
     slug: "recruiting-data-infrastructure",
-    cardImage: "/images/work/techops.png",
+    cardImage: ["/images/work/ga1.png"],
     name: "Recruiting Data Infrastructure",
     techStack:
-      "Cloud SQL, BigQuery, Elasticsearch, LinkedIn Recruiter RSC, Python, Anthropic MCP",
+      "Cloud SQL, Cloud Run, LinkedIn Recruiter RSC, Python, Anthropic MCP",
     cardTitle: "Recruiting Infrastructure \u2014 80K Records, One Pipeline",
     cardDescription:
-      "Scalable recruiting infrastructure: Cloud SQL, BigQuery, Elasticsearch. 100+ data sources harvested into an 80K-record dataset at >90% accuracy.",
+      "Scalable recruiting infrastructure: Cloud SQL, Cloud Run. 100+ data sources harvested into an 80K-record dataset at >90% accuracy.",
     cardStat: "80K",
     cardStatLabel: "Records unified",
     cardGradient:
       "linear-gradient(135deg, #151520 0%, #1a1a28 40%, #12121f 70%, #181825 100%)",
     cardAccent: "#60a5fa",
-    tags: ["Data Infra", "Cloud SQL", "BigQuery", "Elasticsearch", "MCP"],
+    tags: ["Data Infra", "Cloud SQL", "Cloud Run", "MCP"],
     before: {
       headline: "100 Data Sources, No Single Source of Truth",
       body: [
@@ -187,10 +187,10 @@ export const projects: Project[] = [
       ],
     },
     after: {
-      headline: "80,000 Records at 90%+ Accuracy\u2014One Unified Pipeline",
+      headline: "80,000 Records at 90%+ Accuracy - One Unified Pipeline",
       body: [
-        "Built a scalable recruiting infrastructure: Cloud SQL for transactional data, BigQuery for analytics, Elasticsearch for full-text and faceted search. Integrated LinkedIn Recruiter RSC for seamless platform interop.",
-        "Python scrapers harvest 100+ data sources\u2014conferences, Olympiads, GitHub, Codeforces\u2014producing an 80K-record dataset at greater than 90% field-level accuracy. Now piloting LLM-assisted candidate triage via Anthropic\u2019s Model Context Protocol for the next step: intelligent, automated first-pass review.",
+        "Built a scalable recruiting infrastructure: Cloud SQL for transactional data, Cloud Run for everything else. Integrated LinkedIn Recruiter RSC for seamless platform interop.",
+        "Python scrapers harvest 100+ data sources - conferences, Olympiads, GitHub, Codeforces - producing an 80K-record dataset at greater than 90% field-level accuracy. Now piloting LLM-assisted candidate triage via Anthropic\u2019s Model Context Protocol for the next step: intelligent, automated first-pass review.",
       ],
     },
   },
@@ -198,8 +198,8 @@ export const projects: Project[] = [
     slug: "india-ai-report",
     name: "India AI Report",
     techStack: "Research, Data Analysis, Policy Tracking, Stakeholder Mapping",
-    cardImage: "/images/work/indiaai.png",
-    cardTitle: "India AI Report — Tracking a Rising AI Superpower",
+    cardImage: ["/images/work/indiaai.png"],
+    cardTitle: "India AI Report — Tracking a Rising AI Market",
     cardDescription:
       "Dedicated tracker covering governance discussions, stakeholder decisions, investment trends, and technological developments across the Indian AI ecosystem.",
     cardStat: "50+",
@@ -208,6 +208,8 @@ export const projects: Project[] = [
       "linear-gradient(135deg, #1a1520 0%, #1a1025 40%, #201530 70%, #151025 100%)",
     cardAccent: "#f472b6",
     tags: ["AI Governance", "Policy", "India", "Research", "Ecosystem"],
+    demoLink: "https://indiaaitracker.com",
+    demoLabel: "Visit Site",
     before: {
       headline: "India's AI Landscape: Fragmented Signals, No Single View",
       body: [
@@ -227,8 +229,8 @@ export const projects: Project[] = [
     slug: "big-tech-layoff-monitor",
     name: "Big Tech Laid Off Employee Monitor",
     techStack: "Next.js, GraphQL, Reddit API, GitHub API, HackerNews API, Google CSE",
-    cardImage: "/images/work/layoff.png",
-    cardTitle: "Layoff Monitor — Surfacing Hidden Talent from Big Tech Cuts",
+    cardImage: ["/images/work/layoff.png"],
+    cardTitle: "Layoff Monitor - Surfacing Hidden Talent from Big Tech Cuts",
     cardDescription:
       "Aggregates indirect signals from Reddit, GitHub, HackerNews, and Google CSE to identify individual engineers affected by Big Tech layoffs — turning statistical headlines into actionable sourcing leads.",
     cardStat: "100",

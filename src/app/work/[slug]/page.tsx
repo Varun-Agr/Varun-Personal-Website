@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { projects } from "../../projects";
 import Navbar from "../../components/Navbar";
+import ImageCarousel from "../../components/ImageCarousel";
 
 const FONT = "var(--font-google-sans), sans-serif";
 
@@ -49,35 +50,14 @@ export default async function WorkPage({
           {/* Two-column hero: right-aligned content */}
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-16">
             {/* Left: visual */}
-            <div
-              className="aspect-[4/3] rounded-lg overflow-hidden relative"
-              style={{ background: project.cardGradient }}
-            >
-              {project.cardImage ? (
-                <img
-                  src={project.cardImage}
-                  alt={project.name}
-                  className="absolute inset-0 w-full h-full object-contain"
-                />
-              ) : (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center space-y-4">
-                    <div
-                      className="text-6xl font-bold"
-                      style={{ color: `${project.cardAccent}33` }}
-                    >
-                      {project.cardStat}
-                    </div>
-                    <div
-                      className="text-sm tracking-widest uppercase"
-                      style={{ color: `${project.cardAccent}55` }}
-                    >
-                      {project.cardStatLabel}
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
+            <ImageCarousel
+              images={project.cardImage}
+              alt={project.name}
+              gradient={project.cardGradient}
+              accent={project.cardAccent}
+              stat={project.cardStat}
+              statLabel={project.cardStatLabel}
+            />
 
             {/* Right: info */}
             <div className="flex flex-col justify-center">

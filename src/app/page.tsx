@@ -6,12 +6,12 @@ import { projects } from "./projects";
 import Navbar from "./components/Navbar";
 
 const CAROUSEL_SLUGS = [
+  "talent-index-jd-fingerprinting",
   "ml-research-talent-map",
   "ai-candidate-screening-pipeline",
   "big-tech-layoff-monitor",
   "alignment-research-fellowship",
   "measuremint",
-  "talent-index-jd-fingerprinting",
   "recruiting-data-infrastructure",
   "india-ai-report",
 ];
@@ -299,13 +299,14 @@ export default function ClonePage() {
 
       {/* ──────────── HERO (headline) ──────────── */}
       <section className="px-6 pt-12 lg:pt-16" id="work">
-        <div className="max-w-[1400px] mx-auto">
+        <div className="max-w-[90%] mx-auto">
           <h1
-            className="text-[clamp(1.8rem,4.5vw,3.2rem)] leading-[1.15] tracking-[-0.02em] text-white max-w-[720px] mb-0 font-medium"
+            className="text-[clamp(1.8rem,4.5vw,3.2rem)] leading-[1.15] tracking-[-0.02em] text-white max-w-[75%] mb-0 font-medium"
             style={{ fontFamily: FONT }}
           >
             {/*Technical Recruiter <span className="text-[#555]">&</span> AI Governance Builder sourcing top 1% STEM talent for frontier AI labs*/}
-            I place ML and engineering talent at the frontier labs working on the hardest problems.
+            {/*I place ML and engineering talent at the frontier labs working on the hardest problems.*/}
+            I build talent pipelines and recruitment infra for frontier AI teams - helping them source the researchers, engineers, and generalists tackling the field's hardest problems.
           </h1>
         </div>
       </section>
@@ -332,10 +333,14 @@ export default function ClonePage() {
               </div>
 
               <p className="text-[#aaa] text-base leading-relaxed">
-                Technical VP of Talent with 7+ yrs of experience. Currently, Co-CEO at <a href="https://steadrise.org" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">SteadRise</a>. Co-Founder of <a href="https://secureaifutureslab.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">Secure AI Futures Lab</a>. Building
-                Measuremint. 7+ years identifying and placing exceptional researchers
+                Co-CEO at <a href="https://steadrise.org" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">SteadRise</a>.
+                <br />
+                Co-Founder of <a href="https://secureaifutureslab.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">Secure AI Futures Lab</a>.
+                <br />
+                <br />
+                7+ years identifying and placing exceptional researchers
                 and engineers at organizations working on the world&apos;s hardest
-                problems - from Anthropic and UK AISI to FAR.AI and Apollo Research.
+                problems - from UK AISI to FAR.AI and Apollo Research.
               </p>
 
               <div className="flex flex-wrap gap-3 mt-2">
@@ -381,9 +386,9 @@ export default function ClonePage() {
                           className="w-full aspect-[4/3] relative overflow-hidden"
                           style={{ background: p.cardGradient }}
                         >
-                          {p.cardImage ? (
+                          {p.cardImage?.length ? (
                             <img
-                              src={p.cardImage}
+                              src={p.cardImage[0]}
                               alt={p.name}
                               className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                             />
@@ -496,7 +501,7 @@ export default function ClonePage() {
                     onClick={() =>
                       setCarouselIdx(Math.max(0, carouselIdx - 1))
                     }
-                    className="w-9 h-9 flex items-center justify-center border text-[#999] hover:text-white hover:border-[#666] transition-colors duration-300 relative overflow-hidden [&::before]:!hidden"
+                    className="w-9 h-9 flex items-center justify-center border text-[#999] hover:text-white hover:border-[#666] transition-colors duration-300"
                     style={{ borderColor: "#333", borderRadius: "2px" }}
                     disabled={carouselIdx === 0}
                     aria-label="Previous"
@@ -511,7 +516,7 @@ export default function ClonePage() {
                         Math.min(totalSlides - visibleCount, carouselIdx + 1)
                       )
                     }
-                    className="w-9 h-9 flex items-center justify-center border text-[#999] hover:text-white hover:border-[#666] transition-colors duration-300 relative overflow-hidden [&::before]:!hidden"
+                    className="w-9 h-9 flex items-center justify-center border text-[#999] hover:text-white hover:border-[#666] transition-colors duration-300"
                     style={{ borderColor: "#333", borderRadius: "2px" }}
                     disabled={carouselIdx >= totalSlides - visibleCount}
                     aria-label="Next"
@@ -615,7 +620,7 @@ export default function ClonePage() {
                 )}
                 <button
                   onClick={() => setOpenAccordion(openAccordion === i ? null : i)}
-                  className="w-full flex items-center justify-between py-5 text-left group relative overflow-hidden [&::before]:!hidden"
+                  className="w-full flex items-center justify-between py-5 text-left group"
                 >
                   <span
                     className="text-white text-base"
