@@ -265,20 +265,16 @@ export default function ClonePage() {
   ];
 
   const logos1 = [
-    { name: "Anthropic", icon: "/images/logos/anthropic.png" },
+    // { name: "Anthropic", icon: "/images/logos/anthropic.png" },
     { name: "UK AISI", icon: "/images/logos/aisi.png" },
     { name: "FAR.AI", icon: "/images/logos/farai.svg" },
     { name: "Apollo Research", icon: "/images/logos/apollo.png" },
     { name: "GovAI", icon: "/images/logos/govai.png" },
-    { name: "Goodfire", icon: "/images/logos/goodfire.webp" },
-  ];
-  const logos2 = [
-    { name: "Schmidt Sciences", icon: "/images/logos/ss.png" },
+    // { name: "Goodfire", icon: "/images/logos/goodfire.webp" },
     { name: "80,000 Hours", icon: "/images/logos/80k.png" },
     { name: "J-PAL", icon: "/images/logos/jpal.png" },
-    { name: "IIT Madras", icon: "/images/logos/iitm.png" },
+    { name: "Schmidt Sciences", icon: "/images/logos/ss.png" },
     { name: "NUS", icon: "/images/logos/nus.png" },
-    { name: "UC Berkeley", icon: "/images/logos/ucb.png" },
   ];
 
   const [logoSet, setLogoSet] = useState(0);
@@ -288,7 +284,7 @@ export default function ClonePage() {
     return () => clearInterval(id);
   }, []);
 
-  const currentLogos = logoSet === 0 ? logos1 : logos2;
+  const currentLogos = logoSet === 0 ? logos1 : logos1;
 
   return (
     <div
