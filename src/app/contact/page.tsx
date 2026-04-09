@@ -44,6 +44,7 @@ function useIST() {
 
 export default function ContactPage() {
   const { time, isOnline } = useIST();
+  const [activeTab, setActiveTab] = useState<"companies" | "talent">("companies");
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [formData, setFormData] = useState({
     full_name: "",
@@ -51,12 +52,34 @@ export default function ContactPage() {
     email: "",
     message: "",
   });
+  const [companyFormData, setCompanyFormData] = useState({
+    contact_name: "",
+    designation: "",
+    company_name: "",
+    company_url: "",
+    email: "",
+    message: "",
+  });
+
+  // Handle hash-based tab selection
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (hash === "talent") setActiveTab("talent");
+    else if (hash === "companies") setActiveTab("companies");
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleCompanyChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setCompanyFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -86,6 +109,44 @@ export default function ContactPage() {
       if (data.success || data.result === "success") {
         setStatus("success");
         setFormData({ full_name: "", phone: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  const handleCompanySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    const params = new URLSearchParams({
+      form_type: "company",
+      contact_name: companyFormData.contact_name,
+      designation: companyFormData.designation,
+      company_name: companyFormData.company_name,
+      company_url: companyFormData.company_url,
+      email: companyFormData.email,
+      message: companyFormData.message,
+    });
+
+    try {
+      const res = await fetch(GOOGLE_SHEET_URL, {
+        method: "POST",
+        body: params,
+      });
+      const raw = await res.text();
+      let data: { success?: boolean; result?: string } = {};
+      try {
+        data = JSON.parse(raw);
+      } catch {
+        setStatus("error");
+        return;
+      }
+      if (data.success || data.result === "success") {
+        setStatus("success");
+        setCompanyFormData({ contact_name: "", designation: "", company_name: "", company_url: "", email: "", message: "" });
       } else {
         setStatus("error");
       }
@@ -186,155 +247,353 @@ export default function ContactPage() {
 
             {/* Right: form */}
             <div>
-              <form onSubmit={handleSubmit} className="space-y-8">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                  <div>
-                    <label
-                      htmlFor="full_name"
-                      className="block text-xs uppercase tracking-[0.15em] mb-2"
-                      style={{ color: C.textDim }}
-                    >
-                      Name *
-                    </label>
-                    <input
-                      required
-                      id="full_name"
-                      name="full_name"
-                      type="text"
-                      value={formData.full_name}
-                      onChange={handleChange}
-                      className={inputClasses}
-                      style={{ borderColor: C.borderLight, color: C.text }}
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="phone"
-                      className="block text-xs uppercase tracking-[0.15em] mb-2"
-                      style={{ color: C.textDim }}
-                    >
-                      Phone *
-                    </label>
-                    <input
-                      required
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className={inputClasses}
-                      style={{ borderColor: C.borderLight, color: C.text }}
-                      placeholder="+91 ..."
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-xs uppercase tracking-[0.15em] mb-2"
-                    style={{ color: C.textDim }}
-                  >
-                    Email *
-                  </label>
-                  <input
-                    required
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className={inputClasses}
-                    style={{ borderColor: C.borderLight, color: C.text }}
-                    placeholder="you@example.com"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-xs uppercase tracking-[0.15em] mb-2"
-                    style={{ color: C.textDim }}
-                  >
-                    Message *
-                  </label>
-                  <textarea
-                    required
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={5}
-                    className={`${inputClasses} resize-none`}
-                    style={{ borderColor: C.borderLight, color: C.text }}
-                    placeholder="Tell me about your project, role, or idea..."
-                  />
-                </div>
-
-                {/* Status messages */}
-                {status === "success" && (
-                  <div
-                    role="alert"
-                    className="flex items-center gap-3 px-4 py-3 rounded text-sm"
-                    style={{ backgroundColor: `${C.accent}1a`, border: `1px solid ${C.accent}33` }}
-                  >
-                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
-                      <circle cx="12" cy="12" r="10" stroke={C.accent} strokeWidth="2" />
-                      <path d="M8 12l2.5 2.5L16 9" stroke={C.accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <span style={{ color: C.accent }}>
-                      Message sent successfully. I&apos;ll get back to you soon.
-                    </span>
-                  </div>
-                )}
-                {status === "error" && (
-                  <div
-                    role="alert"
-                    className="flex items-center gap-3 px-4 py-3 rounded text-sm"
-                    style={{ backgroundColor: "rgba(248, 113, 113, 0.1)", border: "1px solid rgba(248, 113, 113, 0.2)" }}
-                  >
-                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
-                      <circle cx="12" cy="12" r="10" stroke="#f87171" strokeWidth="2" />
-                      <path d="M12 8v4M12 16h.01" stroke="#f87171" strokeWidth="2" strokeLinecap="round" />
-                    </svg>
-                    <span className="text-[#f87171]">
-                      Something went wrong. Please try again or email me directly.
-                    </span>
-                  </div>
-                )}
-
+              {/* Tab switcher */}
+              <div className="flex gap-0 mb-10 border-b" style={{ borderColor: C.border }}>
                 <button
-                  type="submit"
-                  disabled={status === "sending"}
-                  className="flex items-center gap-2 px-8 py-3 border text-sm transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#4ade80] hover:text-[#141414] focus:bg-[#4ade80] focus:text-[#141414]"
-                  style={{ borderColor: C.accent, borderRadius: "2px", color: C.accent }}
+                  onClick={() => { setActiveTab("companies"); setStatus("idle"); }}
+                  className="px-5 py-3 text-sm transition-colors duration-300 -mb-px"
+                  style={{
+                    color: activeTab === "companies" ? C.accent : C.textMuted,
+                    borderBottom: activeTab === "companies" ? `2px solid ${C.accent}` : "2px solid transparent",
+                  }}
                 >
-                  {status === "sending" && (
-                    <svg
-                      className="animate-spin h-4 w-4"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      />
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      />
-                    </svg>
-                  )}
-                  {status === "sending" ? "Sending..." : "Send Message"}
+                  For Companies
                 </button>
-              </form>
+                <button
+                  onClick={() => { setActiveTab("talent"); setStatus("idle"); }}
+                  className="px-5 py-3 text-sm transition-colors duration-300 -mb-px"
+                  style={{
+                    color: activeTab === "talent" ? C.accent : C.textMuted,
+                    borderBottom: activeTab === "talent" ? `2px solid ${C.accent}` : "2px solid transparent",
+                  }}
+                >
+                  For Talent
+                </button>
+              </div>
+
+              {/* Company form */}
+              {activeTab === "companies" && (
+                <form onSubmit={handleCompanySubmit} className="space-y-8" id="companies">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div>
+                      <label
+                        htmlFor="contact_name"
+                        className="block text-xs uppercase tracking-[0.15em] mb-2"
+                        style={{ color: C.textDim }}
+                      >
+                        Name *
+                      </label>
+                      <input
+                        required
+                        id="contact_name"
+                        name="contact_name"
+                        type="text"
+                        value={companyFormData.contact_name}
+                        onChange={handleCompanyChange}
+                        className={inputClasses}
+                        style={{ borderColor: C.borderLight, color: C.text }}
+                        placeholder="Your name"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="designation"
+                        className="block text-xs uppercase tracking-[0.15em] mb-2"
+                        style={{ color: C.textDim }}
+                      >
+                        Designation *
+                      </label>
+                      <input
+                        required
+                        id="designation"
+                        name="designation"
+                        type="text"
+                        value={companyFormData.designation}
+                        onChange={handleCompanyChange}
+                        className={inputClasses}
+                        style={{ borderColor: C.borderLight, color: C.text }}
+                        placeholder="e.g. Head of Talent"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div>
+                      <label
+                        htmlFor="company_name"
+                        className="block text-xs uppercase tracking-[0.15em] mb-2"
+                        style={{ color: C.textDim }}
+                      >
+                        Company *
+                      </label>
+                      <input
+                        required
+                        id="company_name"
+                        name="company_name"
+                        type="text"
+                        value={companyFormData.company_name}
+                        onChange={handleCompanyChange}
+                        className={inputClasses}
+                        style={{ borderColor: C.borderLight, color: C.text }}
+                        placeholder="Company name"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="company_url"
+                        className="block text-xs uppercase tracking-[0.15em] mb-2"
+                        style={{ color: C.textDim }}
+                      >
+                        Company URL
+                      </label>
+                      <input
+                        id="company_url"
+                        name="company_url"
+                        type="url"
+                        value={companyFormData.company_url}
+                        onChange={handleCompanyChange}
+                        className={inputClasses}
+                        style={{ borderColor: C.borderLight, color: C.text }}
+                        placeholder="https://..."
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="company_email"
+                      className="block text-xs uppercase tracking-[0.15em] mb-2"
+                      style={{ color: C.textDim }}
+                    >
+                      Email *
+                    </label>
+                    <input
+                      required
+                      id="company_email"
+                      name="email"
+                      type="email"
+                      value={companyFormData.email}
+                      onChange={handleCompanyChange}
+                      className={inputClasses}
+                      style={{ borderColor: C.borderLight, color: C.text }}
+                      placeholder="you@company.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="company_message"
+                      className="block text-xs uppercase tracking-[0.15em] mb-2"
+                      style={{ color: C.textDim }}
+                    >
+                      Message *
+                    </label>
+                    <textarea
+                      required
+                      id="company_message"
+                      name="message"
+                      value={companyFormData.message}
+                      onChange={handleCompanyChange}
+                      rows={5}
+                      className={`${inputClasses} resize-none`}
+                      style={{ borderColor: C.borderLight, color: C.text }}
+                      placeholder="Tell me about the role or engagement you have in mind..."
+                    />
+                  </div>
+
+                  {status === "success" && (
+                    <div
+                      role="alert"
+                      className="flex items-center gap-3 px-4 py-3 rounded text-sm"
+                      style={{ backgroundColor: `${C.accent}1a`, border: `1px solid ${C.accent}33` }}
+                    >
+                      <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" stroke={C.accent} strokeWidth="2" />
+                        <path d="M8 12l2.5 2.5L16 9" stroke={C.accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span style={{ color: C.accent }}>
+                        Message sent successfully. I&apos;ll get back to you soon.
+                      </span>
+                    </div>
+                  )}
+                  {status === "error" && (
+                    <div
+                      role="alert"
+                      className="flex items-center gap-3 px-4 py-3 rounded text-sm"
+                      style={{ backgroundColor: "rgba(248, 113, 113, 0.1)", border: "1px solid rgba(248, 113, 113, 0.2)" }}
+                    >
+                      <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" stroke="#f87171" strokeWidth="2" />
+                        <path d="M12 8v4M12 16h.01" stroke="#f87171" strokeWidth="2" strokeLinecap="round" />
+                      </svg>
+                      <span className="text-[#f87171]">
+                        Something went wrong. Please try again or email me directly.
+                      </span>
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={status === "sending"}
+                    className="flex items-center gap-2 px-8 py-3 border text-sm transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#4ade80] hover:text-[#141414] focus:bg-[#4ade80] focus:text-[#141414]"
+                    style={{ borderColor: C.accent, borderRadius: "2px", color: C.accent }}
+                  >
+                    {status === "sending" && (
+                      <svg
+                        className="animate-spin h-4 w-4"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                      </svg>
+                    )}
+                    {status === "sending" ? "Sending..." : "Send Message"}
+                  </button>
+                </form>
+              )}
+
+              {/* Talent form */}
+              {activeTab === "talent" && (
+                <form onSubmit={handleSubmit} className="space-y-8" id="talent">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div>
+                      <label
+                        htmlFor="full_name"
+                        className="block text-xs uppercase tracking-[0.15em] mb-2"
+                        style={{ color: C.textDim }}
+                      >
+                        Name *
+                      </label>
+                      <input
+                        required
+                        id="full_name"
+                        name="full_name"
+                        type="text"
+                        value={formData.full_name}
+                        onChange={handleChange}
+                        className={inputClasses}
+                        style={{ borderColor: C.borderLight, color: C.text }}
+                        placeholder="Your name"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="phone"
+                        className="block text-xs uppercase tracking-[0.15em] mb-2"
+                        style={{ color: C.textDim }}
+                      >
+                        Phone *
+                      </label>
+                      <input
+                        required
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className={inputClasses}
+                        style={{ borderColor: C.borderLight, color: C.text }}
+                        placeholder="+91 ..."
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-xs uppercase tracking-[0.15em] mb-2"
+                      style={{ color: C.textDim }}
+                    >
+                      Email *
+                    </label>
+                    <input
+                      required
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className={inputClasses}
+                      style={{ borderColor: C.borderLight, color: C.text }}
+                      placeholder="you@example.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block text-xs uppercase tracking-[0.15em] mb-2"
+                      style={{ color: C.textDim }}
+                    >
+                      Message *
+                    </label>
+                    <textarea
+                      required
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      rows={5}
+                      className={`${inputClasses} resize-none`}
+                      style={{ borderColor: C.borderLight, color: C.text }}
+                      placeholder="Tell me about your project, role, or idea..."
+                    />
+                  </div>
+
+                  {status === "success" && (
+                    <div
+                      role="alert"
+                      className="flex items-center gap-3 px-4 py-3 rounded text-sm"
+                      style={{ backgroundColor: `${C.accent}1a`, border: `1px solid ${C.accent}33` }}
+                    >
+                      <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" stroke={C.accent} strokeWidth="2" />
+                        <path d="M8 12l2.5 2.5L16 9" stroke={C.accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span style={{ color: C.accent }}>
+                        Message sent successfully. I&apos;ll get back to you soon.
+                      </span>
+                    </div>
+                  )}
+                  {status === "error" && (
+                    <div
+                      role="alert"
+                      className="flex items-center gap-3 px-4 py-3 rounded text-sm"
+                      style={{ backgroundColor: "rgba(248, 113, 113, 0.1)", border: "1px solid rgba(248, 113, 113, 0.2)" }}
+                    >
+                      <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" stroke="#f87171" strokeWidth="2" />
+                        <path d="M12 8v4M12 16h.01" stroke="#f87171" strokeWidth="2" strokeLinecap="round" />
+                      </svg>
+                      <span className="text-[#f87171]">
+                        Something went wrong. Please try again or email me directly.
+                      </span>
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={status === "sending"}
+                    className="flex items-center gap-2 px-8 py-3 border text-sm transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#4ade80] hover:text-[#141414] focus:bg-[#4ade80] focus:text-[#141414]"
+                    style={{ borderColor: C.accent, borderRadius: "2px", color: C.accent }}
+                  >
+                    {status === "sending" && (
+                      <svg
+                        className="animate-spin h-4 w-4"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                      </svg>
+                    )}
+                    {status === "sending" ? "Sending..." : "Send Message"}
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>

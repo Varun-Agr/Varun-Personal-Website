@@ -26,10 +26,12 @@ const CONFIG = {
   // Sheet names where submissions will be logged
   HIRING_SHEET_NAME: "TIA Hiring",
   CONTACT_SHEET_NAME: "Contact Form Submissions",
+  COMPANY_SHEET_NAME: "Company Inquiries",
 
   // Email template settings
   HIRING_EMAIL_SUBJECT: "New Hiring Application: {name}",
   CONTACT_EMAIL_SUBJECT: "New Contact Form Submission: {name}",
+  COMPANY_EMAIL_SUBJECT: "New Company Inquiry: {company} ({name})",
   FROM_NAME: "Varun Agrawal Website",
 
   // Timezone for timestamps (default: GMT+5:30 for India)
@@ -49,10 +51,29 @@ function doPost(e) {
     const formData = e.parameter;
 
     // Determine form type based on field presence
+    const isCompanyForm = formData.form_type === "company";
     const isHiringForm = formData.linkedin && formData.resume;
     const isContactForm = formData.full_name && formData.message;
 
-    if (isHiringForm) {
+    if (isCompanyForm) {
+      // Validate company form required fields
+      if (
+        !formData.contact_name ||
+        !formData.company_name ||
+        !formData.email ||
+        !formData.message
+      ) {
+        return createResponse(false, "Missing required fields");
+      }
+
+      // Log to company sheet
+      logToCompanySheet(formData);
+
+      // Send company email notification
+      sendCompanyEmailNotification(formData);
+
+      return createResponse(true, "Message sent successfully!");
+    } else if (isHiringForm) {
       // Validate hiring form required fields
       if (
         !formData.name ||
@@ -216,6 +237,63 @@ function logToContactSheet(data) {
   sheet.autoResizeColumns(1, 6);
 
   Logger.log("Contact data logged to sheet successfully");
+}
+
+/**
+ * Log company form data to Google Sheet
+ */
+function logToCompanySheet(data) {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName(CONFIG.COMPANY_SHEET_NAME);
+
+  // Create sheet if it doesn't exist
+  if (!sheet) {
+    sheet = ss.insertSheet(CONFIG.COMPANY_SHEET_NAME);
+    // Add headers
+    sheet.appendRow([
+      "Timestamp",
+      "Contact Name",
+      "Designation",
+      "Company",
+      "Company URL",
+      "Email",
+      "Message",
+      "Status",
+    ]);
+
+    // Format header row
+    const headerRange = sheet.getRange(1, 1, 1, 8);
+    headerRange.setFontWeight("bold");
+    headerRange.setBackground("#478079");
+    headerRange.setFontColor("#ffffff");
+
+    // Freeze header row
+    sheet.setFrozenRows(1);
+  }
+
+  // Format timestamp
+  const timestamp = Utilities.formatDate(
+    new Date(),
+    CONFIG.TIMEZONE,
+    "yyyy-MM-dd HH:mm:ss",
+  );
+
+  // Append the data
+  sheet.appendRow([
+    timestamp,
+    data.contact_name || "",
+    data.designation || "",
+    data.company_name || "",
+    data.company_url || "Not provided",
+    data.email || "",
+    data.message || "",
+    "New",
+  ]);
+
+  // Auto-resize columns
+  sheet.autoResizeColumns(1, 8);
+
+  Logger.log("Company data logged to sheet successfully");
 }
 
 // ============================================
@@ -553,6 +631,189 @@ Timestamp: ${Utilities.formatDate(new Date(), CONFIG.TIMEZONE, "MMM dd, yyyy HH:
       name: CONFIG.FROM_NAME,
     });
     Logger.log("Contact email notification sent successfully");
+  } catch (error) {
+    Logger.log("Error sending email: " + error.toString());
+  }
+}
+
+/**
+ * Send email notification for new company inquiry
+ */
+function sendCompanyEmailNotification(data) {
+  const subject = CONFIG.COMPANY_EMAIL_SUBJECT
+    .replace("{company}", data.company_name)
+    .replace("{name}", data.contact_name);
+
+  const htmlBody = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <style>
+        body {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+          line-height: 1.6;
+          color: #333;
+          max-width: 600px;
+          margin: 0 auto;
+          padding: 20px;
+        }
+        .header {
+          background: linear-gradient(135deg, #478079 0%, #396861 100%);
+          color: white;
+          padding: 30px;
+          border-radius: 8px 8px 0 0;
+          text-align: center;
+        }
+        .header h1 {
+          margin: 0;
+          font-size: 24px;
+        }
+        .content {
+          background: white;
+          padding: 30px;
+          border: 1px solid #e9ecef;
+          border-top: none;
+          border-radius: 0 0 8px 8px;
+        }
+        .field {
+          margin-bottom: 20px;
+          padding-bottom: 15px;
+          border-bottom: 1px solid #f0f0f0;
+        }
+        .field:last-child {
+          border-bottom: none;
+        }
+        .label {
+          font-weight: 600;
+          color: #478079;
+          margin-bottom: 5px;
+          font-size: 13px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+        .value {
+          font-size: 16px;
+          color: #333;
+          word-break: break-word;
+        }
+        .value a {
+          color: #478079;
+          text-decoration: none;
+        }
+        .value a:hover {
+          text-decoration: underline;
+        }
+        .message-box {
+          background: #f8f9fa;
+          padding: 20px;
+          border-radius: 6px;
+          margin-top: 10px;
+          white-space: pre-wrap;
+        }
+        .footer {
+          margin-top: 30px;
+          padding-top: 20px;
+          border-top: 2px solid #e9ecef;
+          text-align: center;
+          color: #666;
+          font-size: 14px;
+        }
+        .cta-button {
+          display: inline-block;
+          margin: 20px 0;
+          padding: 12px 30px;
+          background-color: #478079;
+          color: white;
+          text-decoration: none;
+          border-radius: 6px;
+          font-weight: 600;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="header">
+        <h1>🏢 New Company Inquiry</h1>
+      </div>
+
+      <div class="content">
+        <p style="font-size: 16px; margin-bottom: 25px;">
+          A company has reached out via the contact form on your website.
+        </p>
+
+        <div class="field">
+          <div class="label">Contact Name</div>
+          <div class="value">${data.contact_name}</div>
+        </div>
+
+        <div class="field">
+          <div class="label">Designation</div>
+          <div class="value">${data.designation || "Not provided"}</div>
+        </div>
+
+        <div class="field">
+          <div class="label">Company</div>
+          <div class="value">${data.company_name}</div>
+        </div>
+
+        <div class="field">
+          <div class="label">Company URL</div>
+          <div class="value">${data.company_url ? '<a href="' + data.company_url + '" target="_blank">' + data.company_url + "</a>" : "Not provided"}</div>
+        </div>
+
+        <div class="field">
+          <div class="label">Email Address</div>
+          <div class="value"><a href="mailto:${data.email}">${data.email}</a></div>
+        </div>
+
+        <div class="field">
+          <div class="label">Message</div>
+          <div class="value">
+            <div class="message-box">${data.message}</div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+          <a href="${getSpreadsheetUrl()}" class="cta-button">
+            View All Inquiries
+          </a>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>This email was automatically generated by the Company Inquiry Form system.</p>
+        <p>Timestamp: ${Utilities.formatDate(new Date(), CONFIG.TIMEZONE, "MMM dd, yyyy HH:mm:ss z")}</p>
+      </div>
+    </body>
+    </html>
+  `;
+
+  const plainTextBody = `
+New Company Inquiry
+
+Contact Name: ${data.contact_name}
+Designation: ${data.designation || "Not provided"}
+Company: ${data.company_name}
+Company URL: ${data.company_url || "Not provided"}
+Email: ${data.email}
+
+Message:
+${data.message}
+
+View all inquiries: ${getSpreadsheetUrl()}
+
+---
+Timestamp: ${Utilities.formatDate(new Date(), CONFIG.TIMEZONE, "MMM dd, yyyy HH:mm:ss z")}
+  `.trim();
+
+  try {
+    MailApp.sendEmail({
+      to: CONFIG.NOTIFICATION_EMAIL,
+      subject: subject,
+      body: plainTextBody,
+      htmlBody: htmlBody,
+      name: CONFIG.FROM_NAME,
+    });
+    Logger.log("Company email notification sent successfully");
   } catch (error) {
     Logger.log("Error sending email: " + error.toString());
   }
