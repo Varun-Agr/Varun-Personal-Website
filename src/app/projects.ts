@@ -102,7 +102,7 @@ export const projects: Project[] = [
       headline: "Weighted Scoring Brings Order to a Fragmented Landscape",
       body: [
         "Engineered a weighted Talent Index scoring framework. Built a JD fingerprinting tool that analyses job descriptions across 10 skill dimensions\u2014creating a shared, quantitative language for AI talent evaluation.",
-        "106 job descriptions from leading labs were processed, fingerprinted, and clustered. Hiring managers can now see exactly how their role compares to the market. Candidates can map their skills against real demand. And recruiters finally have a compass instead of a guess.",
+        "106 job descriptions across 13 organisations were processed, fingerprinted, and clustered. Hiring managers can now see exactly how their role compares to the market. Candidates can map their skills against real demand. And recruiters finally have a compass instead of a guess.",
       ],
     },
   },
@@ -242,8 +242,8 @@ export const projects: Project[] = [
     before: {
       headline: "Global STEM Talent Is Scattered Across Hundreds of Disconnected Sources",
       body: [
-        "The world\u2019s best researchers and engineers don\u2019t live in a single database. Their signal is spread across conference proceedings, university pages, patent filings, GitHub profiles, lab websites, and dozens of other public sources \u2014 none of which talk to each other. A recruiter trying to understand who works on what, who trained under whom, or which lab is producing the strongest candidates in a specific subfield has to piece it together manually.",
-        "The relationships matter as much as the individuals. Knowing that a candidate co-authored with a leading alignment researcher, or moved from a top lab to a startup, reveals quality and trajectory that a keyword search on a CV never will. But without a connected view, those patterns stay invisible.",
+        "Researchers and engineers don\u2019t live in a single database. Their signal is spread across conference proceedings, university pages, patent filings, GitHub profiles, lab websites, and dozens of other public sources \u2014 none of which talk to each other. A recruiter trying to understand who works on what, who trained under whom, or which lab is producing strong candidates in a specific subfield has to piece it together manually.",
+        "The relationships matter as much as the individuals. Knowing that a candidate co-authored with a well-published researcher, or moved from a research lab to a startup, reveals quality and trajectory that a keyword search on a CV never will. But without a connected view, those patterns stay invisible.",
       ],
     },
     after: {

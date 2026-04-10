@@ -198,7 +198,7 @@ export default function ClonePage() {
     {
       title: "Trustworthy AI Science",
       content:
-        "Co-founded Secure AI Futures Lab with $250K+ via Schmidt Sciences and AI Security Tactical Opportunites Fund. Convening government, academia, and industry across India and APAC. Partnering with top IITs and IISc on AI for Science, Social Good, and Trustworthy AI. Hosted workshops featuring Prof. Stuart Russell.",
+        "Co-founded Secure AI Futures Lab with $250K+ via Schmidt Sciences and AI Security Tactical Opportunities Fund. Convening government, academia, and industry across India and APAC. Partnering with IITs and IISc on AI for Science, Social Good, and Trustworthy AI.",
     },
     {
       title: "Building Tools",
@@ -214,7 +214,8 @@ export default function ClonePage() {
     { name: "Apollo Research", icon: "/images/logos/apollo.png" },
     // { name: "GovAI", icon: "/images/logos/govai.png" },
     // { name: "Goodfire", icon: "/images/logos/goodfire.webp" },
-    { name: "80,000 Hours", icon: "/images/logos/80k.png" },
+    // { name: "80,000 Hours", icon: "/images/logos/80k.png" },
+    { name: "World Bank", icon: "/images/logos/worldbank.png"},
     { name: "J-PAL", icon: "/images/logos/jpal.png" },
     { name: "Schmidt Sciences", icon: "/images/logos/ss.png" },
     // { name: "NUS", icon: "/images/logos/nus.png" },
@@ -252,7 +253,7 @@ export default function ClonePage() {
             {/*Technical Recruiter <span className="text-[#555]">&</span> AI Governance Builder sourcing top 1% STEM talent for frontier AI labs*/}
             {/*I place ML and engineering talent at the frontier labs working on the hardest problems.*/}
             {/*I build talent pipelines and recruitment infra for frontier AI teams - helping them source the researchers, engineers, and generalists tackling the field's hardest problems.*/}
-            I build talent pipelines and recruitment infra for frontier AI teams - helping them hire the top 1% researchers, engineers, and generalists tackling the hardest problems of our times.
+            I build talent pipelines and recruiting tools for AI and deep-tech teams — helping them find and hire the researchers, engineers, and generalists they actually need.
           </h1>
         </div>
       </section>
@@ -278,9 +279,9 @@ export default function ClonePage() {
               Co-Founder of <a href="https://secureaifutureslab.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">Secure AI Futures Lab</a>.
               <br />
               <br />
-              7+ years identifying and placing exceptional researchers
-              and engineers at organizations working on the world&apos;s hardest
-              problems - from UK AISI to FAR.AI and Apollo Research.
+              7+ years sourcing and placing researchers and engineers
+              across AI, ML, and deep-tech — including UK AISI, FAR.AI,
+              and Apollo Research.
             </p>
 
             <div className="flex flex-wrap gap-3 mt-2">
@@ -429,13 +430,11 @@ export default function ClonePage() {
             className="text-[clamp(1.8rem,4vw,3.2rem)] leading-[1.2] tracking-[-0.015em] text-[#ccc]"
             style={{ fontFamily: FONT }}
           >
-            I&apos;ve built recruiting infrastructure for frontier AI labs
-            and research fellowships.
-            The focus stays the same:{" "}
-            <span className="text-[#4ade80]">finding exceptional people</span>,
-            building the systems that surface them at scale, and making sure{" "}
-            <span className="text-[#4ade80]">the right talent reaches the right problems</span>{" "}
-            before anyone else finds them.
+            I build recruiting infrastructure — talent maps, screening
+            pipelines, sourcing tools — so that{" "}
+            <span className="text-[#4ade80]">the right candidates surface faster</span>,
+            and hiring teams can{" "}
+            <span className="text-[#4ade80]">spend time evaluating, not searching</span>.
           </p>
         </div>
       </section>
@@ -456,18 +455,16 @@ export default function ClonePage() {
             }}
           >
             <p className="text-[#aaa] text-base leading-relaxed">
-              I find researchers and engineers for organizations working on
-              problems that matter — frontier AI security, governance, and
-              alignment. Start with the talent map, build the pipeline,
-              calibrate the bar, close the offer.
+              I source researchers and engineers for teams working in
+              AI, ML, deep-tech, and governance. Start with the talent map,
+              build the pipeline, calibrate the bar, close the offer.
             </p>
             <p className="text-[#aaa] text-base leading-relaxed">
               The work spans technical recruiting, data-driven sourcing,
-              AI governance research, and building the tools that make all
-              of it scale. From founding India&apos;s first Alignment Research
-              Fellowship to deploying LLM-assisted candidate triage — if it
-              involves getting the right people to the right problems, I&apos;ve
-              probably built infrastructure for it.
+              and building the tools that make all of it scale — from
+              50K-profile talent maps to LLM-assisted candidate triage.
+              If it involves getting the right people into the right seats,
+              I&apos;ve probably built infrastructure for it.
             </p>
             <a
               href="#"
@@ -642,7 +639,7 @@ export default function ClonePage() {
       {/* ──────────── LOGO WALL ──────────── */}
       <section className="px-6 py-16 lg:py-24">
         <div className="max-w-[1400px] mx-auto">
-          <p className="text-sm text-[#666] tracking-[0.15em] uppercase text-center mb-10">Trusted by people at</p>
+          <p className="text-sm text-[#666] tracking-[0.15em] uppercase text-center mb-10">Worked with teams at</p>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center">
             {currentLogos.map((logo) => (
               <div

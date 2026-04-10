@@ -12,7 +12,7 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Varun Agrawal - Technical Recruiter",
   description:
-    "Technical Recruiter, Tool Builder, and AI Governance specialist. 7+ years sourcing top 1% STEM talent for frontier AI labs.",
+    "Technical Recruiter and Tool Builder. 7+ years sourcing and placing STEM talent across AI, ML, and deep-tech.",
   icons: {
     icon: [
       { url: "/favicons/favicon.ico", sizes: "any" },
