@@ -25,13 +25,9 @@ function useIST() {
       const pad = (n: number) => n.toString().padStart(2, "0");
       setTime(`${h12}:${pad(m)}:${pad(s)} ${ampm} IST`);
 
-      const weekday = day >= 1 && day <= 5;
-      const saturday = day === 6;
+      const monToSat = day >= 1 && day <= 6;
       const mins = h * 60 + m;
-      setIsOnline(
-        (weekday && mins >= 540 && mins <= 1050) ||
-          (saturday && mins >= 600 && mins <= 840)
-      );
+      setIsOnline(monToSat && mins >= 540 && mins <= 1260);
     };
     tick();
     const id = setInterval(tick, 1000);

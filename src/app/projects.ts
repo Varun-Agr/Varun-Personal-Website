@@ -32,7 +32,7 @@ export const projects: Project[] = [
     cardAccent: "#a78bfa",
     tags: ["AI/ML", "Voice AI", "Talent Tech", "PostgreSQL", "Python"],
     demoLink: "https://bit.ly/measuremint-early-demo",
-    demoLabel: "View Early Demo",
+    demoLabel: "View ",
     before: {
       headline: "High-Volume Hiring: Too Many Applicants, No Way to Find Signal",
       body: [

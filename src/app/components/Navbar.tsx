@@ -108,7 +108,7 @@ export default function Navbar({ activePage }: { activePage?: "work" | "approach
                   onMouseEnter={(e) => e.currentTarget.style.color = scrolled ? C.bg : C.accent}
                   onMouseLeave={(e) => e.currentTarget.style.color = scrolled ? C.textDim : C.textMuted}
                 >
-                  For Companies
+                  For Organisations
                 </Link>
                 <Link
                   href="/contact#talent"
@@ -192,7 +192,7 @@ export default function Navbar({ activePage }: { activePage?: "work" | "approach
             style={{ color: linkColor("contact") }}
             onClick={() => setMenuOpen(false)}
           >
-            For Companies
+            For Organisations
           </Link>
           <Link
             href="/contact#talent"

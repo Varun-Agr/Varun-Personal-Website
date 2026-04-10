@@ -8,12 +8,12 @@ import Navbar from "./components/Navbar";
 const CAROUSEL_SLUGS = [
   "talent-graph-engine",
   "talent-index-jd-fingerprinting",
+  "india-ai-report",
   "ml-research-talent-map",
   "ai-candidate-screening-pipeline",
   "big-tech-layoff-monitor",
   "measuremint",
   "recruiting-data-infrastructure",
-  "india-ai-report",
 ];
 
 /* ─────────────────────────── helpers ─────────────────────────── */
@@ -36,13 +36,9 @@ function useIST() {
       const pad = (n: number) => n.toString().padStart(2, "0");
       setTime(`${h12}:${pad(m)}:${pad(s)} ${ampm} IST`);
 
-      const weekday = day >= 1 && day <= 5;
-      const saturday = day === 6;
+      const monToSat = day >= 1 && day <= 6;
       const mins = h * 60 + m;
-      setIsOnline(
-        (weekday && mins >= 540 && mins <= 1050) ||
-          (saturday && mins >= 600 && mins <= 840)
-      );
+      setIsOnline(monToSat && mins >= 540 && mins <= 1260);
     };
     tick();
     const id = setInterval(tick, 1000);
@@ -202,7 +198,7 @@ export default function ClonePage() {
     {
       title: "Trustworthy AI Science",
       content:
-        "Co-founded Secure AI Futures Lab with $250K+ via Schmidt Sciences and AI Safety Tactical Opportunites Fund. Convening government, academia, and industry across India and APAC. Partnering with top IITs and IISc on AI for Science, Social Good, and Trustworthy AI. Hosted workshops featuring Prof. Stuart Russell.",
+        "Co-founded Secure AI Futures Lab with $250K+ via Schmidt Sciences and AI Security Tactical Opportunites Fund. Convening government, academia, and industry across India and APAC. Partnering with top IITs and IISc on AI for Science, Social Good, and Trustworthy AI. Hosted workshops featuring Prof. Stuart Russell.",
     },
     {
       title: "Building Tools",
@@ -304,6 +300,12 @@ export default function ClonePage() {
       {/* ──────────── PROJECT ACCORDION CAROUSEL ──────────── */}
       <section className="px-6 pb-16 lg:pb-24">
         <div className="max-w-[90%] mx-auto">
+          <h2
+            className="text-[clamp(1.2rem,2vw,1.5rem)] font-medium text-white mb-8 tracking-[-0.01em]"
+            style={{ fontFamily: FONT }}
+          >
+            Featured Projects
+          </h2>
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-0 rounded-xl overflow-hidden" style={{ backgroundColor: "#1a1a1a" }}>
             {/* Left: accordion selector */}
             <div className="flex flex-col">
@@ -427,8 +429,8 @@ export default function ClonePage() {
             className="text-[clamp(1.8rem,4vw,3.2rem)] leading-[1.2] tracking-[-0.015em] text-[#ccc]"
             style={{ fontFamily: FONT }}
           >
-            I&apos;ve built recruiting infrastructure for frontier AI labs,
-            research fellowships, and governance initiatives.
+            I&apos;ve built recruiting infrastructure for frontier AI labs
+            and research fellowships.
             The focus stays the same:{" "}
             <span className="text-[#4ade80]">finding exceptional people</span>,
             building the systems that surface them at scale, and making sure{" "}
@@ -455,7 +457,7 @@ export default function ClonePage() {
           >
             <p className="text-[#aaa] text-base leading-relaxed">
               I find researchers and engineers for organizations working on
-              problems that matter — frontier AI safety, governance, and
+              problems that matter — frontier AI security, governance, and
               alignment. Start with the talent map, build the pipeline,
               calibrate the bar, close the offer.
             </p>
@@ -472,8 +474,8 @@ export default function ClonePage() {
               className="inline-flex items-center gap-2 px-5 py-2.5 border text-sm text-white hover:bg-white hover:text-[#141414] transition-all duration-300 mt-2"
               style={{ borderColor: "#444", borderRadius: "2px" }}
             >
-              <span className="text-xs">&#x21a6;</span>
-              View Approach
+              <span className="/work">&#x21a6;</span>
+              View Projects
             </a>
           </div>
 
