@@ -107,35 +107,6 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "alignment-research-fellowship",
-    cardImage: ["/images/work/ga1.png"],
-    name: "India\u2019s First Alignment Research Fellowship",
-    techStack: "Python, Data Pipelines, Survey Infrastructure",
-    cardTitle: "Alignment Research Fellowship \u2014 India\u2019s First",
-    cardDescription:
-      "Founded India\u2019s first Alignment Research Fellowship: 600+ applicants across 40 STEM universities, 24 selected (top 4%), 10 papers published or under review.",
-    cardStat: "600+",
-    cardStatLabel: "Applicants",
-    cardGradient:
-      "linear-gradient(135deg, #201a1a 0%, #2a1a1a 40%, #251515 70%, #1a1015 100%)",
-    cardAccent: "#f87171",
-    tags: ["AI Safety", "Research", "Fellowship"],
-    before: {
-      headline: "India\u2019s Missing Pipeline: Top Talent, No Pathway to Safety Research",
-      body: [
-        "India produces some of the world\u2019s sharpest CS, Physics, and Mathematics graduates. But in 2022, there was no structured pathway for any of them to enter AI safety research. No fellowship. No reading groups. No community. The talent existed\u2014scattered across 40+ STEM universities\u2014with no connective tissue.",
-        "Labs abroad were hiring from the same handful of Western graduate programmes. An entire subcontinent of potential researchers was invisible to the field.",
-      ],
-    },
-    after: {
-      headline: "600 Applicants, 24 Selected, 10 Papers Published",
-      body: [
-        "Founded India\u2019s first Alignment Research Fellowship. Built a pipeline from scratch: 600+ applicants across 40 STEM universities, evaluated on algorithms, ML theory, and research aptitude. Selected 24 fellows\u2014a 4% acceptance rate\u2014and placed them in structured research tracks covering interpretability, LLM robustness, scalable oversight, and model evaluations.",
-        "10 papers now published or under review. 5 fellows pursuing research independently or at labs like the Mila-Quebec AI Institute. The initiative was acquired by SteadRise and scaled globally.",
-      ],
-    },
-  },
-  {
     slug: "ai-candidate-screening-pipeline",
     name: "AI Candidate Screening Pipeline",
     cardImage: ["/images/work/pipeline.png"],
@@ -196,10 +167,10 @@ export const projects: Project[] = [
   },
   {
     slug: "india-ai-report",
-    name: "India AI Report",
+    name: "India AI Tracker",
     techStack: "Research, Data Analysis, Policy Tracking, Stakeholder Mapping",
     cardImage: ["/images/work/indiaai.png"],
-    cardTitle: "India AI Report — Tracking a Rising AI Market",
+    cardTitle: "India AI Tracker — Tracking a Rising AI Market",
     cardDescription:
       "Dedicated tracker covering governance discussions, stakeholder decisions, investment trends, and technological developments across the Indian AI ecosystem.",
     cardStat: "50+",
@@ -227,12 +198,12 @@ export const projects: Project[] = [
   },
   {
     slug: "big-tech-layoff-monitor",
-    name: "Big Tech Laid Off Employee Monitor",
+    name: "Indirect Talent Sourcing Channel",
     techStack: "Next.js, GraphQL, Reddit API, GitHub API, HackerNews API, Google CSE",
     cardImage: ["/images/work/layoff.png"],
-    cardTitle: "Layoff Monitor - Surfacing Hidden Talent from Big Tech Cuts",
+    cardTitle: "Indirect Talent Sourcing Channel (WIP)",
     cardDescription:
-      "Aggregates indirect signals from Reddit, GitHub, HackerNews, and Google CSE to identify individual engineers affected by Big Tech layoffs — turning statistical headlines into actionable sourcing leads.",
+      "Monitors public signals across Reddit, GitHub, HackerNews, and Google CSE to rapidly surface experienced engineers entering the market during workforce transitions — feeding structured leads into downstream recruiting workflows.",
     cardStat: "100",
     cardStatLabel: "Signal sources",
     cardGradient:
@@ -240,17 +211,46 @@ export const projects: Project[] = [
     cardAccent: "#fbbf24",
     tags: ["Next.js", "GraphQL", "APIs", "Sourcing", "Data Aggregation"],
     before: {
-      headline: "Big Tech Layoffs: Thousands of Names, Zero Visibility",
+      headline: "Workforce Transitions Create a Hidden Talent Pool",
       body: [
-        "When a major tech company lays off 10,000 employees, the world sees a headline and a number. What it doesn't see is who those people are. Companies never publish individual names. The talent — often deeply experienced engineers, ML researchers, and infrastructure specialists — scatters across LinkedIn updates, Reddit threads, and personal blogs.",
-        "Recruiters hunting for this talent had no systematic way to find them. The signal was there, buried in public forums and social posts, but no one was aggregating it. The richest talent pool in any given quarter was effectively invisible.",
+        "When major tech companies restructure, experienced engineers, ML researchers, and infrastructure specialists re-enter the market all at once. But there's no central directory — these individuals surface across LinkedIn updates, Reddit threads, personal blogs, and forum posts over days and weeks.",
+        "Without a systematic way to aggregate these signals, recruiters miss the window entirely. The highest-density talent pool in any given quarter was effectively invisible to the teams that needed it most.",
       ],
     },
     after: {
-      headline: "Indirect Signals Turned into a Sourcing Pipeline",
+      headline: "Public Signals Aggregated into a Structured Sourcing Pipeline",
       body: [
-        "Built a monitoring system that aggregates indirect layoff signals from seven public sources: Reddit threads, GitHub activity changes, HackerNews posts, Google Custom Search results, LinkedIn public updates, company blog announcements, and news APIs. Each signal is cross-referenced to build candidate-level profiles from what would otherwise be statistical noise.",
-        "Recruiters can now filter by company, role type, seniority, and recency — turning a mass layoff event into a structured, searchable pipeline of proven engineers within days of an announcement, not weeks.",
+        "Building a monitoring system that cross-references seven public signal sources — Reddit threads, GitHub activity patterns, HackerNews posts, Google Custom Search results, LinkedIn public updates, company announcements, and news APIs — to assemble candidate-level profiles from what would otherwise be noise. Each signal is weighted and deduplicated to produce high-confidence leads.",
+        "The output feeds directly into existing talent map and outreach workflows, letting recruiters filter by company, role type, seniority, and recency. The goal: turn a workforce transition event into a searchable pipeline of proven engineers within days, not weeks.",
+      ],
+    },
+  },
+  {
+    slug: "talent-graph-engine",
+    name: "Talent Graph Engine",
+    techStack: "Graph Database, Vector Embeddings, RAG, Python, React",
+    cardImage: ["/images/work/networkengine.png"],
+    cardTitle: "Talent Graph Engine \u2014 100K+ STEM Profiles, One Connected View",
+    cardDescription:
+      "A graph-based intelligence platform that connects 100K+ STEM and academic profiles across 500+ public sources. In-degree/out-degree analysis, shortest-path algorithms, and a RAG layer for natural language queries over the entire network.",
+    cardStat: "100K+",
+    cardStatLabel: "Profiles connected",
+    cardGradient:
+      "linear-gradient(135deg, #0f1a1a 0%, #0a1f1f 40%, #0d2626 70%, #112020 100%)",
+    cardAccent: "#2dd4bf",
+    tags: ["Graph Engine", "Search Engine", "Vector Database", "RAG", "Large-Scale Data Processing", "Graph Algorithms"],
+    before: {
+      headline: "Global STEM Talent Is Scattered Across Hundreds of Disconnected Sources",
+      body: [
+        "The world\u2019s best researchers and engineers don\u2019t live in a single database. Their signal is spread across conference proceedings, university pages, patent filings, GitHub profiles, lab websites, and dozens of other public sources \u2014 none of which talk to each other. A recruiter trying to understand who works on what, who trained under whom, or which lab is producing the strongest candidates in a specific subfield has to piece it together manually.",
+        "The relationships matter as much as the individuals. Knowing that a candidate co-authored with a leading alignment researcher, or moved from a top lab to a startup, reveals quality and trajectory that a keyword search on a CV never will. But without a connected view, those patterns stay invisible.",
+      ],
+    },
+    after: {
+      headline: "One Connected Graph Across 500+ Sources, Queryable in Plain English",
+      body: [
+        "Scraped and structured data from 500+ public sources into a unified graph of 100K+ STEM and academic profiles. Each node \u2014 person, lab, company, institution \u2014 is linked by co-authorship, affiliation, advisory relationships, and career transitions. A graph UI lets users visually explore research and industrial connections across people, groups, labs, and companies.",
+        "In-degree and out-degree analysis surfaces hidden influencers and talent clusters. Shortest-path, minimum spanning tree, and other graph algorithms identify specific skills and talent concentrations across the network. A RAG integration resolves unstructured natural language queries \u2014 ask \u201Cwho are the strongest mechanistic interpretability researchers who\u2019ve published at ICML and have industry experience?\u201D and get ranked results with full end-to-end profile data: education, work history, skills, achievements, awards, and a SWOT analysis per profile.",
       ],
     },
   },

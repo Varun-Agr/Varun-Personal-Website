@@ -6,11 +6,11 @@ import { projects } from "./projects";
 import Navbar from "./components/Navbar";
 
 const CAROUSEL_SLUGS = [
+  "talent-graph-engine",
   "talent-index-jd-fingerprinting",
   "ml-research-talent-map",
   "ai-candidate-screening-pipeline",
   "big-tech-layoff-monitor",
-  "alignment-research-fellowship",
   "measuremint",
   "recruiting-data-infrastructure",
   "india-ai-report",
@@ -174,56 +174,6 @@ function useScrollReveal() {
   return { ref, visible };
 }
 
-/* ─── scroll-driven carousel ─── */
-
-function useStickyCarousel(totalCards: number) {
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  const [activeIdx, setActiveIdx] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(2);
-
-  // Track viewport width to determine visible card count
-  useEffect(() => {
-    const updateVisible = () => {
-      setVisibleCount(window.innerWidth < 768 ? 1 : 2);
-    };
-    updateVisible();
-    window.addEventListener("resize", updateVisible);
-    return () => window.removeEventListener("resize", updateVisible);
-  }, []);
-
-  const maxIdx = totalCards - visibleCount;
-
-  useEffect(() => {
-    const wrapper = wrapperRef.current;
-    if (!wrapper) return;
-
-    const onScroll = () => {
-      const rect = wrapper.getBoundingClientRect();
-      const wrapperHeight = wrapper.offsetHeight;
-      const viewportH = window.innerHeight;
-      const runway = wrapperHeight - viewportH;
-      if (runway <= 0) return;
-
-      const scrolled = -rect.top;
-      const progress = Math.max(0, Math.min(1, scrolled / runway));
-
-      const idx = Math.round(progress * maxIdx);
-      setActiveIdx(Math.max(0, Math.min(maxIdx, idx)));
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [maxIdx]);
-
-  // Clamp activeIdx when visibleCount changes
-  useEffect(() => {
-    setActiveIdx((prev) => Math.min(prev, maxIdx));
-  }, [maxIdx]);
-
-  return { wrapperRef, activeIdx, setActiveIdx, visibleCount };
-}
-
 /* ─────────────────────────── page ─────────────────────────────── */
 
 const FONT = "var(--font-google-sans), sans-serif";
@@ -232,8 +182,7 @@ export default function ClonePage() {
   const { time, isOnline } = useIST();
   const [openAccordion, setOpenAccordion] = useState<number | null>(null);
   const carouselProjects = CAROUSEL_SLUGS.map((s) => projects.find((p) => p.slug === s)!);
-  const totalSlides = carouselProjects.length + 1; // +1 for "View more"
-  const { wrapperRef: carouselWrapperRef, activeIdx: carouselIdx, setActiveIdx: setCarouselIdx, visibleCount } = useStickyCarousel(totalSlides);
+  const [selectedProjectIdx, setSelectedProjectIdx] = useState(0);
   const canvasRef = useTronTrail();
   const displayText = useScrollReveal();
   const approachLeft = useScrollReveal();
@@ -306,231 +255,160 @@ export default function ClonePage() {
           >
             {/*Technical Recruiter <span className="text-[#555]">&</span> AI Governance Builder sourcing top 1% STEM talent for frontier AI labs*/}
             {/*I place ML and engineering talent at the frontier labs working on the hardest problems.*/}
-            I build talent pipelines and recruitment infra for frontier AI teams - helping them source the researchers, engineers, and generalists tackling the field's hardest problems.
+            {/*I build talent pipelines and recruitment infra for frontier AI teams - helping them source the researchers, engineers, and generalists tackling the field's hardest problems.*/}
+            I build talent pipelines and recruitment infra for frontier AI teams - helping them hire the top 1% researchers, engineers, and generalists tackling the hardest problems of our times.
           </h1>
         </div>
       </section>
 
-      {/* ──────────── SCROLL-DRIVEN CAROUSEL ──────────── */}
-      {/* Tall wrapper creates scroll runway; inner content is sticky */}
-      <div
-        ref={carouselWrapperRef}
-        style={{ height: `${(totalSlides - 1) * 60 + 100}vh` }}
-      >
-        <div className="sticky top-[72px] px-6 py-12 lg:py-16" style={{ backgroundColor: "#141414" }}>
-          <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-12 lg:gap-20 items-end">
-            {/* Left: status + text + CTAs */}
-            <div className="flex flex-col gap-6">
-              <div className="flex items-center gap-3 text-sm text-[#999]">
-                <span className="flex items-center gap-1.5">
-                  <span
-                    className="inline-block w-2 h-2 rounded-full"
-                    style={{ backgroundColor: isOnline ? "#4ade80" : "#666" }}
-                  />
-                  <span className="text-white">({isOnline ? "Online" : "Offline"})</span>
-                </span>
-                <span>Now, {time}</span>
-              </div>
+      {/* ──────────── BIO + STATUS ──────────── */}
+      <section className="px-6 py-12 lg:py-16">
+        <div className="max-w-[90%] mx-auto">
+          <div className="flex flex-col gap-6 max-w-[600px] ml-auto">
+            <div className="flex items-center gap-3 text-sm text-[#999]">
+              <span className="flex items-center gap-1.5">
+                <span
+                  className="inline-block w-2 h-2 rounded-full"
+                  style={{ backgroundColor: isOnline ? "#4ade80" : "#666" }}
+                />
+                <span className="text-white">({isOnline ? "Online" : "Offline"})</span>
+              </span>
+              <span>Now, {time}</span>
+            </div>
 
-              <p className="text-[#aaa] text-base leading-relaxed">
-                Co-CEO at <a href="https://steadrise.org" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">SteadRise</a>.
-                <br />
-                Co-Founder of <a href="https://secureaifutureslab.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">Secure AI Futures Lab</a>.
-                <br />
-                <br />
-                7+ years identifying and placing exceptional researchers
-                and engineers at organizations working on the world&apos;s hardest
-                problems - from UK AISI to FAR.AI and Apollo Research.
-              </p>
+            <p className="text-[#aaa] text-base leading-relaxed">
+              Co-CEO at <a href="https://steadrise.org" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">SteadRise</a>.
+              <br />
+              Co-Founder of <a href="https://secureaifutureslab.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">Secure AI Futures Lab</a>.
+              <br />
+              <br />
+              7+ years identifying and placing exceptional researchers
+              and engineers at organizations working on the world&apos;s hardest
+              problems - from UK AISI to FAR.AI and Apollo Research.
+            </p>
 
-              <div className="flex flex-wrap gap-3 mt-2">
-                <a
-                  href="/contact"
-                  className="flex items-center gap-2 px-5 py-2.5 border text-sm text-white hover:bg-white hover:text-[#141414] transition-all duration-300"
-                  style={{ borderColor: "#444", borderRadius: "2px" }}
-                >
-                  <span className="text-xs">&#x21a6;</span>
-                  I am looking to hire!
-                </a>
+            <div className="flex flex-wrap gap-3 mt-2">
+              <a
+                href="/contact"
+                className="flex items-center gap-2 px-5 py-2.5 border text-sm text-white hover:bg-white hover:text-[#141414] transition-all duration-300"
+                style={{ borderColor: "#444", borderRadius: "2px" }}
+              >
+                <span className="text-xs">&#x21a6;</span>
+                I am looking to hire!
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ──────────── PROJECT ACCORDION CAROUSEL ──────────── */}
+      <section className="px-6 pb-16 lg:pb-24">
+        <div className="max-w-[90%] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-0 rounded-xl overflow-hidden" style={{ backgroundColor: "#1a1a1a" }}>
+            {/* Left: accordion selector */}
+            <div className="flex flex-col">
+              {carouselProjects.map((p, i) => {
+                const isSelected = selectedProjectIdx === i;
+                return (
+                  <div
+                    key={p.slug}
+                    className="border-b last:border-b-0"
+                    style={{ borderColor: "#2a2a2a" }}
+                  >
+                    <button
+                      onClick={() => setSelectedProjectIdx(i)}
+                      className="w-full flex items-start justify-between px-8 py-5 text-left group transition-colors duration-200"
+                      style={{ backgroundColor: isSelected ? "#222" : "transparent" }}
+                    >
+                      <div className="flex-1 pr-4">
+                        <span
+                          className="text-base leading-snug block"
+                          style={{
+                            fontFamily: FONT,
+                            color: isSelected ? "#fff" : "#999",
+                            transition: "color 0.2s",
+                          }}
+                        >
+                          {p.cardTitle}
+                        </span>
+                        <div
+                          className="overflow-hidden transition-all duration-300"
+                          style={{
+                            maxHeight: isSelected ? "200px" : "0",
+                            opacity: isSelected ? 1 : 0,
+                          }}
+                        >
+                          <p className="text-[#888] text-sm leading-relaxed mt-3">
+                            {p.cardDescription}
+                          </p>
+                          <Link
+                            href={`/work/${p.slug}`}
+                            className="inline-flex items-center gap-2 text-sm text-[#4ade80] mt-3 hover:gap-3 transition-all duration-300"
+                          >
+                            View Project &rarr;
+                          </Link>
+                        </div>
+                      </div>
+                      <span
+                        className="text-xl mt-0.5 flex-shrink-0 transition-transform duration-300"
+                        style={{
+                          color: isSelected ? "#fff" : "#555",
+                          transform: isSelected ? "rotate(45deg)" : "rotate(0deg)",
+                        }}
+                      >
+                        +
+                      </span>
+                    </button>
+                  </div>
+                );
+              })}
+              {/* View all row */}
+              <div style={{ borderColor: "#2a2a2a" }}>
                 <Link
                   href="/works"
-                  className="flex items-center gap-2 px-5 py-2.5 border text-sm text-white hover:bg-white hover:text-[#141414] transition-all duration-300"
-                  style={{ borderColor: "#444", borderRadius: "2px" }}
+                  className="w-full flex items-center justify-between px-8 py-5 text-left group transition-colors duration-200 hover:bg-[#222]"
                 >
-                  <span className="text-xs">&#x21a6;</span>
-                  View All Projects
+                  <span className="text-sm text-[#4ade80]" style={{ fontFamily: FONT }}>
+                    View All Projects &rarr;
+                  </span>
                 </Link>
               </div>
             </div>
 
-            {/* Right: project cards carousel */}
-            <div className="relative">
-              {/* Carousel track */}
-              <div className="overflow-hidden">
-                <div
-                  className="flex transition-transform duration-500 ease-out"
-                  style={{ transform: `translateX(-${carouselIdx * (100 / visibleCount)}%)` }}
-                >
-                  {carouselProjects.map((p) => (
-                    <div
-                      key={p.slug}
-                      className="flex-shrink-0 px-2.5"
-                      style={{ width: `${100 / visibleCount}%` }}
-                    >
-                      <Link
-                        href={`/work/${p.slug}`}
-                        className="group block rounded-md overflow-hidden"
-                        style={{ backgroundColor: "#1e1e1e" }}
-                      >
-                        <div
-                          className="w-full aspect-[4/3] relative overflow-hidden"
-                          style={{ background: p.cardGradient }}
-                        >
-                          {p.cardImage?.length ? (
-                            <img
-                              src={p.cardImage[0]}
-                              alt={p.name}
-                              className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                            />
-                          ) : (
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <div className="text-center space-y-3">
-                                <div className="text-4xl font-bold text-white/20">
-                                  {p.cardStat}
-                                </div>
-                                <div className="text-xs text-white/30 tracking-widest uppercase">
-                                  {p.cardStatLabel}
-                                </div>
-                                <div className="flex gap-2 justify-center mt-2">
-                                  <div
-                                    className="w-2 h-2 rounded-full"
-                                    style={{ backgroundColor: `${p.cardAccent}66` }}
-                                  />
-                                  <div
-                                    className="w-2 h-2 rounded-full"
-                                    style={{ backgroundColor: `${p.cardAccent}40` }}
-                                  />
-                                  <div
-                                    className="w-2 h-2 rounded-full"
-                                    style={{ backgroundColor: `${p.cardAccent}26` }}
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                        <div className="p-5 space-y-3">
-                          <h3
-                            className="text-white text-lg leading-snug font-medium"
-                            style={{ fontFamily: FONT }}
-                          >
-                            {p.cardTitle}
-                          </h3>
-                          <p className="text-[#888] text-sm leading-relaxed">
-                            {p.cardDescription}
-                          </p>
-                          <span className="inline-flex items-center gap-2 text-sm text-white mt-2 group-hover:gap-3 transition-all duration-300">
-                            <span className="text-xs">&#x21a6;</span>
-                            View Project
-                          </span>
-                        </div>
-                      </Link>
-                    </div>
-                  ))}
-                  {/* "View more" meta slide */}
-                  <div
-                    className="flex-shrink-0 px-2.5"
-                    style={{ width: `${100 / visibleCount}%` }}
-                  >
-                    <Link
-                      href="/works"
-                      className="group block rounded-md overflow-hidden h-full"
-                      style={{ backgroundColor: "#1e1e1e" }}
-                    >
-                      <div
-                        className="w-full aspect-[4/3] relative overflow-hidden flex items-center justify-center"
-                        style={{ background: "linear-gradient(135deg, #1a1a1a 0%, #222 50%, #1a1a1a 100%)" }}
-                      >
-                        <div className="text-center space-y-4">
-                          <div className="text-xs text-white/30 tracking-widest uppercase">
-                            Many More projects
-                          </div>
-                        </div>
-                      </div>
-                      <div className="p-5 space-y-3">
-                        <h3
-                          className="text-white text-lg leading-snug font-medium"
-                          style={{ fontFamily: FONT }}
-                        >
-                          View All Work
-                        </h3>
-                        <p className="text-[#888] text-sm leading-relaxed">
-                          Browse the full portfolio of projects, tools, and initiatives.
-                        </p>
-                        <span className="inline-flex items-center gap-2 text-sm text-[#4ade80] mt-2 group-hover:gap-3 transition-all duration-300">
-                          View All Projects &rarr;
-                        </span>
-                      </div>
-                    </Link>
+            {/* Right: project image */}
+            <div
+              className="relative flex items-center justify-center p-8 lg:p-12 min-h-[300px] lg:min-h-[500px]"
+              style={{
+                background: carouselProjects[selectedProjectIdx]?.cardGradient || "#1e1e1e",
+                transition: "background 0.5s ease",
+              }}
+            >
+              {carouselProjects[selectedProjectIdx]?.cardImage?.length ? (
+                <img
+                  key={selectedProjectIdx}
+                  src={carouselProjects[selectedProjectIdx].cardImage![0]}
+                  alt={carouselProjects[selectedProjectIdx].name}
+                  className="max-w-full max-h-full object-contain animate-[fadeIn_0.4s_ease]"
+                />
+              ) : (
+                <div className="text-center space-y-3 animate-[fadeIn_0.4s_ease]" key={selectedProjectIdx}>
+                  <div className="text-5xl font-bold text-white/20">
+                    {carouselProjects[selectedProjectIdx]?.cardStat}
+                  </div>
+                  <div className="text-xs text-white/30 tracking-widest uppercase">
+                    {carouselProjects[selectedProjectIdx]?.cardStatLabel}
+                  </div>
+                  <div className="flex gap-2 justify-center mt-3">
+                    <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: `${carouselProjects[selectedProjectIdx]?.cardAccent}66` }} />
+                    <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: `${carouselProjects[selectedProjectIdx]?.cardAccent}40` }} />
+                    <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: `${carouselProjects[selectedProjectIdx]?.cardAccent}26` }} />
                   </div>
                 </div>
-              </div>
-
-              {/* Carousel controls */}
-              <div className="flex items-center justify-between mt-5">
-                <div className="flex gap-1.5">
-                  {Array.from({ length: totalSlides - visibleCount + 1 }).map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setCarouselIdx(i)}
-                      className="relative overflow-hidden [&::before]:!hidden"
-                      style={{
-                        width: carouselIdx === i ? 24 : 8,
-                        height: 8,
-                        borderRadius: 4,
-                        backgroundColor:
-                          carouselIdx === i ? "#fff" : "#444",
-                        transition: "all 0.3s",
-                      }}
-                      aria-label={`Go to slide ${i + 1}`}
-                    />
-                  ))}
-                </div>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() =>
-                      setCarouselIdx(Math.max(0, carouselIdx - 1))
-                    }
-                    className="w-9 h-9 flex items-center justify-center border text-[#999] hover:text-white hover:border-[#666] transition-colors duration-300"
-                    style={{ borderColor: "#333", borderRadius: "2px" }}
-                    disabled={carouselIdx === 0}
-                    aria-label="Previous"
-                  >
-                    <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path d="M15 18l-6-6 6-6" />
-                    </svg>
-                  </button>
-                  <button
-                    onClick={() =>
-                      setCarouselIdx(
-                        Math.min(totalSlides - visibleCount, carouselIdx + 1)
-                      )
-                    }
-                    className="w-9 h-9 flex items-center justify-center border text-[#999] hover:text-white hover:border-[#666] transition-colors duration-300"
-                    style={{ borderColor: "#333", borderRadius: "2px" }}
-                    disabled={carouselIdx >= totalSlides - visibleCount}
-                    aria-label="Next"
-                  >
-                    <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path d="M9 18l6-6-6-6" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* ──────────── SEPARATOR ──────────── */}
       <div className="w-full border-t" style={{ borderColor: "#222" }} />
