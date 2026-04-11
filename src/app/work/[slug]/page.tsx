@@ -48,7 +48,7 @@ export default async function WorkPage({
           </Link>
 
           {/* Two-column hero: right-aligned content */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 lg:gap-16">
             {/* Left: visual */}
             <ImageCarousel
               images={project.cardImage}
@@ -131,7 +131,7 @@ export default async function WorkPage({
 
       {/* ──────── BEFORE / AFTER ──────── */}
       <section className="px-6 py-20 lg:py-28">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24">
           {/* Before */}
           <div>
             <div

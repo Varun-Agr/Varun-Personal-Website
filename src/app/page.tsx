@@ -7,13 +7,13 @@ import Navbar from "./components/Navbar";
 
 const CAROUSEL_SLUGS = [
   "talent-graph-engine",
-  "talent-index-jd-fingerprinting",
-  "india-ai-report",
-  "ml-research-talent-map",
-  "ai-candidate-screening-pipeline",
   "big-tech-layoff-monitor",
+  // "talent-index-jd-fingerprinting",
   "measuremint",
-  "recruiting-data-infrastructure",
+  "india-ai-report",
+  // "ml-research-talent-map",
+  "ai-candidate-screening-pipeline",
+  // "recruiting-data-infrastructure",
 ];
 
 /* ─────────────────────────── helpers ─────────────────────────── */
@@ -247,7 +247,7 @@ export default function ClonePage() {
       <section className="px-6 pt-12 lg:pt-16" id="work">
         <div className="max-w-[90%] mx-auto">
           <h1
-            className="text-[clamp(1.8rem,4.5vw,3.2rem)] leading-[1.15] tracking-[-0.02em] text-white max-w-[75%] mb-0 font-medium"
+            className="text-[clamp(1.8rem,4.5vw,3.2rem)] leading-[1.15] tracking-[-0.02em] text-white max-w-full lg:max-w-[75%] mb-0 font-medium"
             style={{ fontFamily: FONT }}
           >
             {/*Technical Recruiter <span className="text-[#555]">&</span> AI Governance Builder sourcing top 1% STEM talent for frontier AI labs*/}
@@ -279,7 +279,7 @@ export default function ClonePage() {
               Co-Founder of <a href="https://secureaifutureslab.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">Secure AI Futures Lab</a>.
               <br />
               <br />
-              7+ years sourcing and placing researchers and engineers
+              8+ years sourcing and placing researchers and engineers
               across AI, ML, and deep-tech — including UK AISI, FAR.AI,
               and Apollo Research.
             </p>
@@ -291,7 +291,7 @@ export default function ClonePage() {
                 style={{ borderColor: "#444", borderRadius: "2px" }}
               >
                 <span className="text-xs">&#x21a6;</span>
-                I am looking to hire!
+                Let's Talk!
               </a>
             </div>
           </div>
@@ -320,7 +320,7 @@ export default function ClonePage() {
                   >
                     <button
                       onClick={() => setSelectedProjectIdx(i)}
-                      className="w-full flex items-start justify-between px-8 py-5 text-left group transition-colors duration-200"
+                      className="w-full flex items-start justify-between px-4 sm:px-8 py-4 sm:py-5 text-left group transition-colors duration-200"
                       style={{ backgroundColor: isSelected ? "#222" : "transparent" }}
                     >
                       <div className="flex-1 pr-4">
@@ -369,7 +369,7 @@ export default function ClonePage() {
               <div style={{ borderColor: "#2a2a2a" }}>
                 <Link
                   href="/works"
-                  className="w-full flex items-center justify-between px-8 py-5 text-left group transition-colors duration-200 hover:bg-[#222]"
+                  className="w-full flex items-center justify-between px-4 sm:px-8 py-4 sm:py-5 text-left group transition-colors duration-200 hover:bg-[#222]"
                 >
                   <span className="text-sm text-[#4ade80]" style={{ fontFamily: FONT }}>
                     View All Projects &rarr;
@@ -380,7 +380,7 @@ export default function ClonePage() {
 
             {/* Right: project image */}
             <div
-              className="relative flex items-center justify-center p-8 lg:p-12 min-h-[300px] lg:min-h-[500px]"
+              className="relative flex items-center justify-center p-6 sm:p-8 lg:p-12 min-h-[200px] sm:min-h-[300px] lg:min-h-[500px]"
               style={{
                 background: carouselProjects[selectedProjectIdx]?.cardGradient || "#1e1e1e",
                 transition: "background 0.5s ease",
@@ -395,7 +395,7 @@ export default function ClonePage() {
                 />
               ) : (
                 <div className="text-center space-y-3 animate-[fadeIn_0.4s_ease]" key={selectedProjectIdx}>
-                  <div className="text-5xl font-bold text-white/20">
+                  <div className="text-3xl sm:text-5xl font-bold text-white/20">
                     {carouselProjects[selectedProjectIdx]?.cardStat}
                   </div>
                   <div className="text-xs text-white/30 tracking-widest uppercase">
@@ -444,7 +444,7 @@ export default function ClonePage() {
 
       {/* ──────────── APPROACH ──────────── */}
       <section className="px-6 py-20 lg:py-28" id="approach">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24">
           {/* Left: text */}
           <div
             ref={approachLeft.ref}
@@ -469,14 +469,14 @@ export default function ClonePage() {
             
             
             
-            <a
+            {/*<a
               href="#"
               className="inline-flex items-center gap-2 px-5 py-2.5 border text-sm text-white hover:bg-white hover:text-[#141414] transition-all duration-300 mt-2"
               style={{ borderColor: "#444", borderRadius: "2px" }}
             >
               <span className="/work">&#x21a6;</span>
               View Projects
-            </a>
+            </a>*/}
           </div>
 
           {/* Right: accordion */}
@@ -642,7 +642,7 @@ export default function ClonePage() {
       {/* ──────────── LOGO WALL ──────────── */}
       <section className="px-6 py-16 lg:py-24">
         <div className="max-w-[1400px] mx-auto">
-          <p className="text-sm text-[#666] tracking-[0.15em] uppercase text-center mb-10">Worked with teams at</p>
+          <p className="text-sm text-[#666] tracking-[0.15em] uppercase text-center mb-10">Some of my Collaborators</p>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center">
             {currentLogos.map((logo) => (
               <div
@@ -710,9 +710,8 @@ export default function ClonePage() {
 
           {/* Right: location */}
           <div className="text-sm text-[#888] lg:text-right space-y-1">
-            <p>Based in Bengaluru,</p>
-            <p>India</p>
-            <p className="text-[#666] mt-2">12.96&deg; N, 77.57&deg; E</p>
+            <p>Based in India</p>
+            <p className="text-[#666] mt-2 hidden md:block">12.96&deg; N, 77.57&deg; E</p>
           </div>
         </div>
 

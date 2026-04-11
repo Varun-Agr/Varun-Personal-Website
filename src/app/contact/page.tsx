@@ -182,7 +182,7 @@ export default function ContactPage() {
             Back to Home
           </Link>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24">
             {/* Left: heading + info */}
             <div>
               <h1
@@ -223,8 +223,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="uppercase tracking-[0.15em] text-xs mb-2" style={{ color: C.textDim }}>Location</p>
-                  <p style={{ color: C.textMuted }}>Bengaluru, India</p>
-                  <p className="mt-1" style={{ color: C.textDim }}>12.96&deg; N, 77.57&deg; E</p>
+                  <p style={{ color: C.textMuted }}>India</p>
+                  <p className="mt-1 hidden md:block" style={{ color: C.textDim }}>12.96&deg; N, 77.57&deg; E</p>
                 </div>
                 <div>
                   <p className="uppercase tracking-[0.15em] text-xs mb-2" style={{ color: C.textDim }}>Status</p>
@@ -633,9 +633,8 @@ export default function ContactPage() {
             </div>
           </div>
           <div className="text-sm lg:text-right space-y-1" style={{ color: C.textMuted }}>
-            <p>Based in Bengaluru,</p>
-            <p>India</p>
-            <p className="mt-2" style={{ color: C.textDim }}>12.96&deg; N, 77.57&deg; E</p>
+            <p>Based in India</p>
+            <p className="mt-2 hidden md:block" style={{ color: C.textDim }}>12.96&deg; N, 77.57&deg; E</p>
           </div>
         </div>
 

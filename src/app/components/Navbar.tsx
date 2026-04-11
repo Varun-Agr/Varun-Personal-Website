@@ -62,7 +62,7 @@ export default function Navbar({ activePage }: { activePage?: "work" | "approach
               className="px-3 py-1 transition-colors duration-300"
               style={{ color: linkColor("work") }}
             >
-              Work
+              Projects
             </Link>
             <span aria-hidden="true" style={{ color: scrolled ? "#ccc" : C.textDim }}>|</span>
             <Link
@@ -75,53 +75,32 @@ export default function Navbar({ activePage }: { activePage?: "work" | "approach
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <div className="hidden md:block relative group">
-            <Link
-              href="/contact"
-              className="flex items-center gap-2 px-5 py-2.5 border text-sm transition-all duration-500"
-              style={{
-                borderColor: scrolled ? C.accentMuted : C.borderLight,
-                borderRadius: scrolled ? "8px" : "2px",
-                color: scrolled ? C.bg : C.accent,
-              }}
-            >
-              Contact
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="mt-px">
-                <path d="M2.5 4L5 6.5L7.5 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
-            <div
-              className="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
-              style={{ minWidth: "160px" }}
-            >
-              <div
-                className="rounded-lg py-2 shadow-lg border"
-                style={{
-                  backgroundColor: scrolled ? "rgba(255, 255, 255, 0.98)" : C.bgElevated,
-                  borderColor: scrolled ? "#e5e5e5" : C.border,
-                }}
-              >
-                <Link
-                  href="/contact#companies"
-                  className="block px-4 py-2 text-sm transition-colors duration-200"
-                  style={{ color: scrolled ? C.textDim : C.textMuted }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = scrolled ? C.bg : C.accent}
-                  onMouseLeave={(e) => e.currentTarget.style.color = scrolled ? C.textDim : C.textMuted}
-                >
-                  For Organisations
-                </Link>
-                <Link
-                  href="/contact#talent"
-                  className="block px-4 py-2 text-sm transition-colors duration-200"
-                  style={{ color: scrolled ? C.textDim : C.textMuted }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = scrolled ? C.bg : C.accent}
-                  onMouseLeave={(e) => e.currentTarget.style.color = scrolled ? C.textDim : C.textMuted}
-                >
-                  For Talent
-                </Link>
-              </div>
-            </div>
-          </div>
+          <Link
+            href="/contact#companies"
+            className="hidden md:flex items-center gap-2 px-5 py-2.5 border text-sm transition-all duration-300"
+            style={{
+              borderColor: scrolled ? C.accentMuted : C.borderLight,
+              borderRadius: scrolled ? "8px" : "2px",
+              color: scrolled ? C.bg : C.accent,
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = C.accent; e.currentTarget.style.borderColor = C.accent; e.currentTarget.style.color = scrolled ? "#fff" : C.bg; }}
+            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = ""; e.currentTarget.style.borderColor = scrolled ? C.accentMuted : C.borderLight; e.currentTarget.style.color = scrolled ? C.bg : C.accent; }}
+          >
+            For Organisations
+          </Link>
+          <Link
+            href="/contact#talent"
+            className="hidden md:flex items-center gap-2 px-5 py-2.5 border text-sm transition-all duration-300"
+            style={{
+              borderColor: scrolled ? C.accentMuted : C.borderLight,
+              borderRadius: scrolled ? "8px" : "2px",
+              color: scrolled ? C.bg : C.accent,
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = C.accent; e.currentTarget.style.borderColor = C.accent; e.currentTarget.style.color = scrolled ? "#fff" : C.bg; }}
+            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = ""; e.currentTarget.style.borderColor = scrolled ? C.accentMuted : C.borderLight; e.currentTarget.style.color = scrolled ? C.bg : C.accent; }}
+          >
+            For Talent
+          </Link>
           {/* Hamburger — mobile only */}
           <button
             className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px]"
