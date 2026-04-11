@@ -258,7 +258,7 @@ export default function ClonePage() {
               {/*Technical Recruiter <span className="text-[#555]">&</span> AI Governance Builder sourcing top 1% STEM talent for frontier AI labs*/}
               {/*I place ML and engineering talent at the frontier labs working on the hardest problems.*/}
               {/*I build talent pipelines and recruitment infra for frontier AI teams - helping them source the researchers, engineers, and generalists tackling the field's hardest problems.*/}
-              I build talent pipelines and recruiting tools for leading AI organisations — helping them source the researchers, engineers, and generalists tackling challenging and consequential problems.
+              I build talent pipelines and recruiting tools for leading AI organisations — helping them hire the top 1% researchers, engineers, and generalists tackling challenging and consequential problems.
             </h1>
           </div>
         </section>
