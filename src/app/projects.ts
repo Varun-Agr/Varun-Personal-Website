@@ -24,7 +24,7 @@ export const projects: Project[] = [
     cardImage: ["/images/work/dh1.png"],
     cardTitle: "Measuremint - AI-Powered Talent Intelligence Platform",
     cardDescription:
-      "Voice-first career agent for high-volume markets. ElevenLabs + Claude for AI interviews, semantic matching via pgvector. Solves sourcing and AI-driven talent identification at scale.",
+      "Voice-first career agent for high-volume markets. ElevenLabs + Claude for AI interviews and semantic similarity for matching. Solves sourcing and AI-driven talent identification at scale.",
     cardStat: "10K+",
     cardStatLabel: "Candidates processed",
     cardGradient:
@@ -84,7 +84,7 @@ export const projects: Project[] = [
     cardImage: ["/images/work/jd1.png"],
     cardTitle: "Weighted Talent Index & JD Fingerprinting",
     cardDescription:
-      "JD fingerprinting tool that analyses job descriptions across 10 skill dimensions, creating a shared quantitative language for AI talent evaluation across 13 labs.",
+      "A data science project that analyses 106 job descriptions across 10 skill dimensions to build a unified view of how different roles compare — improving how we calibrate candidates against actual market demand.",
     cardStat: "106",
     cardStatLabel: "JDs fingerprinted",
     cardGradient:
@@ -94,15 +94,15 @@ export const projects: Project[] = [
     before: {
       headline: "106 Job Descriptions, No Common Language",
       body: [
-        "Every AI lab writes job descriptions differently. Anthropic emphasises alignment instincts. UK AISI foregrounds policy-aware engineering. Goodfire looks for mechanistic interpretability depth. Comparing roles across these labs meant reading each JD manually, guessing at what skills actually mattered, and hoping your intuition held.",
-        "Without a shared vocabulary, talent teams couldn\u2019t benchmark roles, candidates couldn\u2019t compare opportunities, and hiring managers couldn\u2019t articulate what \u2018senior\u2019 meant in their specific context.",
+        "Every organisation writes job descriptions differently. One emphasises alignment instincts, another foregrounds policy-aware engineering, a third looks for mechanistic interpretability depth. Comparing roles across these teams meant reading each JD manually, guessing at what skills actually mattered, and hoping your intuition held.",
+        "Without a shared framework, we couldn\u2019t benchmark roles against each other or calibrate what \u2018senior\u2019 meant across different contexts. Skill evaluation was subjective and inconsistent.",
       ],
     },
     after: {
-      headline: "Weighted Scoring Brings Order to a Fragmented Landscape",
+      headline: "A Unified View of Roles That Improved Calibration",
       body: [
-        "Engineered a weighted Talent Index scoring framework. Built a JD fingerprinting tool that analyses job descriptions across 10 skill dimensions\u2014creating a shared, quantitative language for AI talent evaluation.",
-        "106 job descriptions across 13 organisations were processed, fingerprinted, and clustered. Hiring managers can now see exactly how their role compares to the market. Candidates can map their skills against real demand. And recruiters finally have a compass instead of a guess.",
+        "Engineered a weighted Talent Index scoring framework and a JD fingerprinting tool that breaks job descriptions into 10 skill dimensions. 106 JDs across 13 organisations were processed, fingerprinted, and clustered.",
+        "This gave us a much more unified view of how roles compare across different teams and organisations, which directly improved how we calibrate any given candidate\u2019s skills objectively for different types of positions. Instead of subjective reads on individual JDs, we had a structured baseline to evaluate against.",
       ],
     },
   },

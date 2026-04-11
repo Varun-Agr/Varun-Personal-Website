@@ -253,7 +253,7 @@ export default function ClonePage() {
             {/*Technical Recruiter <span className="text-[#555]">&</span> AI Governance Builder sourcing top 1% STEM talent for frontier AI labs*/}
             {/*I place ML and engineering talent at the frontier labs working on the hardest problems.*/}
             {/*I build talent pipelines and recruitment infra for frontier AI teams - helping them source the researchers, engineers, and generalists tackling the field's hardest problems.*/}
-            I build talent pipelines and recruiting tools for AI and deep-tech teams — helping them find and hire the researchers, engineers, and generalists they actually need.
+            I build talent pipelines and recruiting tools for leading AI organisations — helping them source the researchers, engineers, and generalists tackling challenging and consequential problems.
           </h1>
         </div>
       </section>
@@ -455,17 +455,20 @@ export default function ClonePage() {
             }}
           >
             <p className="text-[#aaa] text-base leading-relaxed">
-              I source researchers and engineers for teams working in
-              AI, ML, deep-tech, and governance. Start with the talent map,
-              build the pipeline, calibrate the bar, close the offer.
+              I find top researchers, engineers for world class AI organizations working on some of the most important problems
+              — building reliable AI systems, ensuring their  security, and thereby empowering people and companies to achieve more.
+              Start with the talent map, build the pipeline, calibrate the bar, close the offer.
             </p>
             <p className="text-[#aaa] text-base leading-relaxed">
-              The work spans technical recruiting, data-driven sourcing,
-              and building the tools that make all of it scale — from
-              50K-profile talent maps to LLM-assisted candidate triage.
-              If it involves getting the right people into the right seats,
-              I&apos;ve probably built infrastructure for it.
+              The work spans data-driven sourcing, RecOps infrastructure,
+              and building the tools that tie it together — 50K-profile
+              talent maps, LLM-assisted candidate triage, JD fingerprinting.
+              Most of my time goes into making recruiting pipelines
+              more systematic and less manual.
             </p>
+            
+            
+            
             <a
               href="#"
               className="inline-flex items-center gap-2 px-5 py-2.5 border text-sm text-white hover:bg-white hover:text-[#141414] transition-all duration-300 mt-2"

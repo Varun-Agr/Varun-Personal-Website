@@ -74,8 +74,7 @@ export default function WorksPage() {
             All Projects
           </h1>
           <p className="text-[#888] text-base max-w-[600px]">
-            A collection of projects spanning AI talent infrastructure,
-            governance research, and technical recruiting systems.
+            AI talent mapping, sourcing pipelines, tooling for recruiting operations and reports tracking AI developments.
           </p>
         </div>
       </section>
