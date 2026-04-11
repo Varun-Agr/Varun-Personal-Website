@@ -94,7 +94,7 @@ export default function Navbar({ activePage }: { activePage?: "work" | "approach
             onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = C.accent; e.currentTarget.style.borderColor = C.accent; e.currentTarget.style.color = scrolled ? "#fff" : C.bg; }}
             onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = ""; e.currentTarget.style.borderColor = scrolled ? C.accentMuted : C.borderLight; e.currentTarget.style.color = scrolled ? C.bg : C.accent; }}
           >
-            For Organisations
+            Hire Through Me
           </Link>
           <Link
             href="/contact#talent"
@@ -107,7 +107,7 @@ export default function Navbar({ activePage }: { activePage?: "work" | "approach
             onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = C.accent; e.currentTarget.style.borderColor = C.accent; e.currentTarget.style.color = scrolled ? "#fff" : C.bg; }}
             onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = ""; e.currentTarget.style.borderColor = scrolled ? C.accentMuted : C.borderLight; e.currentTarget.style.color = scrolled ? C.bg : C.accent; }}
           >
-            For Talent
+            Get Placed
           </Link>
           {/* Hamburger — mobile only */}
           <button

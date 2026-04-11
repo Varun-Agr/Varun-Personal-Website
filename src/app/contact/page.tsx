@@ -255,7 +255,7 @@ export default function ContactPage() {
                     borderBottom: activeTab === "companies" ? `2px solid ${C.accent}` : "2px solid transparent",
                   }}
                 >
-                  For Companies
+                  For Organisations
                 </button>
                 <button
                   onClick={() => { setActiveTab("talent"); setStatus("idle"); }}
@@ -265,7 +265,7 @@ export default function ContactPage() {
                     borderBottom: activeTab === "talent" ? `2px solid ${C.accent}` : "2px solid transparent",
                   }}
                 >
-                  For Talent
+                  For Candidates
                 </button>
               </div>
 
