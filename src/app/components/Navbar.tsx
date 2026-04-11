@@ -17,7 +17,7 @@ function useScrolled(threshold = 80) {
   return scrolled;
 }
 
-export default function Navbar({ activePage }: { activePage?: "work" | "approach" | "contact" }) {
+export default function Navbar({ activePage }: { activePage?: "work" | "approach" | "contact" | "events" }) {
   const scrolled = useScrolled(80);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -71,6 +71,14 @@ export default function Navbar({ activePage }: { activePage?: "work" | "approach
               style={{ color: linkColor("approach") }}
             >
               Approach
+            </Link>
+            <span aria-hidden="true" style={{ color: scrolled ? "#ccc" : C.textDim }}>|</span>
+            <Link
+              href="/events"
+              className="px-3 py-1 transition-colors duration-300"
+              style={{ color: linkColor("events") }}
+            >
+              Events
             </Link>
           </div>
         </div>
@@ -158,6 +166,14 @@ export default function Navbar({ activePage }: { activePage?: "work" | "approach
             onClick={() => setMenuOpen(false)}
           >
             Approach
+          </Link>
+          <Link
+            href="/events"
+            className="text-sm py-2 transition-colors duration-300"
+            style={{ color: linkColor("events") }}
+            onClick={() => setMenuOpen(false)}
+          >
+            Events
           </Link>
           <span
             className="text-xs uppercase tracking-[0.15em] pt-2"
