@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { projects } from "./projects";
 import Navbar from "./components/Navbar";
+import NetworkBackground from "./components/NetworkBackground";
 
 const CAROUSEL_SLUGS = [
   "talent-graph-engine",
@@ -243,60 +244,65 @@ export default function ClonePage() {
 
       <Navbar />
 
-      {/* ──────────── HERO (headline) ──────────── */}
-      <section className="px-6 pt-12 lg:pt-16" id="work">
-        <div className="max-w-[90%] mx-auto">
-          <h1
-            className="text-[clamp(1.8rem,4.5vw,3.2rem)] leading-[1.15] tracking-[-0.02em] text-white max-w-full lg:max-w-[75%] mb-0 font-medium"
-            style={{ fontFamily: FONT }}
-          >
-            {/*Technical Recruiter <span className="text-[#555]">&</span> AI Governance Builder sourcing top 1% STEM talent for frontier AI labs*/}
-            {/*I place ML and engineering talent at the frontier labs working on the hardest problems.*/}
-            {/*I build talent pipelines and recruitment infra for frontier AI teams - helping them source the researchers, engineers, and generalists tackling the field's hardest problems.*/}
-            I build talent pipelines and recruiting tools for leading AI organisations — helping them source the researchers, engineers, and generalists tackling challenging and consequential problems.
-          </h1>
-        </div>
-      </section>
+      {/* ──────────── HERO + BIO with network underlay ──────────── */}
+      <div className="relative overflow-hidden">
+        <NetworkBackground />
 
-      {/* ──────────── BIO + STATUS ──────────── */}
-      <section className="px-6 py-12 lg:py-16">
-        <div className="max-w-[90%] mx-auto">
-          <div className="flex flex-col gap-6 max-w-[600px] ml-auto">
-            <div className="flex items-center gap-3 text-sm text-[#999]">
-              <span className="flex items-center gap-1.5">
-                <span
-                  className="inline-block w-2 h-2 rounded-full"
-                  style={{ backgroundColor: isOnline ? "#4ade80" : "#666" }}
-                />
-                <span className="text-white">({isOnline ? "Online" : "Offline"})</span>
-              </span>
-              <span>Now, {time}</span>
-            </div>
+        {/* Hero headline */}
+        <section className="px-6 pt-16 pb-12 lg:pt-24 lg:pb-16 relative z-10" id="work">
+          <div className="max-w-[90%] mx-auto">
+            <h1
+              className="text-[clamp(1.8rem,4.5vw,3.2rem)] leading-[1.15] tracking-[-0.02em] text-white max-w-full lg:max-w-[75%] mb-0 font-medium"
+              style={{ fontFamily: FONT }}
+            >
+              {/*Technical Recruiter <span className="text-[#555]">&</span> AI Governance Builder sourcing top 1% STEM talent for frontier AI labs*/}
+              {/*I place ML and engineering talent at the frontier labs working on the hardest problems.*/}
+              {/*I build talent pipelines and recruitment infra for frontier AI teams - helping them source the researchers, engineers, and generalists tackling the field's hardest problems.*/}
+              I build talent pipelines and recruiting tools for leading AI organisations — helping them source the researchers, engineers, and generalists tackling challenging and consequential problems.
+            </h1>
+          </div>
+        </section>
 
-            <p className="text-[#aaa] text-base leading-relaxed">
-              Co-CEO at <a href="https://steadrise.org" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">SteadRise</a>.
-              <br />
-              Co-Founder of <a href="https://secureaifutureslab.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">Secure AI Futures Lab</a>.
-              <br />
-              <br />
-              8+ years sourcing and placing researchers and engineers
-              across AI, ML, and deep-tech — including UK AISI, FAR.AI,
-              and Apollo Research.
-            </p>
+        {/* Bio + status */}
+        <section className="px-6 py-12 lg:py-16 relative z-10">
+          <div className="max-w-[90%] mx-auto">
+            <div className="flex flex-col gap-6 max-w-[600px] ml-auto">
+              <div className="flex items-center gap-3 text-sm text-[#999]">
+                <span className="flex items-center gap-1.5">
+                  <span
+                    className="inline-block w-2 h-2 rounded-full"
+                    style={{ backgroundColor: isOnline ? "#4ade80" : "#666" }}
+                  />
+                  <span className="text-white">({isOnline ? "Online" : "Offline"})</span>
+                </span>
+                <span>Now, {time}</span>
+              </div>
 
-            <div className="flex flex-wrap gap-3 mt-2">
-              <a
-                href="/contact"
-                className="flex items-center gap-2 px-5 py-2.5 border text-sm text-white hover:bg-white hover:text-[#141414] transition-all duration-300"
-                style={{ borderColor: "#444", borderRadius: "2px" }}
-              >
-                <span className="text-xs">&#x21a6;</span>
-                Let's Talk!
-              </a>
+              <p className="text-[#aaa] text-base leading-relaxed">
+                Co-CEO at <a href="https://steadrise.org" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">SteadRise</a>.
+                <br />
+                Co-Founder of <a href="https://secureaifutureslab.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">Secure AI Futures Lab</a>.
+                <br />
+                <br />
+                8+ years sourcing and placing researchers and engineers
+                across AI, ML, and deep-tech — including UK AISI, FAR.AI,
+                and Apollo Research.
+              </p>
+
+              <div className="flex flex-wrap gap-3 mt-2">
+                <a
+                  href="/contact"
+                  className="flex items-center gap-2 px-5 py-2.5 border text-sm text-white hover:bg-white hover:text-[#141414] transition-all duration-300"
+                  style={{ borderColor: "#444", borderRadius: "2px" }}
+                >
+                  <span className="text-xs">&#x21a6;</span>
+                  Let's Talk!
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* ──────────── PROJECT ACCORDION CAROUSEL ──────────── */}
       <section className="px-6 pb-16 lg:pb-24">
@@ -640,10 +646,11 @@ export default function ClonePage() {
       <div className="w-full border-t" style={{ borderColor: "#222" }} />
 
       {/* ──────────── LOGO WALL ──────────── */}
-      <section className="px-6 py-16 lg:py-24">
-        <div className="max-w-[1400px] mx-auto">
+      <section className="py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto px-6">
           <p className="text-sm text-[#666] tracking-[0.15em] uppercase text-center mb-10">Some of my Collaborators</p>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center">
+          {/* Desktop: grid */}
+          <div className="hidden md:grid grid-cols-6 gap-8 items-center">
             {currentLogos.map((logo) => (
               <div
                 key={logo.name}
@@ -652,11 +659,33 @@ export default function ClonePage() {
                 <img
                   src={logo.icon}
                   alt={logo.name}
-                  className="max-h-14 md:max-h-16 max-w-[140px] md:max-w-[160px] w-auto h-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+                  className="max-h-16 max-w-[160px] w-auto h-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
                   style={{ filter: "brightness(0) invert(0.55)" }}
                 />
               </div>
             ))}
+          </div>
+          {/* Mobile: horizontal scroll carousel */}
+          <div className="md:hidden overflow-hidden">
+            <div
+              className="flex gap-8 items-center animate-[scrollLogos_15s_linear_infinite]"
+              style={{ width: "max-content" }}
+            >
+              {[...currentLogos, ...currentLogos].map((logo, i) => (
+                <div
+                  key={`${logo.name}-${i}`}
+                  className="flex items-center justify-center h-16 flex-shrink-0"
+                  style={{ minWidth: "100px" }}
+                >
+                  <img
+                    src={logo.icon}
+                    alt={logo.name}
+                    className="max-h-12 max-w-[100px] w-auto h-auto object-contain opacity-50"
+                    style={{ filter: "brightness(0) invert(0.55)" }}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -94,7 +94,7 @@ export default function Navbar({ activePage }: { activePage?: "work" | "approach
             onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = C.accent; e.currentTarget.style.borderColor = C.accent; e.currentTarget.style.color = scrolled ? "#fff" : C.bg; }}
             onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = ""; e.currentTarget.style.borderColor = scrolled ? C.accentMuted : C.borderLight; e.currentTarget.style.color = scrolled ? C.bg : C.accent; }}
           >
-            Hire Through Me
+            Fill A Role
           </Link>
           <Link
             href="/contact#talent"
@@ -175,27 +175,21 @@ export default function Navbar({ activePage }: { activePage?: "work" | "approach
           >
             Events
           </Link>
-          <span
-            className="text-xs uppercase tracking-[0.15em] pt-2"
-            style={{ color: C.textDim }}
-          >
-            Contact
-          </span>
           <Link
             href="/contact#companies"
-            className="text-sm py-2 pl-3 transition-colors duration-300"
+            className="text-sm py-2 transition-colors duration-300"
             style={{ color: linkColor("contact") }}
             onClick={() => setMenuOpen(false)}
           >
-            For Organisations
+            Hire Through Me
           </Link>
           <Link
             href="/contact#talent"
-            className="text-sm py-2 pl-3 transition-colors duration-300"
+            className="text-sm py-2 transition-colors duration-300"
             style={{ color: linkColor("contact") }}
             onClick={() => setMenuOpen(false)}
           >
-            For Talent
+            Get Placed
           </Link>
           <Link
             href="/works"
