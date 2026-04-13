@@ -8,10 +8,10 @@ import NetworkBackground from "./components/NetworkBackground";
 
 const CAROUSEL_SLUGS = [
   "ai-candidate-screening-pipeline",
+  "talent-index-jd-fingerprinting",
   "talent-graph-engine",
-  "measuremint",
+// "measuremint",
   "big-tech-layoff-monitor",
-  // "talent-index-jd-fingerprinting",
   "india-ai-report",
   // "ml-research-talent-map",
   // "recruiting-data-infrastructure",
