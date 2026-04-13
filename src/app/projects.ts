@@ -25,7 +25,7 @@ export const projects: Project[] = [
     cardTitle: "Measuremint - AI-Powered Talent Intelligence Platform",
     cardDescription:
       "Voice-first career agent for high-volume markets. ElevenLabs + Claude for AI interviews and semantic similarity for matching. Solves sourcing and AI-driven talent identification at scale.",
-    cardStat: "10K+",
+    cardStat: "10K+ candidates",
     cardStatLabel: "Candidates processed",
     cardGradient:
       "linear-gradient(135deg, #1a1a2a 0%, #1a1530 40%, #15102a 70%, #201a35 100%)",
@@ -56,7 +56,7 @@ export const projects: Project[] = [
     cardTitle: "ML Research Talent Map \u2014 50K Researcher Profiles",
     cardDescription:
       "Scraped and structured 50,000 ML researcher profiles from 5 years of ICLR, ICML, and CVPR proceedings. Searchable by research area via vector embeddings.",
-    cardStat: "50K",
+    cardStat: "50K profiles",
     cardStatLabel: "Researcher profiles",
     cardGradient:
       "linear-gradient(135deg, #0d1a2a 0%, #0a1525 40%, #121f30 70%, #0d1520 100%)",
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     cardTitle: "Weighted Talent Index & JD Fingerprinting",
     cardDescription:
       "A data science project that analyses 106 job descriptions across 10 skill dimensions to build a unified view of how different roles compare — improving how we calibrate candidates against actual market demand.",
-    cardStat: "106",
+    cardStat: "106 JDs fingerprinted",
     cardStatLabel: "JDs fingerprinted",
     cardGradient:
       "linear-gradient(135deg, #1a2520 0%, #0d201a 40%, #152520 70%, #1a201a 100%)",
@@ -114,7 +114,7 @@ export const projects: Project[] = [
     cardTitle: "AI Candidate Screening — Signal-Based Evaluation at Scale",
     cardDescription:
       "Automated two-stage screening pipeline: Claude evaluates candidates against configurable binary signals, then deterministic tier logic shortlists the top performers.",
-    cardStat: "50%",
+    cardStat: "50% cost savings",
     cardStatLabel: "Cost savings via batching",
     cardGradient:
       "linear-gradient(135deg, #1a1520 0%, #201525 40%, #1a1028 70%, #251a30 100%)",
@@ -144,7 +144,7 @@ export const projects: Project[] = [
     cardTitle: "Recruiting Infrastructure \u2014 80K Records, One Pipeline",
     cardDescription:
       "Scalable recruiting infrastructure: Cloud SQL, Cloud Run. 100+ data sources harvested into an 80K-record dataset at >90% accuracy.",
-    cardStat: "80K",
+    cardStat: "80K records",
     cardStatLabel: "Records unified",
     cardGradient:
       "linear-gradient(135deg, #151520 0%, #1a1a28 40%, #12121f 70%, #181825 100%)",
@@ -173,7 +173,7 @@ export const projects: Project[] = [
     cardTitle: "India AI Tracker — Tracking a Rising AI Market",
     cardDescription:
       "Dedicated tracker covering governance discussions, stakeholder decisions, investment trends, and technological developments across the Indian AI ecosystem.",
-    cardStat: "50+",
+    cardStat: "50+ stakeholders",
     cardStatLabel: "Stakeholders tracked",
     cardGradient:
       "linear-gradient(135deg, #1a1520 0%, #1a1025 40%, #201530 70%, #151025 100%)",
@@ -204,7 +204,7 @@ export const projects: Project[] = [
     cardTitle: "Indirect Talent Sourcing Channel (WIP)",
     cardDescription:
       "Monitors public signals across Reddit, GitHub, HackerNews, and Google CSE to rapidly surface experienced engineers entering the market during workforce transitions — feeding structured leads into downstream recruiting workflows.",
-    cardStat: "100",
+    cardStat: "100 signal sources",
     cardStatLabel: "Signal sources",
     cardGradient:
       "linear-gradient(135deg, #1a1a1a 0%, #1f1a15 40%, #1a1510 70%, #201a10 100%)",
@@ -233,7 +233,7 @@ export const projects: Project[] = [
     cardTitle: "Talent Graph Engine \u2014 100K+ STEM Profiles, One Connected View",
     cardDescription:
       "A graph-based intelligence platform that connects 100K+ STEM and academic profiles across 500+ public sources. In-degree/out-degree analysis, shortest-path algorithms, and a RAG layer for natural language queries over the entire network.",
-    cardStat: "100K+",
+    cardStat: "100K+ profiles",
     cardStatLabel: "Profiles connected",
     cardGradient:
       "linear-gradient(135deg, #0f1a1a 0%, #0a1f1f 40%, #0d2626 70%, #112020 100%)",

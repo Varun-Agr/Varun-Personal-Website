@@ -7,13 +7,13 @@ import Navbar from "./components/Navbar";
 import NetworkBackground from "./components/NetworkBackground";
 
 const CAROUSEL_SLUGS = [
+  "ai-candidate-screening-pipeline",
   "talent-graph-engine",
+  "measuremint",
   "big-tech-layoff-monitor",
   // "talent-index-jd-fingerprinting",
-  "measuremint",
   "india-ai-report",
   // "ml-research-talent-map",
-  "ai-candidate-screening-pipeline",
   // "recruiting-data-infrastructure",
 ];
 
@@ -439,7 +439,7 @@ export default function ClonePage() {
             I build recruiting infrastructure — talent maps, screening
             pipelines, sourcing tools — so that{" "}
             <span className="text-[#4ade80]">the right candidates surface faster</span>,
-            and hiring teams can{" "}
+            and the hiring teams can{" "}
             <span className="text-[#4ade80]">spend time evaluating, not searching</span>.
           </p>
         </div>
