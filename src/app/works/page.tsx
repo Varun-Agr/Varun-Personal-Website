@@ -162,7 +162,7 @@ export default function WorksPage() {
 
                 {/* Year placeholder */}
                 <div className="flex items-center md:justify-end">
-                  <span className="text-[#555] text-sm">2024</span>
+                  <span className="text-[#555] text-sm">\{project.year}</span>
                 </div>
               </div>
             </Link>

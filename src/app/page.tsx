@@ -436,11 +436,12 @@ export default function ClonePage() {
             className="text-[clamp(1.8rem,4vw,3.2rem)] leading-[1.2] tracking-[-0.015em] text-[#ccc]"
             style={{ fontFamily: FONT }}
           >
-            I build recruiting infrastructure — talent maps, screening
-            pipelines, sourcing tools — so that{" "}
+            I build recruiting infrastructure including talent maps, screening
+            pipelines, and sourcing tools so that{" "}
             <span className="text-[#4ade80]">the right candidates surface faster</span>,
             and the hiring teams can{" "}
             <span className="text-[#4ade80]">spend time evaluating, not searching</span>.
+            
           </p>
         </div>
       </section>
@@ -461,9 +462,11 @@ export default function ClonePage() {
             }}
           >
             <p className="text-[#aaa] text-base leading-relaxed">
-              I find top researchers, engineers for world class AI organizations working on some of the most important problems
-              — building reliable AI systems, ensuring their  security, and thereby empowering people and companies to achieve more.
-              Start with the talent map, build the pipeline, calibrate the bar, close the offer.
+              Sourcing researchers and engineers for teams building reliable AI systems
+              — start with the talent map, build the pipeline, calibrate the bar, close the offer.
+              
+              
+              
             </p>
             <p className="text-[#aaa] text-base leading-relaxed">
               The work spans data-driven sourcing, RecOps infrastructure,

@@ -1,0 +1,975 @@
+{
+  "nodes": [
+    {
+      "id": "readme_template_origin",
+      "label": "Resume Next.js Template (ThemeWagon)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": "https://themewagon.github.io/Resume-Nextjs/",
+      "captured_at": null,
+      "author": "getnextjstemplates",
+      "contributor": null
+    },
+    {
+      "id": "projects_data_module",
+      "label": "Projects Data Module",
+      "file_type": "code",
+      "source_file": "src/app/projects.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "projects_project_interface",
+      "label": "Project Interface",
+      "file_type": "code",
+      "source_file": "src/app/projects.ts",
+      "source_location": "line 1-17",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "page_homepage",
+      "label": "Homepage (ClonePage)",
+      "file_type": "code",
+      "source_file": "src/app/page.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "contact_page",
+      "label": "Contact Page",
+      "file_type": "code",
+      "source_file": "src/app/contact/page.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "navbar_component",
+      "label": "Navbar Component",
+      "file_type": "code",
+      "source_file": "src/app/components/Navbar.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "network_background_component",
+      "label": "NetworkBackground Component (Three.js)",
+      "file_type": "code",
+      "source_file": "src/app/components/NetworkBackground.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "image_carousel_component",
+      "label": "ImageCarousel Component",
+      "file_type": "code",
+      "source_file": "src/app/components/ImageCarousel.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "works_page",
+      "label": "Works Page (All Projects)",
+      "file_type": "code",
+      "source_file": "src/app/works/page.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "work_slug_page",
+      "label": "Work Detail Page ([slug])",
+      "file_type": "code",
+      "source_file": "src/app/work/[slug]/page.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "events_page",
+      "label": "Events Page",
+      "file_type": "code",
+      "source_file": "src/app/events/page.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "layout_root",
+      "label": "Root Layout",
+      "file_type": "code",
+      "source_file": "src/app/layout.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "theme_module",
+      "label": "Theme Constants (C, FONT_SANS)",
+      "file_type": "code",
+      "source_file": "src/app/theme.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "globals_css",
+      "label": "Global CSS Styles",
+      "file_type": "code",
+      "source_file": "src/app/globals.css",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "google_appscript",
+      "label": "Google Apps Script Form Handler",
+      "file_type": "code",
+      "source_file": "src/scripts/google-appscript.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "page_useist_hook",
+      "label": "useIST Hook (IST Clock + Online Status)",
+      "file_type": "code",
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 22-50",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "page_trontrail_hook",
+      "label": "useTronTrail Hook (Mouse Trail Animation)",
+      "file_type": "code",
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 60-152",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "page_scrollreveal_hook",
+      "label": "useScrollReveal Hook (Intersection Observer)",
+      "file_type": "code",
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 156-172",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "entity_varun_agrawal",
+      "label": "Varun Agrawal (Site Owner)",
+      "file_type": "document",
+      "source_file": "src/app/page.tsx",
+      "source_location": null,
+      "source_url": "https://varunagrawal.com",
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "entity_steadrise",
+      "label": "SteadRise (Organisation)",
+      "file_type": "document",
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 282",
+      "source_url": "https://steadrise.org",
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "entity_secure_ai_futures_lab",
+      "label": "Secure AI Futures Lab",
+      "file_type": "document",
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 284",
+      "source_url": "https://secureaifutureslab.com/",
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "entity_harry_george",
+      "label": "Harry George (Design Credit)",
+      "file_type": "document",
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 757",
+      "source_url": "https://www.harrygeorge.design/",
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "project_measuremint",
+      "label": "Measuremint - AI Talent Intelligence Platform",
+      "file_type": "code",
+      "source_file": "src/app/projects.ts",
+      "source_location": "line 20-49",
+      "source_url": "https://bit.ly/measuremint-early-demo",
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "project_ml_research_talent_map",
+      "label": "ML Research Talent Map (50K Profiles)",
+      "file_type": "code",
+      "source_file": "src/app/projects.ts",
+      "source_location": "line 51-79",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "project_talent_index_jd",
+      "label": "Talent Index & JD Fingerprinting",
+      "file_type": "code",
+      "source_file": "src/app/projects.ts",
+      "source_location": "line 80-108",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "project_ai_screening_pipeline",
+      "label": "AI Candidate Screening Pipeline",
+      "file_type": "code",
+      "source_file": "src/app/projects.ts",
+      "source_location": "line 109-137",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "project_recruiting_data_infra",
+      "label": "Recruiting Data Infrastructure (80K Records)",
+      "file_type": "code",
+      "source_file": "src/app/projects.ts",
+      "source_location": "line 138-167",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "project_india_ai_tracker",
+      "label": "India AI Tracker",
+      "file_type": "code",
+      "source_file": "src/app/projects.ts",
+      "source_location": "line 168-198",
+      "source_url": "https://indiaaitracker.com",
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "project_layoff_monitor",
+      "label": "Indirect Talent Sourcing Channel (WIP)",
+      "file_type": "code",
+      "source_file": "src/app/projects.ts",
+      "source_location": "line 199-227",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "project_talent_graph_engine",
+      "label": "Talent Graph Engine (100K+ Profiles)",
+      "file_type": "code",
+      "source_file": "src/app/projects.ts",
+      "source_location": "line 228-257",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "event_delhi_reception",
+      "label": "Academic Reception - New Delhi (2024)",
+      "file_type": "code",
+      "source_file": "src/app/events/page.tsx",
+      "source_location": "line 20-27",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "event_singapore_trai",
+      "label": "TRAI Forum - Singapore (2024)",
+      "file_type": "code",
+      "source_file": "src/app/events/page.tsx",
+      "source_location": "line 28-35",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "event_ai_security_summit",
+      "label": "AI Security Summit - Lucid Computing (2023)",
+      "file_type": "code",
+      "source_file": "src/app/events/page.tsx",
+      "source_location": "line 36-45",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "collaborator_uk_aisi",
+      "label": "UK AISI",
+      "file_type": "document",
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 213",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "collaborator_far_ai",
+      "label": "FAR.AI",
+      "file_type": "document",
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 214",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "collaborator_apollo",
+      "label": "Apollo Research",
+      "file_type": "document",
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 215",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "collaborator_world_bank",
+      "label": "World Bank",
+      "file_type": "document",
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 219",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "collaborator_jpal",
+      "label": "J-PAL",
+      "file_type": "document",
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 220",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "collaborator_schmidt_sciences",
+      "label": "Schmidt Sciences",
+      "file_type": "document",
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 221",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "conference_iclr",
+      "label": "ICLR (Conference)",
+      "file_type": "document",
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 570",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "conference_icml",
+      "label": "ICML (Conference)",
+      "file_type": "document",
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 577",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "conference_neurips",
+      "label": "NeurIPS (Conference)",
+      "file_type": "document",
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 584",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "google_sheets_backend",
+      "label": "Google Sheets Form Backend",
+      "file_type": "code",
+      "source_file": "src/scripts/google-appscript.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "page_homepage",
+      "target": "projects_data_module",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 5",
+      "weight": 1.0
+    },
+    {
+      "source": "page_homepage",
+      "target": "network_background_component",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 249",
+      "weight": 1.0
+    },
+    {
+      "source": "page_homepage",
+      "target": "page_useist_hook",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 179",
+      "weight": 0.8
+    },
+    {
+      "source": "page_homepage",
+      "target": "page_trontrail_hook",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 183",
+      "weight": 0.8
+    },
+    {
+      "source": "page_homepage",
+      "target": "page_scrollreveal_hook",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 184-186",
+      "weight": 0.8
+    },
+    {
+      "source": "works_page",
+      "target": "projects_data_module",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/works/page.tsx",
+      "source_location": "line 5",
+      "weight": 1.0
+    },
+    {
+      "source": "work_slug_page",
+      "target": "projects_data_module",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/work/[slug]/page.tsx",
+      "source_location": "line 3",
+      "weight": 1.0
+    },
+    {
+      "source": "work_slug_page",
+      "target": "image_carousel_component",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/work/[slug]/page.tsx",
+      "source_location": "line 53",
+      "weight": 1.0
+    },
+    {
+      "source": "work_slug_page",
+      "target": "projects_project_interface",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/work/[slug]/page.tsx",
+      "source_location": "line 9-11",
+      "weight": 0.8
+    },
+    {
+      "source": "contact_page",
+      "target": "theme_module",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/contact/page.tsx",
+      "source_location": "line 5",
+      "weight": 1.0
+    },
+    {
+      "source": "navbar_component",
+      "target": "theme_module",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/components/Navbar.tsx",
+      "source_location": "line 5",
+      "weight": 1.0
+    },
+    {
+      "source": "contact_page",
+      "target": "google_appscript",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/contact/page.tsx",
+      "source_location": "line 9",
+      "weight": 1.0
+    },
+    {
+      "source": "google_appscript",
+      "target": "google_sheets_backend",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/scripts/google-appscript.js",
+      "source_location": "line 48",
+      "weight": 1.0
+    },
+    {
+      "source": "network_background_component",
+      "target": "globals_css",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.6,
+      "source_file": "src/app/components/NetworkBackground.tsx",
+      "source_location": null,
+      "weight": 0.5
+    },
+    {
+      "source": "entity_varun_agrawal",
+      "target": "entity_steadrise",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 282",
+      "weight": 1.0
+    },
+    {
+      "source": "entity_varun_agrawal",
+      "target": "entity_secure_ai_futures_lab",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 284",
+      "weight": 1.0
+    },
+    {
+      "source": "entity_varun_agrawal",
+      "target": "collaborator_uk_aisi",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 289",
+      "weight": 0.9
+    },
+    {
+      "source": "entity_varun_agrawal",
+      "target": "collaborator_far_ai",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 289",
+      "weight": 0.9
+    },
+    {
+      "source": "entity_varun_agrawal",
+      "target": "collaborator_apollo",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 289",
+      "weight": 0.9
+    },
+    {
+      "source": "entity_secure_ai_futures_lab",
+      "target": "collaborator_schmidt_sciences",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 201-203",
+      "weight": 0.9
+    },
+    {
+      "source": "project_measuremint",
+      "target": "project_ai_screening_pipeline",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/app/projects.ts",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "project_ml_research_talent_map",
+      "target": "project_talent_graph_engine",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/app/projects.ts",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "project_ml_research_talent_map",
+      "target": "conference_iclr",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/projects.ts",
+      "source_location": "line 54",
+      "weight": 0.9
+    },
+    {
+      "source": "project_ml_research_talent_map",
+      "target": "conference_icml",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/projects.ts",
+      "source_location": "line 54",
+      "weight": 0.9
+    },
+    {
+      "source": "project_recruiting_data_infra",
+      "target": "project_ml_research_talent_map",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/app/projects.ts",
+      "source_location": null,
+      "weight": 0.7
+    },
+    {
+      "source": "project_talent_index_jd",
+      "target": "project_ai_screening_pipeline",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "src/app/projects.ts",
+      "source_location": null,
+      "weight": 0.7
+    },
+    {
+      "source": "project_layoff_monitor",
+      "target": "project_recruiting_data_infra",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "src/app/projects.ts",
+      "source_location": null,
+      "weight": 0.7
+    },
+    {
+      "source": "project_india_ai_tracker",
+      "target": "entity_secure_ai_futures_lab",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "src/app/projects.ts",
+      "source_location": null,
+      "weight": 0.6
+    },
+    {
+      "source": "event_ai_security_summit",
+      "target": "collaborator_uk_aisi",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/app/events/page.tsx",
+      "source_location": null,
+      "weight": 0.6
+    },
+    {
+      "source": "event_singapore_trai",
+      "target": "entity_secure_ai_futures_lab",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "src/app/events/page.tsx",
+      "source_location": null,
+      "weight": 0.6
+    },
+    {
+      "source": "page_homepage",
+      "target": "entity_varun_agrawal",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 639",
+      "weight": 1.0
+    },
+    {
+      "source": "page_homepage",
+      "target": "entity_harry_george",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 757",
+      "weight": 0.7
+    },
+    {
+      "source": "layout_root",
+      "target": "globals_css",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/layout.tsx",
+      "source_location": "line 3",
+      "weight": 1.0
+    },
+    {
+      "source": "page_homepage",
+      "target": "contact_page",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 295",
+      "weight": 0.8
+    },
+    {
+      "source": "page_homepage",
+      "target": "works_page",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 377",
+      "weight": 0.8
+    },
+    {
+      "source": "page_homepage",
+      "target": "work_slug_page",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/page.tsx",
+      "source_location": "line 354",
+      "weight": 0.8
+    },
+    {
+      "source": "navbar_component",
+      "target": "works_page",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/components/Navbar.tsx",
+      "source_location": "line 61",
+      "weight": 0.9
+    },
+    {
+      "source": "navbar_component",
+      "target": "events_page",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/components/Navbar.tsx",
+      "source_location": "line 78",
+      "weight": 0.9
+    },
+    {
+      "source": "navbar_component",
+      "target": "contact_page",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/components/Navbar.tsx",
+      "source_location": "line 87",
+      "weight": 0.9
+    },
+    {
+      "source": "works_page",
+      "target": "work_slug_page",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/works/page.tsx",
+      "source_location": "line 103",
+      "weight": 1.0
+    },
+    {
+      "source": "image_carousel_component",
+      "target": "projects_project_interface",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/app/components/ImageCarousel.tsx",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "contact_page",
+      "target": "google_sheets_backend",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/contact/page.tsx",
+      "source_location": "line 9",
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "shared_theme_system",
+      "label": "Shared Theme System (C + FONT_SANS)",
+      "nodes": ["theme_module", "contact_page", "navbar_component"],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/theme.ts"
+    },
+    {
+      "id": "project_data_consumers",
+      "label": "Pages Consuming projects.ts Data",
+      "nodes": ["projects_data_module", "page_homepage", "works_page", "work_slug_page"],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/projects.ts"
+    },
+    {
+      "id": "navbar_shared_component",
+      "label": "Pages Using Shared Navbar",
+      "nodes": ["navbar_component", "page_homepage", "works_page", "work_slug_page", "events_page", "contact_page"],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/components/Navbar.tsx"
+    },
+    {
+      "id": "useist_hook_duplicated",
+      "label": "Duplicated useIST Hook Across Pages",
+      "nodes": ["page_homepage", "contact_page", "works_page", "events_page"],
+      "relation": "implement",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "src/app/page.tsx"
+    },
+    {
+      "id": "ai_talent_project_cluster",
+      "label": "AI Talent Pipeline Project Cluster",
+      "nodes": ["project_measuremint", "project_ml_research_talent_map", "project_talent_index_jd", "project_ai_screening_pipeline", "project_recruiting_data_infra", "project_talent_graph_engine"],
+      "relation": "form",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/app/projects.ts"
+    },
+    {
+      "id": "collaborator_logo_wall",
+      "label": "Logo Wall Collaborators",
+      "nodes": ["collaborator_uk_aisi", "collaborator_far_ai", "collaborator_apollo", "collaborator_world_bank", "collaborator_jpal", "collaborator_schmidt_sciences"],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/page.tsx"
+    },
+    {
+      "id": "upcoming_conferences",
+      "label": "Upcoming Conference Timeline (2026)",
+      "nodes": ["conference_iclr", "conference_icml", "conference_neurips"],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/page.tsx"
+    },
+    {
+      "id": "contact_form_pipeline",
+      "label": "Contact Form Submission Pipeline",
+      "nodes": ["contact_page", "google_appscript", "google_sheets_backend"],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/contact/page.tsx"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

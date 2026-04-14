@@ -10,6 +10,7 @@ export interface Project {
   cardAccent: string;
   cardImage?: string[];
   tags: string[];
+  year: string;
   demoLink?: string;
   demoLabel?: string;
   before: { headline: string; body: string[] };
@@ -33,6 +34,7 @@ export const projects: Project[] = [
     tags: ["AI/ML", "Voice AI", "Talent Tech", "PostgreSQL", "Python"],
     demoLink: "https://bit.ly/measuremint-early-demo",
     demoLabel: "View ",
+    year: "2025",
     before: {
       headline: "High-Volume Hiring: Too Many Applicants, No Way to Find Signal",
       body: [
@@ -61,6 +63,7 @@ export const projects: Project[] = [
     cardGradient:
       "linear-gradient(135deg, #0d1a2a 0%, #0a1525 40%, #121f30 70%, #0d1520 100%)",
     cardAccent: "#4ade80",
+    year: "2024",
     tags: ["Data Engineering", "NLP", "Vector Search", "Python", "Apify"],
     before: {
       headline: "No Structured Way to Search ML Research Talent",
@@ -91,6 +94,7 @@ export const projects: Project[] = [
       "linear-gradient(135deg, #1a2520 0%, #0d201a 40%, #152520 70%, #1a201a 100%)",
     cardAccent: "#34d399",
     tags: ["Analytics", "NLP", "Python", "Data Viz"],
+    year: "2025",
     before: {
       headline: "106 Job Descriptions, No Common Language",
       body: [
@@ -119,6 +123,7 @@ export const projects: Project[] = [
     cardGradient:
       "linear-gradient(135deg, #1a1520 0%, #201525 40%, #1a1028 70%, #251a30 100%)",
     cardAccent: "#c084fc",
+    year: "2026",
     tags: ["Claude API", "Metaview", "Juicebox", "Python", "LLM Evaluation"],
     before: {
       headline: "Likert Scales Don\u2019t Force Real Decisions",
@@ -149,6 +154,7 @@ export const projects: Project[] = [
     cardGradient:
       "linear-gradient(135deg, #151520 0%, #1a1a28 40%, #12121f 70%, #181825 100%)",
     cardAccent: "#60a5fa",
+    year: "2024",
     tags: ["Data Infra", "Cloud SQL", "Cloud Run", "MCP"],
     before: {
       headline: "100 Data Sources, No Single Source of Truth",
@@ -181,6 +187,7 @@ export const projects: Project[] = [
     tags: ["AI Governance", "Policy", "India", "Research", "Ecosystem"],
     demoLink: "https://indiaaitracker.com",
     demoLabel: "Visit Site",
+    year: "2025",
     before: {
       headline: "India's AI Landscape: Fragmented Signals, No Single View",
       body: [
@@ -209,6 +216,7 @@ export const projects: Project[] = [
     cardGradient:
       "linear-gradient(135deg, #1a1a1a 0%, #1f1a15 40%, #1a1510 70%, #201a10 100%)",
     cardAccent: "#fbbf24",
+    year: "2026",
     tags: ["Next.js", "GraphQL", "APIs", "Sourcing", "Data Aggregation"],
     before: {
       headline: "Workforce Transitions Create a Hidden Talent Pool",
@@ -238,6 +246,7 @@ export const projects: Project[] = [
     cardGradient:
       "linear-gradient(135deg, #0f1a1a 0%, #0a1f1f 40%, #0d2626 70%, #112020 100%)",
     cardAccent: "#2dd4bf",
+    year: "2026",
     tags: ["Graph Engine", "Search Engine", "Vector Database", "RAG", "Large-Scale Data Processing", "Graph Algorithms"],
     before: {
       headline: "Global STEM Talent Is Scattered Across Hundreds of Disconnected Sources",
