@@ -208,28 +208,14 @@ export default function ClonePage() {
     },
   ];
 
-  const logos1 = [
-    // { name: "Anthropic", icon: "/images/logos/anthropic.png" },
+  const currentLogos = [
     { name: "UK AISI", icon: "/images/logos/aisi.png" },
     { name: "FAR.AI", icon: "/images/logos/farai.svg" },
     { name: "Apollo Research", icon: "/images/logos/apollo.png" },
-    // { name: "GovAI", icon: "/images/logos/govai.png" },
-    // { name: "Goodfire", icon: "/images/logos/goodfire.webp" },
-    // { name: "80,000 Hours", icon: "/images/logos/80k.png" },
-    { name: "World Bank", icon: "/images/logos/worldbank.png"},
+    { name: "World Bank", icon: "/images/logos/worldbank.png" },
     { name: "J-PAL", icon: "/images/logos/jpal.png" },
     { name: "Schmidt Sciences", icon: "/images/logos/ss.png" },
-    // { name: "NUS", icon: "/images/logos/nus.png" },
   ];
-
-  const [logoSet, setLogoSet] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(() => setLogoSet((s) => (s === 0 ? 1 : 0)), 3000);
-    return () => clearInterval(id);
-  }, []);
-
-  const currentLogos = logoSet === 0 ? logos1 : logos1;
 
   return (
     <div
@@ -398,6 +384,8 @@ export default function ClonePage() {
                   key={selectedProjectIdx}
                   src={carouselProjects[selectedProjectIdx].cardImage![0]}
                   alt={carouselProjects[selectedProjectIdx].name}
+                  loading="lazy"
+                  decoding="async"
                   className="max-w-full max-h-full object-contain animate-[fadeIn_0.4s_ease]"
                 />
               ) : (
@@ -641,6 +629,8 @@ export default function ClonePage() {
         <img
           src="/images/VA_Candid.jpg"
           alt="Varun Agrawal"
+          loading="lazy"
+          decoding="async"
           className="w-full object-cover"
           style={{ display: "block" }}
         />
@@ -663,6 +653,8 @@ export default function ClonePage() {
                 <img
                   src={logo.icon}
                   alt={logo.name}
+                  loading="lazy"
+                  decoding="async"
                   className="max-h-16 max-w-[160px] w-auto h-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
                   style={{ filter: "brightness(0) invert(0.55)" }}
                 />

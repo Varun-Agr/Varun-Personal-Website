@@ -84,7 +84,7 @@ export const projects: Project[] = [
     slug: "talent-index-jd-fingerprinting",
     name: "Talent Index & JD Fingerprinting",
     techStack: "Python, NLP, Data Visualisation",
-    cardImage: ["/images/work/jd1.png"],
+    cardImage: ["/images/work/jd1.jpg"],
     cardTitle: "Weighted Talent Index & JD Fingerprinting",
     cardDescription:
       "A data science project that analyses 106 job descriptions across 10 skill dimensions to build a unified view of how different roles compare — improving how we calibrate candidates against actual market demand.",
@@ -113,7 +113,7 @@ export const projects: Project[] = [
   {
     slug: "ai-candidate-screening-pipeline",
     name: "AI Candidate Screening Pipeline",
-    cardImage: ["/images/work/pipeline.png"],
+    cardImage: ["/images/work/pipeline.jpg"],
     techStack: "Python, Claude API, Metaview, Juicebox",
     cardTitle: "AI Candidate Screening — Signal-Based Evaluation at Scale",
     cardDescription:
@@ -175,7 +175,7 @@ export const projects: Project[] = [
     slug: "india-ai-report",
     name: "India AI Tracker",
     techStack: "Research, Data Analysis, Policy Tracking, Stakeholder Mapping",
-    cardImage: ["/images/work/indiaai.png"],
+    cardImage: ["/images/work/indiaai.jpg"],
     cardTitle: "India AI Tracker — Tracking a Rising AI Market",
     cardDescription:
       "Dedicated tracker covering governance discussions, stakeholder decisions, investment trends, and technological developments across the Indian AI ecosystem.",
@@ -207,7 +207,7 @@ export const projects: Project[] = [
     slug: "big-tech-layoff-monitor",
     name: "Indirect Talent Sourcing Channel",
     techStack: "Next.js, GraphQL, Reddit API, GitHub API, HackerNews API, Google CSE",
-    cardImage: ["/images/work/layoff.png"],
+    cardImage: ["/images/work/layoff.jpg"],
     cardTitle: "Indirect Talent Sourcing Channel (WIP)",
     cardDescription:
       "Monitors public signals across Reddit, GitHub, HackerNews, and Google CSE to rapidly surface experienced engineers entering the market during workforce transitions — feeding structured leads into downstream recruiting workflows.",
@@ -237,7 +237,7 @@ export const projects: Project[] = [
     slug: "talent-graph-engine",
     name: "Talent Graph Engine",
     techStack: "Graph Database, Vector Embeddings, RAG, Python, React",
-    cardImage: ["/images/work/networkengine.png"],
+    cardImage: ["/images/work/networkengine.jpg"],
     cardTitle: "Talent Graph Engine \u2014 100K+ STEM Profiles, One Connected View",
     cardDescription:
       "A graph-based intelligence platform that connects 100K+ STEM and academic profiles across 500+ public sources. In-degree/out-degree analysis, shortest-path algorithms, and a RAG layer for natural language queries over the entire network.",
