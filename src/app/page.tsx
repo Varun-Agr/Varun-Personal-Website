@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { projects } from "./projects";
 import Navbar from "./components/Navbar";
-import NetworkBackground from "./components/NetworkBackground";
+import GridBackground from "./components/GridBackground";
 
 const CAROUSEL_SLUGS = [
   "ai-candidate-screening-pipeline",
@@ -232,7 +232,7 @@ export default function ClonePage() {
 
       {/* ──────────── HERO + BIO with network underlay ──────────── */}
       <div className="relative overflow-hidden">
-        <NetworkBackground />
+        <GridBackground />
 
         {/* Hero headline */}
         <section className="px-6 pt-16 pb-12 lg:pt-24 lg:pb-16 relative z-10" id="work">
