@@ -13,35 +13,39 @@ interface Event {
   description: string;
   image: string;
   tags: string[];
+  rsvp?: string;
 }
 
 const events: Event[] = [
   {
-    title: "Academic Reception \u2014 New Delhi",
-    date: "2024",
+    title: "Trustworthy AI Academic Reception - New Delhi",
+    date: "2026",
     location: "New Delhi, India",
     description:
-      "Hosted an academic reception bringing together researchers, policymakers, and industry practitioners to discuss AI talent development and research collaboration across Indian institutions.",
-    image: "/images/events/delhi-reception.jpg",
-    tags: ["Academia", "Policy", "India"],
+      "A baithak-style gathering near Bharat Mandapam alongside the AI Impact Summit. Anchored by Danish Pruthi, with academics from IITD, IITM, IIITD, IIITH, UNSW, MBZUAI, and ASU \u2014 convening infrastructure for the Trustworthy AI research community and a lead-in to SAFL\u2019s first workshop.",
+    image: "/images/events/sgp.jpg",
+    tags: ["Trustworthy AI", "Academia", "India"],
+    rsvp: "https://luma.com/academic-reception",
   },
   {
-    title: "TRAI Forum \u2014 Academic Reception, Singapore",
-    date: "2024",
-    location: "Singapore",
+    title: "Trustworthy AI Forum Panel - Singapore",
+    date: "Jan 25, 2026",
+    location: "SUTD, Singapore",
     description:
-      "Co-organised an academic reception alongside the TRAI Forum in Singapore, convening researchers and governance specialists from across APAC to explore talent pipelines for trustworthy AI research.",
-    image: "/images/events/singapore-trai.jpg",
-    tags: ["APAC", "Governance", "Academia"],
+      "Official pre-summit event for the India AI Impact Summit 2026, held at SUTD during AAAI-26 week. A curated panel across India, Singapore, and Australia on the Safe & Trusted AI pillar \u2014 with speakers from MDDI, NUS AI Institute, IIT Madras (CeRAI), UNSW, AIDXTech, and FAR.AI.",
+    image: "/images/events/sgp.jpg",
+    tags: ["Trustworthy AI", "APAC", "Panel"],
+    rsvp: "https://luma.com/safl-panel",
   },
   {
-    title: "AI Security Summit \u2014 Lucid Computing Reception",
-    date: "2023",
-    location: "United Kingdom",
+    title: "Hardware-rooted Sovereignty - New Delhi",
+    date: "Feb 16, 2026",
+    location: "Bharat Mandapam, New Delhi",
     description:
-      "Hosted a reception at the AI Security Summit in partnership with Lucid Computing, connecting technical talent with organisations working on AI evaluation, interpretability, and alignment.",
-    image: "/images/events/aisummit-lucid.jpg",
-    tags: ["AI Security", "UK", "Industry"],
+      "Session at the AI Impact Summit 2026, co-convened by LucidComputing and Secure AI Futures Lab. Exploring verifiable Safe & Trusted AI infrastructure for the Global South \u2014 hardware-layer verification, India\u2019s DPDP Act, and compute supply chains as the anchor for \u2018AI trust fabric\u2019 standards.",
+    image: "/images/events/summit.jpg",
+    tags: ["AI Security", "Hardware", "Global South"],
+    rsvp: "https://luma.com/sovereignai",
   },
 ];
 
@@ -145,12 +149,18 @@ export default function EventsPage() {
                       </div>
                     </div>
                   </div>
-                  {/* Placeholder blur overlay — replace with real images */}
+                  <img
+                    src={event.image}
+                    alt={event.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
                   <div
-                    className="absolute inset-0 opacity-30"
+                    className="absolute inset-0"
                     style={{
                       background:
-                        "linear-gradient(135deg, #4ade8020 0%, #141414 50%, #4ade8010 100%)",
+                        "linear-gradient(135deg, rgba(74,222,128,0.12) 0%, rgba(20,20,20,0.45) 50%, rgba(74,222,128,0.08) 100%)",
                     }}
                   />
                 </div>
@@ -186,6 +196,16 @@ export default function EventsPage() {
                       </span>
                     ))}
                   </div>
+                  {event.rsvp && (
+                    <a
+                      href={event.rsvp}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm text-[#4ade80] hover:gap-2.5 transition-all duration-300 pt-1"
+                    >
+                      RSVP &rarr;
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
