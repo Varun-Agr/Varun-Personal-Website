@@ -23,7 +23,7 @@ const events: Event[] = [
     location: "New Delhi, India",
     description:
       "A baithak-style gathering near Bharat Mandapam alongside the AI Impact Summit. Anchored by Danish Pruthi, with academics from IITD, IITM, IIITD, IIITH, UNSW, MBZUAI, and ASU \u2014 convening infrastructure for the Trustworthy AI research community and a lead-in to SAFL\u2019s first workshop.",
-    image: "/images/events/sgp.jpg",
+    image: "/images/events/baithak.jpg",
     tags: ["Trustworthy AI", "Academia", "India"],
     rsvp: "https://luma.com/academic-reception",
   },
@@ -196,16 +196,6 @@ export default function EventsPage() {
                       </span>
                     ))}
                   </div>
-                  {event.rsvp && (
-                    <a
-                      href={event.rsvp}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm text-[#4ade80] hover:gap-2.5 transition-all duration-300 pt-1"
-                    >
-                      RSVP &rarr;
-                    </a>
-                  )}
                 </div>
               </div>
             ))}
