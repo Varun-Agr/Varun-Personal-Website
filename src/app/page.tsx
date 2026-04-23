@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { projects } from "./projects";
 import Navbar from "./components/Navbar";
-import TopoBackground from "./components/TopoBackground";
+import PipelinesBackground from "./components/PipelinesBackground";
 
 const CAROUSEL_SLUGS = [
   "ai-candidate-screening-pipeline",
@@ -195,7 +195,7 @@ export default function ClonePage() {
     {
       title: "Technical Recruiting",
       content:
-        "Scaled a recruiting funnel from scratch to 4,200 warm ML, SWE, and Quant candidates across 5 continents. Partnered with hiring managers at 13+ organizations to scope roles, calibrate bars, and close 26 offers across FAR.AI, UK AISI, and Apollo — securing 12 accepted placements.",
+        "Scaled a recruiting funnel from scratch to 4,200 warm ML, SWE, and Quant candidates across 5 continents, while directing a 30-person distributed team that cut time-to-offer from 65 to 30 days and cost-per-hire by 27%. Partnered with hiring managers at 13+ organizations to scope roles, calibrate bars, and close 26 offers across FAR.AI, UK AISI, and Apollo — securing 12 accepted placements.",
     },
     {
       title: "Trustworthy AI Science",
@@ -233,7 +233,7 @@ export default function ClonePage() {
 
       {/* ──────────── HERO + BIO with network underlay ──────────── */}
       <div className="relative overflow-hidden">
-        <TopoBackground />
+        <PipelinesBackground />
 
         {/* Hero headline */}
         <section className="px-6 pt-16 pb-12 lg:pt-24 lg:pb-16 relative z-10" id="work">
@@ -243,17 +243,31 @@ export default function ClonePage() {
               style={{ fontFamily: FONT }}
             >
               {/*Technical Recruiter <span className="text-[#555]">&</span> AI Governance Builder sourcing top 1% STEM talent for frontier AI labs*/}
-              {/*I place ML and engineering talent at the frontier labs working on the hardest problems.*/}
-              {/*I build talent pipelines and recruitment infra for frontier AI teams - helping them source the researchers, engineers, and generalists tackling the field's hardest problems.*/}
-              {/*I build talent pipelines and recruiting tools for leading AI organisations — helping them hire the top 1% researchers, engineers, and generalists tackling challenging and consequential problems.*/}
-              I build talent pipelines and recruiting tools for leading AI organisations, helping them hire top researchers, engineers, and generalists tackling the most consequential problems.
+              {/*I build talent pipelines and recruiting tools for leading AI organisations, helping them hire top researchers, engineers, and generalists tackling the most consequential problems.*/}
+              I build <span className="text-[#4ade80]">talent pipelines</span> and recruiting tools — and lead the teams that run them —
+              for leading AI organisations <span className="text-[#4ade80]">hiring top researchers</span>,
+              engineers, and generalists tackling the <span className="text-[#4ade80]">most consequential problems</span>.
             </h1>
           </div>
         </section>
 
         {/* Bio + status */}
         <section className="px-6 py-12 lg:py-16 relative z-10">
-          <div className="max-w-[90%] mx-auto">
+          <div className="max-w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+            {/* Left: hero animation caption, aligned with Co-CEO row */}
+            <div className="flex flex-col gap-6 max-w-[420px]">
+              <div className="text-sm invisible select-none" aria-hidden="true">
+                spacer
+              </div>
+              <p className="text-[#777] text-sm leading-relaxed">
+                The network is the core data structure of our talent graph -
+                researchers, labs, and affiliations as nodes.
+                <br />
+                Graph-theoretic algorithms - centrality, shortest path,
+                embeddings — traverse it to surface the right candidates.
+              </p>
+            </div>
+            {/* Right: existing bio */}
             <div className="flex flex-col gap-6 max-w-[600px] ml-auto">
               <div className="flex items-center gap-3 text-sm text-[#999]">
                 <span className="flex items-center gap-1.5">
@@ -274,7 +288,8 @@ export default function ClonePage() {
                 <br />
                 8+ years sourcing and placing researchers and engineers
                 across AI, ML, and deep-tech — including UK AISI, FAR.AI,
-                and Apollo Research.
+                and Apollo Research — and running the ops and distributed
+                teams behind the search.
               </p>
 
               <div className="flex flex-wrap gap-3 mt-2">
@@ -426,8 +441,8 @@ export default function ClonePage() {
             className="text-[clamp(1.8rem,4vw,3.2rem)] leading-[1.2] tracking-[-0.015em] text-[#ccc]"
             style={{ fontFamily: FONT }}
           >
-            I build recruiting infrastructure including talent maps, screening
-            pipelines, and sourcing tools so that{" "}
+            I build recruiting infrastructure — talent maps, screening
+            pipelines, sourcing tools — and lead the teams that run them, so that{" "}
             <span className="text-[#4ade80]">the right candidates surface faster</span>,
             and the hiring teams can{" "}
             <span className="text-[#4ade80]">spend time evaluating, not searching</span>.
@@ -454,14 +469,14 @@ export default function ClonePage() {
             <p className="text-[#aaa] text-base leading-relaxed">
               Sourcing researchers and engineers for teams building reliable AI systems
               — start with the talent map, build the pipeline, calibrate the bar, close the offer.
-              
-              
-              
+              Running the ops and the distributed team behind it end-to-end.
             </p>
             <p className="text-[#aaa] text-base leading-relaxed">
               The work spans data-driven sourcing, RecOps infrastructure,
-              and building the tools that tie it together — 50K-profile
+              and the tools that tie it together — 50K-profile
               talent maps, LLM-assisted candidate triage, JD fingerprinting.
+              Alongside it, leading a 30-person distributed team and the
+              stakeholder alignment that keeps searches on-roadmap.
               Most of my time goes into making recruiting pipelines
               more systematic and less manual.
             </p>

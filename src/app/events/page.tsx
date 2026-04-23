@@ -18,7 +18,7 @@ interface Event {
 
 const events: Event[] = [
   {
-    title: "Trustworthy AI Academic Reception - New Delhi",
+    title: "Trustworthy AI Academic & Research Reception - New Delhi",
     date: "2026",
     location: "New Delhi, India",
     description:
@@ -38,7 +38,7 @@ const events: Event[] = [
     rsvp: "https://luma.com/safl-panel",
   },
   {
-    title: "Hardware-rooted Sovereignty - New Delhi",
+    title: "Hardware-rooted Sovereignty - India AI Summit, New Delhi",
     date: "Feb 16, 2026",
     location: "Bharat Mandapam, New Delhi",
     description:

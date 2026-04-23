@@ -234,6 +234,35 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "india-alignment-fellowship",
+    name: "India Alignment Research Fellowship",
+    techStack: "Program Design, Campus Recruiting, Technical Evaluation",
+    cardTitle: "India's First Alignment Research Fellowship",
+    cardDescription:
+      "Founded India's first Alignment Research Fellowship. Built a pipeline of 600+ applicants across 40 STEM universities, selected 24 (top 4%); 10 papers now published or under review.",
+    cardStat: "600+ applicants",
+    cardStatLabel: "Across 40 STEM universities",
+    cardGradient:
+      "linear-gradient(135deg, #1a1a20 0%, #25201a 40%, #2a1f15 70%, #20150f 100%)",
+    cardAccent: "#fb923c",
+    tags: ["Program Design", "Campus Recruiting", "AI Safety", "India"],
+    year: "2023",
+    before: {
+      headline: "India's Top STEM Talent Was Invisible to AI Safety Research",
+      body: [
+        "India produces thousands of world-class CS, physics, and math graduates each year from the IITs, CMI, ISI, and IISc — the same talent pool that quant firms and big-tech compete for aggressively. Yet almost none of this talent was flowing into AI safety and alignment research, the field most likely to shape how AI develops over the next decade.",
+        "There was no structured pathway: no fellowship, no campus presence, no credible on-ramp. Students interested in the field had to self-teach, self-fund, and find mentors abroad — and most didn't.",
+      ],
+    },
+    after: {
+      headline: "600+ Applicants, 24 Fellows, 10 Published Papers",
+      body: [
+        "Founded India's first Alignment Research Fellowship. Secured $65K to pilot a 9-month program and led a 10-person campus recruiting pod across 40 STEM universities. Evaluated a 1,000-member pool of top-decile CS/Physics/Math students on algorithms, ML theory, and research interest; built placement channels at IITs, CMI, ISI, and IISc to tap CS toppers and specialised STEM researchers typically recruited by quant firms.",
+        "600+ applicants, 24 selected (top 4%), across 3 moonshot tracks spanning interpretability, LLM robustness, scalable oversight, model evaluations, and responsible AI. 10 fellow papers are now published or under review, and 5 fellows are pursuing research independently or at labs like the Mila-Quebec AI Institute. The initiative was acquired by SteadRise in 2023.",
+      ],
+    },
+  },
+  {
     slug: "talent-graph-engine",
     name: "Talent Graph Engine",
     techStack: "Graph Database, Vector Embeddings, RAG, Python, React",

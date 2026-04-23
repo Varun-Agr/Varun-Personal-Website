@@ -3,11 +3,11 @@
 import { useRef, useEffect } from "react";
 import { C } from "../theme";
 
-const COL_WIDTH = 180;
-const ROW_HEIGHT = 160;
+const COL_WIDTH = 255;
+const ROW_HEIGHT = 226;
 const NODE_JITTER = 9;
-const MIN_COLS = 5;
-const MIN_ROWS = 3;
+const MIN_COLS = 4;
+const MIN_ROWS = 2;
 
 const EDGE_ALPHA = 0.08;
 const NODE_IDLE_ALPHA = 0.18;
@@ -24,11 +24,17 @@ const PACKET_CORE_ALPHA = 0.95;
 const PACKET_HALO_RADIUS = 6;
 const PACKET_HALO_ALPHA = 0.25;
 
-// Speed tuning: baseline 0.45 + rand*0.35 scaled by 0.6 -> 0.27..0.48 edge-units/sec.
-const PACKET_SPEED_BASE = 0.45 * 0.6;
-const PACKET_SPEED_JITTER = 0.35 * 0.6;
-// Spawn cadence: one packet every 0.35 / 0.6 s from a random left-column node.
-const PACKET_SPAWN_INTERVAL = 0.35 / 0.6;
+// Speed tuning: baseline 0.45 + rand*0.35 scaled by 0.6, then *0.6 slowdown.
+const PACKET_SPEED_BASE = 0.45 * 0.6 * 0.6;
+const PACKET_SPEED_JITTER = 0.35 * 0.6 * 0.6;
+// Spawn cadence: packets emerge from random nodes across the grid.
+const PACKET_SPAWN_INTERVAL = 0.12;
+
+// Edge complexity: per-pair probabilities for richer routing.
+const P_NEAR_ROW = 0.85; // (c+1, r±1) — standard adjacent
+const P_FAR_ROW = 0.35; // (c+1, r±2) — wider row jump
+const P_SKIP_COL = 0.28; // (c+2, r±0..2) — skip a column entirely
+const P_BACK_ROW = 0.12; // backward-feeding diagonal (c+1, r±3)
 
 interface GraphNode {
   x: number;
@@ -109,7 +115,7 @@ export default function PipelinesBackground() {
     let nodes: GraphNode[] = [];
     let edges: Edge[] = [];
     const packets: Packet[] = [];
-    let leftColumn: number[] = [];
+    let spawnableNodes: number[] = [];
     let spawnAccumulator = 0;
     let lastBuildWidth = -1;
 
@@ -119,7 +125,7 @@ export default function PipelinesBackground() {
       nodes = [];
       edges = [];
       packets.length = 0;
-      leftColumn = [];
+      spawnableNodes = [];
 
       const xStep = cols > 1 ? width / (cols - 1) : width;
       const yStep = rows > 1 ? height / (rows - 1) : height;
@@ -140,32 +146,84 @@ export default function PipelinesBackground() {
             glow: 0,
             outgoing: [],
           });
-          if (c === 0) leftColumn.push(indexOf(c, r));
         }
       }
 
-      for (let c = 0; c < cols - 1; c++) {
+      const addEdge = (fromIdx: number, toIdx: number, strength: number) => {
+        const from = nodes[fromIdx];
+        const to = nodes[toIdx];
+        const dx = to.x - from.x;
+        const dy = to.y - from.y;
+        // Mix horizontal-flow control points with some vertical sway for
+        // longer/diagonal edges so the pathways look less uniform.
+        const curve = 0.45;
+        const sway = (Math.random() * 2 - 1) * 18 * strength;
+        edges.push({
+          from: fromIdx,
+          to: toIdx,
+          cp1x: from.x + dx * curve,
+          cp1y: from.y + dy * 0.15 + sway,
+          cp2x: to.x - dx * curve,
+          cp2y: to.y - dy * 0.15 - sway,
+        });
+        from.outgoing.push(edges.length - 1);
+      };
+
+      for (let c = 0; c < cols; c++) {
         for (let r = 0; r < rows; r++) {
           const fromIdx = indexOf(c, r);
-          const from = nodes[fromIdx];
-          for (let dr = -1; dr <= 1; dr++) {
-            const nr = r + dr;
-            if (nr < 0 || nr >= rows) continue;
-            const toIdx = indexOf(c + 1, nr);
-            const to = nodes[toIdx];
-            const dx = to.x - from.x;
-            const edge: Edge = {
-              from: fromIdx,
-              to: toIdx,
-              cp1x: from.x + dx * 0.45,
-              cp1y: from.y,
-              cp2x: to.x - dx * 0.45,
-              cp2y: to.y,
-            };
-            edges.push(edge);
-            from.outgoing.push(edges.length - 1);
+
+          if (c < cols - 1) {
+            // Straight forward always.
+            addEdge(fromIdx, indexOf(c + 1, r), 0.4);
+            // Near diagonals.
+            for (const dr of [-1, 1]) {
+              const nr = r + dr;
+              if (nr < 0 || nr >= rows) continue;
+              if (Math.random() < P_NEAR_ROW) {
+                addEdge(fromIdx, indexOf(c + 1, nr), 0.6);
+              }
+            }
+            // Wider row jumps.
+            for (const dr of [-2, 2]) {
+              const nr = r + dr;
+              if (nr < 0 || nr >= rows) continue;
+              if (Math.random() < P_FAR_ROW) {
+                addEdge(fromIdx, indexOf(c + 1, nr), 1.0);
+              }
+            }
+            // Extra-wide back-feeding diagonals.
+            for (const dr of [-3, 3]) {
+              const nr = r + dr;
+              if (nr < 0 || nr >= rows) continue;
+              if (Math.random() < P_BACK_ROW) {
+                addEdge(fromIdx, indexOf(c + 1, nr), 1.4);
+              }
+            }
+          }
+
+          if (c < cols - 2) {
+            // Skip-column shortcuts.
+            for (const dr of [-2, -1, 0, 1, 2]) {
+              const nr = r + dr;
+              if (nr < 0 || nr >= rows) continue;
+              if (Math.random() < P_SKIP_COL) {
+                addEdge(fromIdx, indexOf(c + 2, nr), 1.1);
+              }
+            }
           }
         }
+      }
+
+      // Any node with outgoing edges is a valid spawn origin. Bias
+      // slightly toward the left half so flow still has room to travel,
+      // but allow full coverage so the canvas fills quickly instead of
+      // waiting for packets to cross from the left edge.
+      for (let i = 0; i < nodes.length; i++) {
+        if (!nodes[i].outgoing.length) continue;
+        const col = nodes[i].col;
+        const weight = col < cols * 0.3 ? 3 : col < cols * 0.7 ? 2 : 1;
+        for (let w = 0; w < weight; w++) spawnableNodes.push(i);
       }
     };
 
@@ -186,14 +244,15 @@ export default function PipelinesBackground() {
     ro.observe(canvas);
 
     const spawnPacket = (fromNodeIdx?: number) => {
-      if (!leftColumn.length || !edges.length) return;
+      if (!spawnableNodes.length || !edges.length) return;
       const startIdx =
         fromNodeIdx ??
-        leftColumn[Math.floor(Math.random() * leftColumn.length)];
+        spawnableNodes[Math.floor(Math.random() * spawnableNodes.length)];
       const start = nodes[startIdx];
       if (!start.outgoing.length) return;
       const edgeIdx =
         start.outgoing[Math.floor(Math.random() * start.outgoing.length)];
+      start.glow = Math.max(start.glow, 0.6);
       packets.push({
         edge: edges[edgeIdx],
         progress: 0,
