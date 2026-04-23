@@ -22,7 +22,7 @@ const events: Event[] = [
     date: "2026",
     location: "New Delhi, India",
     description:
-      "A baithak-style gathering near Bharat Mandapam alongside the AI Impact Summit. Anchored by Danish Pruthi, with academics from IITD, IITM, IIITD, IIITH, UNSW, MBZUAI, and ASU \u2014 convening infrastructure for the Trustworthy AI research community and a lead-in to SAFL\u2019s first workshop.",
+      "Organised a baithak-style convening near Bharat Mandapam alongside the AI Impact Summit. Brought together Danish Pruthi and academics from IITD, IITM, IIITD, IIITH, UNSW, MBZUAI, and ASU \u2014 building convening infrastructure for the Trustworthy AI research community, as a lead-in to SAFL\u2019s first workshop.",
     image: "/images/events/baithak.jpg",
     tags: ["Trustworthy AI", "Academia", "India"],
     rsvp: "https://luma.com/academic-reception",
@@ -32,7 +32,7 @@ const events: Event[] = [
     date: "Jan 25, 2026",
     location: "SUTD, Singapore",
     description:
-      "Official pre-summit event for the India AI Impact Summit 2026, held at SUTD during AAAI-26 week. A curated panel across India, Singapore, and Australia on the Safe & Trusted AI pillar \u2014 with speakers from MDDI, NUS AI Institute, IIT Madras (CeRAI), UNSW, AIDXTech, and FAR.AI.",
+      "Convened the official pre-summit panel for the India AI Impact Summit 2026, held at SUTD during AAAI-26 week. Curated speakers across India, Singapore, and Australia on the Safe & Trusted AI pillar \u2014 including MDDI, NUS AI Institute, IIT Madras (CeRAI), UNSW, AIDXTech, and FAR.AI.",
     image: "/images/events/sgp.jpg",
     tags: ["Trustworthy AI", "APAC", "Panel"],
     rsvp: "https://luma.com/safl-panel",
@@ -42,7 +42,7 @@ const events: Event[] = [
     date: "Feb 16, 2026",
     location: "Bharat Mandapam, New Delhi",
     description:
-      "Session at the AI Impact Summit 2026, co-convened by LucidComputing and Secure AI Futures Lab. Exploring verifiable Safe & Trusted AI infrastructure for the Global South \u2014 hardware-layer verification, India\u2019s DPDP Act, and compute supply chains as the anchor for \u2018AI trust fabric\u2019 standards.",
+      "Co-convened this session at the AI Impact Summit 2026, in partnership with LucidComputing and Secure AI Futures Lab. Led the agenda on verifiable Safe & Trusted AI infrastructure for the Global South \u2014 hardware-layer verification, India\u2019s DPDP Act, and compute supply chains as the anchor for \u2018AI trust fabric\u2019 standards.",
     image: "/images/events/summit.jpg",
     tags: ["AI Security", "Hardware", "Global South"],
     rsvp: "https://luma.com/sovereignai",
@@ -112,11 +112,14 @@ export default function EventsPage() {
             className="text-[clamp(1.8rem,4vw,3rem)] leading-[1.15] tracking-[-0.02em] text-white font-medium mb-3"
             style={{ fontFamily: FONT }}
           >
-            Events
+            Events and Convenings
           </h1>
           <p className="text-[#888] text-base max-w-[600px]">
-            Academic receptions, forums, and convenings organised to connect
-            researchers, policymakers, and industry practitioners.
+            Convening researchers, policymakers, and industry practitioners
+            through academic receptions, forums, and panels on Trustworthy AI.
+            
+            Lead, organiser, curator, high-impact, high intervention, bringing together various stakeholders,
+            techno-governance fraemwork readiness 
           </p>
         </div>
       </section>

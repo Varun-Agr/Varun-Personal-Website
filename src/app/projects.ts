@@ -118,8 +118,8 @@ export const projects: Project[] = [
     cardTitle: "AI Candidate Screening — Signal-Based Evaluation at Scale",
     cardDescription:
       "Automated two-stage screening pipeline: Claude evaluates candidates against configurable binary signals, then deterministic tier logic shortlists the top performers.",
-    cardStat: "50% cost savings",
-    cardStatLabel: "Cost savings via batching",
+    cardStat: "Batched evaluation",
+    cardStatLabel: "Async Claude API screening",
     cardGradient:
       "linear-gradient(135deg, #1a1520 0%, #201525 40%, #1a1028 70%, #251a30 100%)",
     cardAccent: "#c084fc",

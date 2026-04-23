@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { projects } from "./projects";
 import Navbar from "./components/Navbar";
-import PipelinesBackground from "./components/PipelinesBackground";
+import TopoBackground from "./components/TopoBackground";
 
 const CAROUSEL_SLUGS = [
   "ai-candidate-screening-pipeline",
@@ -180,6 +180,7 @@ export default function ClonePage() {
   const [openAccordion, setOpenAccordion] = useState<number | null>(null);
   const carouselProjects = CAROUSEL_SLUGS.map((s) => projects.find((p) => p.slug === s)!);
   const [selectedProjectIdx, setSelectedProjectIdx] = useState(0);
+  const [hoveredConf, setHoveredConf] = useState<number | null>(null);
   const canvasRef = useTronTrail();
   const displayText = useScrollReveal();
   const approachLeft = useScrollReveal();
@@ -232,7 +233,7 @@ export default function ClonePage() {
 
       {/* ──────────── HERO + BIO with network underlay ──────────── */}
       <div className="relative overflow-hidden">
-        <PipelinesBackground />
+        <TopoBackground />
 
         {/* Hero headline */}
         <section className="px-6 pt-16 pb-12 lg:pt-24 lg:pb-16 relative z-10" id="work">
@@ -537,7 +538,7 @@ export default function ClonePage() {
 
       {/* ──────────── UPCOMING TIMELINE ──────────── */}
       <section className="px-6 py-20 lg:py-28">
-        <div className="max-w-[1400px] mx-auto">
+        <div className="max-w-2xl mx-auto text-center">
           <p className="text-sm text-[#666] uppercase tracking-widest mb-2">
             Upcoming
           </p>
@@ -548,7 +549,7 @@ export default function ClonePage() {
             Want to chat? Find me at these places
           </h2>
 
-          <div className="relative">
+          <div className="relative text-left">
             {/* Vertical line */}
             <div
               className="absolute left-[7px] top-2 bottom-2 w-px hidden sm:block"
@@ -578,44 +579,55 @@ export default function ClonePage() {
                   description:
                     "Conference on Neural Information Processing Systems",
                 },
-              ].map((event, i) => (
-                <div key={i} className="flex gap-6 items-start">
-                  {/* Dot */}
-                  <div className="relative flex-shrink-0 mt-1.5 hidden sm:block">
-                    <div
-                      className="w-[15px] h-[15px] rounded-full border-2"
-                      style={{
-                        borderColor: i === 0 ? "#4ade80" : "#444",
-                        backgroundColor: i === 0 ? "#4ade8033" : "transparent",
-                      }}
-                    />
-                  </div>
+              ].map((event, i) => {
+                const activeIdx = hoveredConf ?? 0;
+                const isActive = i === activeIdx;
+                return (
+                  <div
+                    key={i}
+                    className="flex gap-6 items-start cursor-default transition-opacity duration-300"
+                    style={{ opacity: isActive ? 1 : 0.55 }}
+                    onMouseEnter={() => setHoveredConf(i)}
+                    onMouseLeave={() => setHoveredConf(null)}
+                  >
+                    {/* Dot */}
+                    <div className="relative flex-shrink-0 mt-1.5 hidden sm:block">
+                      <div
+                        className="w-[15px] h-[15px] rounded-full border-2 transition-all duration-300"
+                        style={{
+                          borderColor: isActive ? "#4ade80" : "#444",
+                          backgroundColor: isActive ? "#4ade8033" : "transparent",
+                          boxShadow: isActive ? "0 0 12px #4ade8066" : "none",
+                        }}
+                      />
+                    </div>
 
-                  {/* Content */}
-                  <div className="flex-1 grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-2 sm:gap-8">
-                    <p
-                      className="text-sm text-[#888] pt-0.5"
-                      style={{ fontVariantNumeric: "tabular-nums" }}
-                    >
-                      {event.date}
-                    </p>
-                    <div>
-                      <h3
-                        className="text-white text-lg font-medium"
-                        style={{ fontFamily: FONT }}
+                    {/* Content */}
+                    <div className="flex-1 grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-2 sm:gap-8">
+                      <p
+                        className="text-sm text-[#888] pt-0.5"
+                        style={{ fontVariantNumeric: "tabular-nums" }}
                       >
-                        {event.name}
-                      </h3>
-                      <p className="text-[#888] text-sm mt-1">
-                        {event.description}
+                        {event.date}
                       </p>
-                      <p className="text-[#666] text-sm mt-1">
-                        {event.location}
-                      </p>
+                      <div>
+                        <h3
+                          className="text-white text-lg font-medium"
+                          style={{ fontFamily: FONT }}
+                        >
+                          {event.name}
+                        </h3>
+                        <p className="text-[#888] text-sm mt-1">
+                          {event.description}
+                        </p>
+                        <p className="text-[#666] text-sm mt-1">
+                          {event.location}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
