@@ -259,13 +259,18 @@ export default function ClonePage() {
               <div className="text-sm invisible select-none" aria-hidden="true">
                 spacer
               </div>
-              <p className="text-[#777] text-sm leading-relaxed">
-                The network is the core data structure of our talent graph -
-                researchers, labs, and affiliations as nodes.
-                <br />
-                Graph-theoretic algorithms - centrality, shortest path,
-                embeddings — traverse it to surface the right candidates.
-              </p>
+              <div className="flex flex-col gap-2">
+                <p className="text-[#666] text-xs tracking-[0.15em] uppercase">
+                  A Note On The Background
+                </p>
+                <p className="text-[#777] text-sm leading-relaxed">
+                  The network is the core data structure of our talent graph -
+                  researchers, labs, and affiliations as nodes.
+                  <br />
+                  Graph-theoretic algorithms - centrality, shortest path,
+                  embeddings — traverse it to surface the right candidates.
+                </p>
+              </div>
             </div>
             {/* Right: existing bio */}
             <div className="flex flex-col gap-6 max-w-[600px] ml-auto">
