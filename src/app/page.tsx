@@ -198,6 +198,24 @@ export default function ClonePage() {
         "Scaled a recruiting funnel from scratch to 4,200 warm ML, SWE, and Quant candidates across 5 continents, while directing a 30-person distributed team that cut time-to-offer from 65 to 30 days and cost-per-hire by 27%. Partnered with hiring managers at 13+ organizations to scope roles, calibrate bars, and close 26 offers across FAR.AI, UK AISI, and Apollo — securing 12 accepted placements.",
     },
     {
+      title: "People Strategy & Leadership",
+      content: (
+        <>
+          Organised one of India's first Alignment Research Fellowship - 600+
+          applicants across 40 STEM universities, 24 selected. Convened
+          government, academia, and industry leaders through flagship
+          summits, panels, and capacity-building programs in India and abroad - see{" "}
+          <Link
+            href="/events"
+            className="text-[#4ade80] hover:text-white transition-colors duration-300 underline underline-offset-2"
+          >
+            events
+          </Link>
+          .
+        </>
+      ),
+    },
+    {
       title: "Trustworthy AI Science",
       content:
         "Co-founded Secure AI Futures Lab with $250K+ via Schmidt Sciences and AI Security Tactical Opportunities Fund. Convening government, academia, and industry across India and APAC. Partnering with IITs and IISc on AI for Science, Social Good, and Trustworthy AI.",
@@ -245,7 +263,7 @@ export default function ClonePage() {
               {/*Technical Recruiter <span className="text-[#555]">&</span> AI Governance Builder sourcing top 1% STEM talent for frontier AI labs*/}
               {/*I build talent pipelines and recruiting tools for leading AI organisations, helping them hire top researchers, engineers, and generalists tackling the most consequential problems.*/}
               I build <span className="text-[#4ade80]">talent pipelines</span> and lead the teams that run them
-              for top AI organisations <span className="text-[#4ade80]">hiring top researchers</span>,
+              for AI organisations <span className="text-[#4ade80]">hiring top researchers</span>,
               engineers, and generalists tackling the <span className="text-[#4ade80]">most consequential problems</span>.
             </h1>
           </div>
@@ -446,8 +464,8 @@ export default function ClonePage() {
             className="text-[clamp(1.8rem,4vw,3.2rem)] leading-[1.2] tracking-[-0.015em] text-[#ccc]"
             style={{ fontFamily: FONT }}
           >
-            I build recruiting infrastructure — talent maps, screening
-            pipelines, sourcing tools — and lead the teams that run them, so that{" "}
+            I build recruiting infrastructure - talent maps, screening
+            pipelines, sourcing tools - and lead the teams that run them, so that{" "}
             <span className="text-[#4ade80]">the right candidates surface faster</span>,
             and the hiring teams can{" "}
             <span className="text-[#4ade80]">spend time evaluating, not searching</span>.
@@ -473,12 +491,12 @@ export default function ClonePage() {
           >
             <p className="text-[#aaa] text-base leading-relaxed">
               Sourcing researchers and engineers for teams building reliable AI systems
-              — start with the talent map, build the pipeline, calibrate the bar, close the offer.
+              - start with the talent map, build the pipeline, calibrate the bar, close the offer.
               Running the ops and the distributed team behind it end-to-end.
             </p>
             <p className="text-[#aaa] text-base leading-relaxed">
               The work spans data-driven sourcing, RecOps infrastructure,
-              and the tools that tie it together — 50K-profile
+              and the tools that tie it together - 50K-profile
               talent maps, LLM-assisted candidate triage, JD fingerprinting.
               Alongside it, leading a 30-person distributed team and the
               stakeholder alignment that keeps searches on-roadmap.
