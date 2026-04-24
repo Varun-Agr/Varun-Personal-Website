@@ -19,38 +19,6 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "measuremint",
-    name: "Measuremint",
-    techStack: "ElevenLabs, Claude, PostgreSQL, pgvector, Python",
-    cardImage: ["/images/work/dh1.png"],
-    cardTitle: "Measuremint - AI-Powered Talent Intelligence Platform",
-    cardDescription:
-      "Voice-first career agent for high-volume markets. ElevenLabs + Claude for AI interviews and semantic similarity for matching. Solves sourcing and AI-driven talent identification at scale.",
-    cardStat: "10K+ candidates",
-    cardStatLabel: "Candidates processed",
-    cardGradient:
-      "linear-gradient(135deg, #1a1a2a 0%, #1a1530 40%, #15102a 70%, #201a35 100%)",
-    cardAccent: "#a78bfa",
-    tags: ["AI/ML", "Voice AI", "Talent Tech", "PostgreSQL", "Python"],
-    demoLink: "https://bit.ly/measuremint-early-demo",
-    demoLabel: "View ",
-    year: "2025",
-    before: {
-      headline: "High-Volume Hiring: Too Many Applicants, No Way to Find Signal",
-      body: [
-        "A single job posting in India's tech market can attract 2,000 to 20,000 applicants. Recruiters were reading CVs by the thousand and running phone screens for weeks. The best candidates\u2014the ones who could articulate their thinking, not just list credentials\u2014were buried under volume.",
-        "The entire pipeline was optimised for throughput, not signal. There was no scalable way to identify who was genuinely strong versus who simply had the right keywords on their resume.",
-      ],
-    },
-    after: {
-      headline: "AI-Driven Sourcing and Identification at Scale",
-      body: [
-        "Measuremint replaced the manual grind with a three-tier evaluation funnel: automated CV parsing, an asynchronous voice challenge, and a full 10-minute AI interview powered by ElevenLabs and Claude. PostgreSQL with pgvector handles semantic matching across the entire candidate pool.",
-        "The system surfaces genuine signal from thousands of applicants\u2014identifying candidates who can think and communicate, not just those with the right keywords. Recruiters spend time on the strongest candidates instead of triaging the full volume.",
-      ],
-    },
-  },
-  {
     slug: "ml-research-talent-map",
     name: "ML Research Talent Map",
     techStack: "Python, Vector Embeddings, ICLR/ICML/CVPR Data, Apify",
@@ -84,7 +52,7 @@ export const projects: Project[] = [
     slug: "talent-index-jd-fingerprinting",
     name: "Talent Index & JD Fingerprinting",
     techStack: "Python, NLP, Data Visualisation",
-    cardImage: ["/images/work/jd1.jpg"],
+    cardImage: ["/images/work/jd1.png"],
     cardTitle: "Weighted Talent Index & JD Fingerprinting",
     cardDescription:
       "A data science project that analyses 106 job descriptions across 10 skill dimensions to build a unified view of how different roles compare — improving how we calibrate candidates against actual market demand.",
@@ -176,7 +144,7 @@ export const projects: Project[] = [
     name: "India AI Tracker",
     techStack: "Research, Data Analysis, Policy Tracking, Stakeholder Mapping",
     cardImage: ["/images/work/indiaai.jpg"],
-    cardTitle: "India AI Tracker — Tracking a Rising AI Market",
+    cardTitle: "India AI Tracker — Tracking India's AI research and policy",
     cardDescription:
       "Dedicated tracker covering governance discussions, stakeholder decisions, investment trends, and technological developments across the Indian AI ecosystem.",
     cardStat: "50+ stakeholders",
@@ -204,11 +172,43 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "measuremint",
+    name: "Measuremint",
+    techStack: "ElevenLabs, Claude, PostgreSQL, pgvector, Python",
+    cardImage: ["/images/work/dh1.png"],
+    cardTitle: "Measuremint - AI-Powered Talent Intelligence Platform",
+    cardDescription:
+      "Voice-first career agent for high-volume markets. ElevenLabs + Claude for AI interviews and semantic similarity for matching. Solves sourcing and AI-driven talent identification at scale.",
+    cardStat: "10K+ candidates",
+    cardStatLabel: "Candidates processed",
+    cardGradient:
+      "linear-gradient(135deg, #1a1a2a 0%, #1a1530 40%, #15102a 70%, #201a35 100%)",
+    cardAccent: "#a78bfa",
+    tags: ["AI/ML", "Voice AI", "Talent Tech", "PostgreSQL", "Python"],
+    demoLink: "https://bit.ly/measuremint-early-demo",
+    demoLabel: "View ",
+    year: "2025",
+    before: {
+      headline: "High-Volume Hiring: Too Many Applicants, No Way to Find Signal",
+      body: [
+        "A single job posting in India's tech market can attract 2,000 to 20,000 applicants. Recruiters were reading CVs by the thousand and running phone screens for weeks. The best candidates\u2014the ones who could articulate their thinking, not just list credentials\u2014were buried under volume.",
+        "The entire pipeline was optimised for throughput, not signal. There was no scalable way to identify who was genuinely strong versus who simply had the right keywords on their resume.",
+      ],
+    },
+    after: {
+      headline: "AI-Driven Sourcing and Identification at Scale",
+      body: [
+        "Measuremint replaced the manual grind with a three-tier evaluation funnel: automated CV parsing, an asynchronous voice challenge, and a full 10-minute AI interview powered by ElevenLabs and Claude. PostgreSQL with pgvector handles semantic matching across the entire candidate pool.",
+        "The system surfaces genuine signal from thousands of applicants\u2014identifying candidates who can think and communicate, not just those with the right keywords. Recruiters spend time on the strongest candidates instead of triaging the full volume.",
+      ],
+    },
+  },
+  {
     slug: "big-tech-layoff-monitor",
-    name: "Indirect Talent Sourcing Channel",
+    name: "Nexus - Surfacing candidates from layoff data",
     techStack: "Next.js, GraphQL, Reddit API, GitHub API, HackerNews API, Google CSE",
     cardImage: ["/images/work/layoff.jpg"],
-    cardTitle: "Indirect Talent Sourcing Channel (WIP)",
+    cardTitle: "Nexus - Surfacing candidates from layoff data",
     cardDescription:
       "Monitors public signals across Reddit, GitHub, HackerNews, and Google CSE to rapidly surface experienced engineers entering the market during workforce transitions — feeding structured leads into downstream recruiting workflows.",
     cardStat: "100 signal sources",

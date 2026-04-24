@@ -31,7 +31,7 @@ export default async function WorkPage({
         <div className="max-w-[1400px] mx-auto">
           {/* Back link */}
           <Link
-            href="/#work"
+            href="/works"
             className="inline-flex items-center gap-2 text-sm text-[#888] hover:text-white transition-colors duration-300 mb-12"
           >
             <svg

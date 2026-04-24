@@ -87,12 +87,12 @@ export default function WorksPage() {
         <div className="max-w-[1400px] mx-auto">
           {/* Table header */}
           <div
-            className="hidden md:grid grid-cols-[1fr_1fr_120px_100px] gap-6 px-4 py-3 text-xs text-[#555] uppercase tracking-[0.15em] border-b"
+            className="hidden md:grid grid-cols-[108px_1fr_1fr_100px] gap-6 px-4 py-3 text-xs text-[#555] uppercase tracking-[0.15em] border-b"
             style={{ borderColor: "#2a2a2a" }}
           >
+            <span>Preview</span>
             <span>Project</span>
             <span>Stack</span>
-            <span>Key Metric</span>
             <span className="text-right">Year</span>
           </div>
 
@@ -106,13 +106,45 @@ export default function WorksPage() {
               onMouseLeave={() => setHoveredIdx(null)}
             >
               <div
-                className="grid grid-cols-1 md:grid-cols-[1fr_1fr_120px_100px] gap-3 md:gap-6 px-4 py-6 border-b transition-all duration-300"
+                className="grid grid-cols-1 md:grid-cols-[108px_1fr_1fr_100px] gap-3 md:gap-6 px-4 py-6 border-b transition-all duration-300 items-center"
                 style={{
                   borderColor: "#2a2a2a",
                   backgroundColor:
                     hoveredIdx === i ? "rgba(255,255,255,0.03)" : "transparent",
                 }}
               >
+                {/* Preview thumbnail */}
+                <div
+                  className="relative w-[108px] h-[81px] rounded overflow-hidden flex-shrink-0 border"
+                  style={{
+                    background: project.cardGradient,
+                    borderColor:
+                      hoveredIdx === i ? "#444" : "#2a2a2a",
+                    transition: "border-color 0.3s",
+                  }}
+                >
+                  {project.cardImage?.length ? (
+                    <img
+                      src={project.cardImage[0]}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 w-full h-full object-contain p-1.5"
+                    />
+                  ) : (
+                    <div
+                      className="absolute inset-0 flex items-center justify-center text-[10px] font-semibold tracking-wider"
+                      style={{ color: project.cardAccent }}
+                    >
+                      {project.name
+                        .split(" ")
+                        .slice(0, 2)
+                        .map((w) => w[0])
+                        .join("")}
+                    </div>
+                  )}
+                </div>
+
                 {/* Project name + description */}
                 <div>
                   <h3
@@ -151,18 +183,18 @@ export default function WorksPage() {
                 </div>
 
                 {/* Key metric */}
-                <div className="flex items-center">
+                {/*<div className="flex items-center">
                   <span
                     className="text-lg font-semibold"
                     style={{ color: project.cardAccent }}
                   >
                     {project.cardStat}
                   </span>
-                </div>
+                </div>*/}
 
                 {/* Year placeholder */}
                 <div className="flex items-center md:justify-end">
-                  <span className="text-[#555] text-sm">\{project.year}</span>
+                  <span className="text-[#555] text-sm">{project.year}</span>
                 </div>
               </div>
             </Link>

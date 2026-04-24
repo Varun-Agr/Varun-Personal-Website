@@ -244,8 +244,8 @@ export default function ClonePage() {
             >
               {/*Technical Recruiter <span className="text-[#555]">&</span> AI Governance Builder sourcing top 1% STEM talent for frontier AI labs*/}
               {/*I build talent pipelines and recruiting tools for leading AI organisations, helping them hire top researchers, engineers, and generalists tackling the most consequential problems.*/}
-              I build <span className="text-[#4ade80]">talent pipelines</span> and recruiting tools — and lead the teams that run them —
-              for leading AI organisations <span className="text-[#4ade80]">hiring top researchers</span>,
+              I build <span className="text-[#4ade80]">talent pipelines</span> and lead the teams that run them
+              for top AI organisations <span className="text-[#4ade80]">hiring top researchers</span>,
               engineers, and generalists tackling the <span className="text-[#4ade80]">most consequential problems</span>.
             </h1>
           </div>
@@ -261,7 +261,7 @@ export default function ClonePage() {
               </div>
               <div className="flex flex-col gap-2">
                 <p className="text-[#666] text-xs tracking-[0.15em] uppercase">
-                  A Note On The Background
+                  What the Background means?
                 </p>
                 <p className="text-[#777] text-sm leading-relaxed">
                   The network is the core data structure of our talent graph -
@@ -292,8 +292,8 @@ export default function ClonePage() {
                 <br />
                 <br />
                 8+ years sourcing and placing researchers and engineers
-                across AI, ML, and deep-tech — including UK AISI, FAR.AI,
-                and Apollo Research — and running the ops and distributed
+                across AI, ML, and deep-tech - including UK AISI, FAR.AI,
+                and Apollo Research - and running the ops and distributed
                 teams behind the search.
               </p>
 
@@ -649,6 +649,16 @@ export default function ClonePage() {
                 );
               })}
             </div>
+          </div>
+          <div className="flex flex-wrap gap-3 mt-2">
+            <a
+              href="/contact"
+              className="flex items-center gap-2 px-5 py-2.5 border text-sm text-white hover:bg-white hover:text-[#141414] transition-all duration-300"
+              style={{ borderColor: "#444", borderRadius: "2px" }}
+            >
+              <span className="text-xs">&#x21a6;</span>
+              Let's Talk!
+            </a>
           </div>
         </div>
       </section>

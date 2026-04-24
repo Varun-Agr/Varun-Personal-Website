@@ -38,7 +38,7 @@ const events: Event[] = [
     rsvp: "https://luma.com/safl-panel",
   },
   {
-    title: "Hardware-rooted Sovereignty - India AI Summit, New Delhi",
+    title: "Hardware-rooted Sovereignty - India AI Summit",
     date: "Feb 16, 2026",
     location: "Bharat Mandapam, New Delhi",
     description:
@@ -112,7 +112,7 @@ export default function EventsPage() {
             className="text-[clamp(1.8rem,4vw,3rem)] leading-[1.15] tracking-[-0.02em] text-white font-medium mb-3"
             style={{ fontFamily: FONT }}
           >
-            Events and Convenings
+            
           </h1>
           <p className="text-[#888] text-base max-w-[600px]">
             Convening researchers, policymakers, and industry practitioners
