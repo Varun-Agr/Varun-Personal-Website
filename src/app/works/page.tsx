@@ -252,8 +252,8 @@ export default function WorksPage() {
             </div>
           </div>
           <div className="text-sm text-[#888] lg:text-right space-y-1">
-            <p>Based in India</p>
-            <p className="text-[#666] mt-2 hidden md:block">12.96&deg; N, 77.57&deg; E</p>
+            <p>Based in New Delhi</p>
+            <p className="text-[#666] mt-2 hidden md:block">28.61&deg; N, 77.21&deg; E</p>
           </div>
         </div>
 

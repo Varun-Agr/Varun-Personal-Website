@@ -224,7 +224,7 @@ export default function ContactPage() {
                 <div>
                   <p className="uppercase tracking-[0.15em] text-xs mb-2" style={{ color: C.textDim }}>Location</p>
                   <p style={{ color: C.textMuted }}>India</p>
-                  <p className="mt-1 hidden md:block" style={{ color: C.textDim }}>12.96&deg; N, 77.57&deg; E</p>
+                  <p className="mt-1 hidden md:block" style={{ color: C.textDim }}>28.61&deg; N, 77.21&deg; E</p>
                 </div>
                 <div>
                   <p className="uppercase tracking-[0.15em] text-xs mb-2" style={{ color: C.textDim }}>Status</p>
@@ -633,8 +633,8 @@ export default function ContactPage() {
             </div>
           </div>
           <div className="text-sm lg:text-right space-y-1" style={{ color: C.textMuted }}>
-            <p>Based in India</p>
-            <p className="mt-2 hidden md:block" style={{ color: C.textDim }}>12.96&deg; N, 77.57&deg; E</p>
+            <p>Based in New Delhi</p>
+            <p className="mt-2 hidden md:block" style={{ color: C.textDim }}>28.61&deg; N, 77.21&deg; E</p>
           </div>
         </div>
 
