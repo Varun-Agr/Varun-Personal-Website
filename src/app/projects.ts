@@ -292,4 +292,34 @@ export const projects: Project[] = [
       ],
     },
   },
+  {
+    slug: "buddhimanbaccha",
+    name: "Buddhiman Baccha",
+    techStack: "RLHF, Human Feedback, Annotation",
+    cardTitle: "Buddhiman Baccha - Digital Literacy → RLHF Platform (WIP)",
+    cardDescription:
+      "An early-stage experiment. Originally a digital literacy nonprofit; currently being repurposed as an RLHF and human-feedback platform. Underbaked and exploratory.",
+    cardStat: "WIP",
+    cardStatLabel: "Early experiment",
+    cardImage: ["/images/work/bb1.png"],
+    cardGradient:
+      "linear-gradient(135deg, #1a1a1a 0%, #1f1f1f 40%, #181818 70%, #1c1c1c 100%)",
+    cardAccent: "#9ca3af",
+    tags: ["RLHF", "Human Feedback", "WIP", "Experiment"],
+    year: "2026",
+    before: {
+      headline: "From Digital Literacy Pilot to Something New",
+      body: [
+        "Buddhimanbaccha started in 2019 as a small digital literacy effort — training a cohort of underprivileged students in basic ITeS skills for back-office work. The pilot ran its course and the project sat dormant.",
+        "The infrastructure and the cohort relationships didn't disappear, though. With the rise of human feedback as a core input to model training, the same network of trained annotators turned out to be unexpectedly relevant.",
+      ],
+    },
+    after: {
+      headline: "Quietly Repurposing Into an RLHF Platform",
+      body: [
+        "Currently being rebuilt as a small RLHF and human-feedback platform. Early days — task design, annotator workflows, and quality controls are all still being figured out. No claims about scale or output yet.",
+        "Sharing it here mostly as a note that it exists and is moving. More to come if and when it earns a fuller writeup.",
+      ],
+    },
+  },
 ];

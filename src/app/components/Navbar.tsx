@@ -78,7 +78,10 @@ export default function Navbar({ activePage }: { activePage?: "work" | "approach
               className="px-3 py-1 transition-colors duration-300"
               style={{ color: linkColor("events") }}
             >
-              Events
+              {/* My Events */}
+              {/* I Hosted */}
+              {/* Hosted */}
+              Organised Events
             </Link>
           </div>
         </div>

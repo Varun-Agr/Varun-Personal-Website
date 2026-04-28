@@ -112,7 +112,7 @@ export default function EventsPage() {
             className="text-[clamp(1.8rem,4vw,3rem)] leading-[1.15] tracking-[-0.02em] text-white font-medium mb-3"
             style={{ fontFamily: FONT }}
           >
-            Some Events I Helped Organise 
+            Some Events I Organised 
           </h1>
           <p className="text-[#888] text-base max-w-[600px]">
             Convening researchers, policymakers, and industry practitioners
