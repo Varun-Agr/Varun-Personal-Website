@@ -619,6 +619,9 @@ export default function ContactPage() {
             <a href="https://varunagrawal.com" className="transition-colors duration-300 hover:opacity-80">
               varunagrawal.com
             </a>
+            <Link href="/privacy" className="transition-colors duration-300 hover:opacity-80">
+              Privacy
+            </Link>
           </div>
         </div>
 

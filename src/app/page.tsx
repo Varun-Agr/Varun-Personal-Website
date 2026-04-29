@@ -769,6 +769,9 @@ export default function ClonePage() {
             <a href="https://varunagrawal.com" className="hover:text-white transition-colors duration-300">
               varunagrawal.com
             </a>
+            <Link href="/privacy" className="hover:text-white transition-colors duration-300">
+              Privacy
+            </Link>
           </div>
         </div>
 

@@ -231,6 +231,12 @@ export default function EventsPage() {
             >
               LinkedIn
             </a>
+            <Link
+              href="/privacy"
+              className="hover:text-white transition-colors duration-300"
+            >
+              Privacy
+            </Link>
           </div>
         </div>
 
