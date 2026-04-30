@@ -81,7 +81,8 @@ export default function Navbar({ activePage }: { activePage?: "work" | "approach
               {/* My Events */}
               {/* I Hosted */}
               {/* Hosted */}
-              Organised Events
+              My Events
+              {/*Organised Events*/}
             </Link>
           </div>
         </div>

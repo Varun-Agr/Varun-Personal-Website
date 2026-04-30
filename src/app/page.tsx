@@ -61,8 +61,8 @@ function useTronTrail() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const trail = useRef<TrailPoint[]>([]);
   const animFrame = useRef<number>(0);
-  const MAX_POINTS = 80;
-  const MAX_AGE = 55; // frames to fade
+  const MAX_POINTS = 140;
+  const MAX_AGE = 110; // frames to fade
 
   const onMouseMove = useCallback((e: MouseEvent) => {
     trail.current.push({ x: e.clientX, y: e.clientY, age: 0 });
@@ -107,14 +107,14 @@ function useTronTrail() {
 
         if (alpha <= 0) continue;
 
-        const width = progress * 2.5;
+        const width = progress * 4;
 
         // glow layer
         ctx.beginPath();
         ctx.moveTo(p0.x, p0.y);
         ctx.lineTo(p1.x, p1.y);
         ctx.strokeStyle = `hsla(0, 0%, 80%, ${alpha * 0.3})`;
-        ctx.lineWidth = width + 6;
+        ctx.lineWidth = width + 10;
         ctx.lineCap = "round";
         ctx.stroke();
 
@@ -262,8 +262,10 @@ export default function ClonePage() {
             >
               {/*Technical Recruiter <span className="text-[#555]">&</span> AI Governance Builder sourcing top 1% STEM talent for frontier AI labs*/}
               {/*I build talent pipelines and recruiting tools for leading AI organisations, helping them hire top researchers, engineers, and generalists tackling the most consequential problems.*/}
-              I build <span className="text-[#4ade80]">talent pipelines</span> and lead the teams that run them
+              {/*I build <span className="text-[#4ade80]">talent pipelines</span> and lead the teams that run them
               for AI organisations <span className="text-[#4ade80]">hiring top researchers</span>,
+              engineers, and generalists tackling the <span className="text-[#4ade80]">most consequential problems</span>.*/}
+              Lead <span className="text-[#4ade80]">talent and people</span> strategy at AI organisations hiring<span className="text-[#4ade80]"> top researchers</span>,
               engineers, and generalists tackling the <span className="text-[#4ade80]">most consequential problems</span>.
             </h1>
           </div>
