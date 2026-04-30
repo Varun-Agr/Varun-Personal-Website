@@ -265,8 +265,7 @@ export default function ClonePage() {
               {/*I build <span className="text-[#4ade80]">talent pipelines</span> and lead the teams that run them
               for AI organisations <span className="text-[#4ade80]">hiring top researchers</span>,
               engineers, and generalists tackling the <span className="text-[#4ade80]">most consequential problems</span>.*/}
-              Lead <span className="text-[#4ade80]">talent and people</span> strategy at AI organisations hiring<span className="text-[#4ade80]"> top researchers</span>,
-              engineers, and generalists tackling the <span className="text-[#4ade80]">most consequential problems</span>.
+              I lead <span className="text-[#4ade80]">talent and people</span> strategy at AI organisations hiring<span className="text-[#4ade80]"> top 1%ile researchers</span>, tackling the <span className="text-[#4ade80]">most impactful problems</span>.
             </h1>
           </div>
         </section>
@@ -279,17 +278,28 @@ export default function ClonePage() {
               <div className="text-sm invisible select-none" aria-hidden="true">
                 spacer
               </div>
-              <div className="flex flex-col gap-2">
-                <p className="text-[#666] text-xs tracking-[0.15em] uppercase">
+              <div className="group flex flex-col gap-2 cursor-help">
+                <p className="text-[#666] text-xs tracking-[0.15em] uppercase inline-flex items-center gap-2 group-hover:text-[#aaa] transition-colors duration-300">
                   What the Background means?
+                  <span
+                    aria-hidden="true"
+                    className="inline-flex items-center justify-center w-4 h-4 rounded-full border text-[10px] leading-none transition-colors duration-300 group-hover:border-[#4ade80] group-hover:text-[#4ade80]"
+                    style={{ borderColor: "#444", color: "#666" }}
+                  >
+                    i
+                  </span>
                 </p>
-                <p className="text-[#777] text-sm leading-relaxed">
-                  The network is the core data structure of our talent graph -
-                  researchers, labs, and affiliations as nodes.
-                  <br />
-                  Graph-theoretic algorithms - centrality, shortest path,
-                  embeddings — traverse it to surface the right candidates.
-                </p>
+                <div
+                  className="overflow-hidden transition-all duration-300 ease-out max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 group-focus-within:max-h-40 group-focus-within:opacity-100"
+                >
+                  <p className="text-[#777] text-sm leading-relaxed pt-1">
+                    The network is the core data structure of our talent graph -
+                    researchers, labs, and affiliations as nodes.
+                    <br />
+                    Graph-theoretic algorithms - centrality, shortest path,
+                    embeddings — traverse it to surface the right candidates.
+                  </p>
+                </div>
               </div>
             </div>
             {/* Right: existing bio */}
