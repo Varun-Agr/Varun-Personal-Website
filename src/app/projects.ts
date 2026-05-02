@@ -241,6 +241,7 @@ export const projects: Project[] = [
     cardDescription:
       "Founded India's first Alignment Research Fellowship. Built a pipeline of 600+ applicants across 40 STEM universities, selected 24 (top 4%); 10 papers now published or under review.",
     cardStat: "600+ applicants",
+    cardImage: ["/images/work/aiscf.png"],
     cardStatLabel: "Across 40 STEM universities",
     cardGradient:
       "linear-gradient(135deg, #1a1a20 0%, #25201a 40%, #2a1f15 70%, #20150f 100%)",
