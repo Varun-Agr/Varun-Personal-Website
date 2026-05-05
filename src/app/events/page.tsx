@@ -112,14 +112,12 @@ export default function EventsPage() {
             className="text-[clamp(1.8rem,4vw,3rem)] leading-[1.15] tracking-[-0.02em] text-white font-medium mb-3"
             style={{ fontFamily: FONT }}
           >
-            Some Events I Organised 
+            Convenings I&apos;ve Led
           </h1>
           <p className="text-[#888] text-base max-w-[600px]">
-            Convening researchers, policymakers, and industry practitioners
-            through academic receptions, forums, and panels on Trustworthy AI.
-            
-            Lead, organiser, curator, high-impact, high intervention, bringing together various stakeholders,
-            techno-governance fraemwork readiness 
+            Pivotal rooms I built across the Trustworthy AI ecosystem &mdash;
+            bringing together academics, policymakers, and industry across
+            India, Singapore, and Australia around the India AI Impact Summit.
           </p>
         </div>
       </section>
