@@ -266,7 +266,7 @@ export default function ClonePage() {
               for AI organisations <span className="text-[#4ade80]">hiring top researchers</span>,
               engineers, and generalists tackling the <span className="text-[#4ade80]">most consequential problems</span>.*/}
               {/*I lead <span className="text-[#4ade80]">talent and people</span> strategy at AI organisations hiring<span className="text-[#4ade80]"> top 1%ile researchers</span>, tackling the <span className="text-[#4ade80]">most impactful problems</span>.*/}
-              Driving RecOps and People Strategy at AI organisations – hiring the top 1% talent to work on the most challenging problems              
+              Driving <span className="text-[#4ade80]">RecOps</span> and <span className="text-[#4ade80]">People Strategy</span> at AI organisations – hiring the <span className="text-[#4ade80]">top 1%ile</span> talent to work on the most challenging problems.              
             </h1>
           </div>
         </section>
