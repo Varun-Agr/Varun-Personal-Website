@@ -23,7 +23,7 @@ export const projects: Project[] = [
     name: "ML Research Talent Map",
     techStack: "Python, Vector Embeddings, ICLR/ICML/CVPR Data, Apify",
     cardImage: ["/images/work/tech1.jpg"],
-    cardTitle: "ML Research Talent Map \u2014 50K Researcher Profiles",
+    cardTitle: "ML Research Talent Map: 50K Researcher Profiles",
     cardDescription:
       "Scraped and structured 50,000 ML researcher profiles from 5 years of ICLR, ICML, and CVPR proceedings. Searchable by research area via vector embeddings.",
     cardStat: "50K profiles",
@@ -83,7 +83,7 @@ export const projects: Project[] = [
     name: "AI Candidate Screening Pipeline",
     cardImage: ["/images/work/pipeline.jpg"],
     techStack: "Python, Claude API, Metaview, Juicebox",
-    cardTitle: "AI Candidate Screening — Signal-Based Evaluation at Scale",
+    cardTitle: "AI Candidate Screening: Signal-Based Evaluation at Scale",
     cardDescription:
       "Automated two-stage screening pipeline: Claude evaluates candidates against configurable binary signals, then deterministic tier logic shortlists the top performers.",
     cardStat: "Batched evaluation",
@@ -114,7 +114,7 @@ export const projects: Project[] = [
     name: "Recruiting Data Infrastructure",
     techStack:
       "Cloud SQL, Cloud Run, LinkedIn Recruiter RSC, Python, Anthropic MCP",
-    cardTitle: "Recruiting Infrastructure \u2014 80K Records, One Pipeline",
+    cardTitle: "Recruiting Infrastructure: 80K Records, One Pipeline",
     cardDescription:
       "Scalable recruiting infrastructure: Cloud SQL, Cloud Run. 100+ data sources harvested into an 80K-record dataset at >90% accuracy.",
     cardStat: "80K records",
@@ -144,7 +144,7 @@ export const projects: Project[] = [
     name: "India AI Tracker",
     techStack: "Research, Data Analysis, Policy Tracking, Stakeholder Mapping",
     cardImage: ["/images/work/indiaai.jpg"],
-    cardTitle: "India AI Tracker — Tracking India's AI research and policy",
+    cardTitle: "India AI Tracker: Tracking India's AI research and policy",
     cardDescription:
       "Dedicated tracker covering governance discussions, stakeholder decisions, investment trends, and technological developments across the Indian AI ecosystem.",
     cardStat: "50+ stakeholders",
@@ -176,7 +176,7 @@ export const projects: Project[] = [
     name: "Measuremint",
     techStack: "ElevenLabs, Claude, PostgreSQL, pgvector, Python",
     cardImage: ["/images/work/dh1.png"],
-    cardTitle: "Measuremint - AI-Powered Talent Intelligence Platform",
+    cardTitle: "Measuremint: AI-Powered Talent Intelligence Platform",
     cardDescription:
       "Voice-first career agent for high-volume markets. ElevenLabs + Claude for AI interviews and semantic similarity for matching. Solves sourcing and AI-driven talent identification at scale.",
     cardStat: "10K+ candidates",
@@ -205,7 +205,7 @@ export const projects: Project[] = [
   },
   {
     slug: "big-tech-layoff-monitor",
-    name: "Nexus - Surfacing candidates from layoff data",
+    name: "Nexus: Surfacing candidates from layoff data",
     techStack: "Next.js, GraphQL, Reddit API, GitHub API, HackerNews API, Google CSE",
     cardImage: ["/images/work/layoff.jpg"],
     cardTitle: "Nexus - Surfacing candidates from layoff data",
@@ -268,7 +268,7 @@ export const projects: Project[] = [
     name: "Talent Graph Engine",
     techStack: "Graph Database, Vector Embeddings, RAG, Python, React",
     cardImage: ["/images/work/networkengine.jpg"],
-    cardTitle: "Talent Graph Engine \u2014 100K+ STEM Profiles, One Connected View",
+    cardTitle: "Talent Graph Engine: 100K+ STEM Profiles, One Connected View",
     cardDescription:
       "A graph-based intelligence platform that connects 100K+ STEM and academic profiles across 500+ public sources. In-degree/out-degree analysis, shortest-path algorithms, and a RAG layer for natural language queries over the entire network.",
     cardStat: "100K+ profiles",
@@ -297,7 +297,7 @@ export const projects: Project[] = [
     slug: "buddhimanbaccha",
     name: "Buddhiman Baccha",
     techStack: "RLHF, Human Feedback, Annotation",
-    cardTitle: "Buddhiman Baccha - Digital Literacy → RLHF Platform (WIP)",
+    cardTitle: "Buddhiman Baccha: Digital Literacy → RLHF Platform (WIP)",
     cardDescription:
       "An early-stage experiment. Originally a digital literacy nonprofit; currently being repurposed as an RLHF and human-feedback platform. Underbaked and exploratory.",
     cardStat: "WIP",
