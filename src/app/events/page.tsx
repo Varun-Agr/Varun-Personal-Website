@@ -112,12 +112,12 @@ export default function EventsPage() {
             className="text-[clamp(1.8rem,4vw,3rem)] leading-[1.15] tracking-[-0.02em] text-white font-medium mb-3"
             style={{ fontFamily: FONT }}
           >
-            Convenings I&apos;ve Led
+            Select Convenings I&apos;ve Led
           </h1>
           <p className="text-[#888] text-base max-w-[600px]">
             Pivotal rooms I built across the Trustworthy AI ecosystem &mdash;
             bringing together academics, policymakers, and industry across
-            India, Singapore, and Australia around the India AI Impact Summit.
+            India, Singapore, and Australia.
           </p>
         </div>
       </section>
