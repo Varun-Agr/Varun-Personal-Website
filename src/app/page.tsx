@@ -322,10 +322,7 @@ export default function ClonePage() {
                 Co-Founder of <a href="https://secureaifutureslab.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#4ade80] transition-colors duration-300">Secure AI Futures Lab</a>.
                 <br />
                 <br />
-                8+ years sourcing and placing researchers and engineers
-                across AI, ML, and deep-tech - including UK AISI, FAR.AI,
-                and Apollo Research - and running the ops and distributed
-                teams behind the search.
+                8+ years finding and closing exceptional researchers and engineers for leading research labs including UK AISI, FAR.AI, and Apollo Research, while architecting the infrastructure, evaluation frameworks, and global teams that scale this work.
               </p>
 
               <div className="flex flex-wrap gap-3 mt-2">
