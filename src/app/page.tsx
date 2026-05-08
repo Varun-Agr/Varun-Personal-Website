@@ -500,20 +500,45 @@ export default function ClonePage() {
             }}
           >
             <p className="text-[#aaa] text-base leading-relaxed">
-              Sourcing researchers and engineers for teams building reliable AI systems
-              - start with the talent map, build the pipeline, calibrate the bar, close the offer.
-              Running the ops and the distributed team behind it end-to-end.
+              Mostly a curious person who wandered into AI talent work and
+              stayed because the problems kept getting more interesting.
+              Sourcing researchers and engineers for teams building reliable
+              AI systems - start with the talent map, build the pipeline,
+              calibrate the bar, close the offer. Running the ops and the
+              distributed team behind it end-to-end.
             </p>
             <p className="text-[#aaa] text-base leading-relaxed">
-              The work spans data-driven sourcing, RecOps infrastructure,
-              and the tools that tie it together - 50K-profile
-              talent maps, LLM-assisted candidate triage, JD fingerprinting.
-              Alongside it, leading a 30-person distributed team and the
-              stakeholder alignment that keeps searches on-roadmap.
-              Most of my time goes into making recruiting pipelines
-              more systematic and less manual.
+              When I'm not buried in candidate spreadsheets or tuning
+              an LLM about scoring rubrics, I'm probably lurking on{" "}
+              <a
+                href="https://news.ycombinator.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-[#4ade80] transition-colors duration-300"
+              >
+                Hacker News
+              </a>
+              , poking at a side project that won't ship, or out on a walk
+              with my dogs Wolfie and co — I document their adventures over at{" "}
+              <a
+                href="https://www.instagram.com/thebarkitects_/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-[#4ade80] transition-colors duration-300"
+              >
+                @thebarkitects_
+              </a>
+              .
             </p>
-            
+            {/*<p className="text-[#aaa] text-base leading-relaxed">
+              The day job spans data-driven sourcing, RecOps infrastructure,
+              and the tools that tie it together - 50K-profile talent maps,
+              LLM-assisted candidate triage, JD fingerprinting. Alongside it,
+              leading a 30-person distributed team and the stakeholder
+              alignment that keeps searches on-roadmap. Most of my time goes
+              into making recruiting pipelines more systematic and less manual.
+            </p>
+            */}
             
             
             {/*<a
