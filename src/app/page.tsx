@@ -632,18 +632,18 @@ export default function ClonePage() {
             <div className="space-y-10">
               {[
                 {
-                  date: "Apr 23 – 27, 2026",
-                  name: "ICLR 2026",
-                  location: "Rio de Janeiro, Brazil",
-                  description:
-                    "International Conference on Learning Representations",
-                },
-                {
                   date: "Jul 6th – 11th, 2026",
                   name: "ICML 2026",
                   location: "Seoul, South Korea",
                   description:
                     "International Conference on Machine Learning",
+                },
+                {
+                  date: "Sep 8 – 12, 2026",
+                  name: "ECCV 2026",
+                  location: "Malmö, Sweden",
+                  description:
+                    "The 19th European Conference on Computer Vision",
                 },
                 {
                   date: "Dec 6th - 12th 2026",
