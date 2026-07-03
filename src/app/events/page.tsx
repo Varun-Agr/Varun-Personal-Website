@@ -224,7 +224,7 @@ export default function EventsPage() {
               Email
             </a>
             <a
-              href="https://www.linkedin.com/in/varun-agrawal-b3367a31/"
+              href="https://www.linkedin.com/in/varun-agrawal1/"
               className="hover:text-white transition-colors duration-300"
             >
               LinkedIn

@@ -210,7 +210,7 @@ export default function ContactPage() {
                 <div>
                   <p className="uppercase tracking-[0.15em] text-xs mb-2" style={{ color: C.textDim }}>LinkedIn</p>
                   <a
-                    href="https://www.linkedin.com/in/varun-agrawal-b3367a31/"
+                    href="https://www.linkedin.com/in/varun-agrawal1/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="transition-colors duration-300 inline-block"
@@ -613,7 +613,7 @@ export default function ContactPage() {
             <a href="mailto:hello@varunagrawal.com" className="transition-colors duration-300 hover:opacity-80">
               Email
             </a>
-            <a href="https://www.linkedin.com/in/varun-agrawal-b3367a31/" className="transition-colors duration-300 hover:opacity-80">
+            <a href="https://www.linkedin.com/in/varun-agrawal1/" className="transition-colors duration-300 hover:opacity-80">
               LinkedIn
             </a>
             <a href="https://varunagrawal.com" className="transition-colors duration-300 hover:opacity-80">

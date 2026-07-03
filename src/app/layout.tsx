@@ -110,7 +110,7 @@ const personJsonLd = {
     },
   ],
   sameAs: [
-    "https://www.linkedin.com/in/varun-agrawal-b3367a31/",
+    "https://www.linkedin.com/in/varun-agrawal1/",
     "https://varunagrawal.com",
   ],
 };

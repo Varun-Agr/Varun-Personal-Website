@@ -798,7 +798,7 @@ export default function ClonePage() {
             <a href="mailto:hello@varunagrawal.com" className="hover:text-white transition-colors duration-300">
               Email
             </a>
-            <a href="https://www.linkedin.com/in/varun-agrawal-b3367a31/" className="hover:text-white transition-colors duration-300">
+            <a href="https://www.linkedin.com/in/varun-agrawal1/" className="hover:text-white transition-colors duration-300">
               LinkedIn
             </a>
             <a href="https://varunagrawal.com" className="hover:text-white transition-colors duration-300">
